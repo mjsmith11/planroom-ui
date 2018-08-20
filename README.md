@@ -1,5 +1,8 @@
 # planroom-ui
 
+This repository contains a Vue.js front end for the planroom project.
+It adheres to [Semantic Versioning](https://semver.org/) and [Gitflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)
+
 ## Project setup
 ```
 npm install
@@ -24,3 +27,6 @@ npm run lint
 ```
 npm run test:unit
 ```
+
+
+
