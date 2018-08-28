@@ -78,11 +78,6 @@ export default {
   name: 'HelloWorld',
   props: {
     msg: String
-  },
-  methods: {
-    m1 () {
-      var x
-    }
   }
 }
 </script>
