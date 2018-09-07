@@ -1,9 +1,11 @@
 <template>
   <div class="container">
-    <h1>Add a new Job</h1>
-    <form action="">
+    <div class="col-xs-12 col-sm-8 col-md-6 offset-md-3 offset-sm-2">
+      <h1>Add a new Job</h1>
+    </div>
+    <form action="" novalidate="">
       <div class="row">
-        <div class="col-xs-12 col-sm-8 col-md-6">
+        <div class="col-xs-12 col-sm-8 col-md-6 offset-md-3 offset-sm-2">
           <div class="form-group">
               <label for="jobName">Name</label>
               <input
@@ -11,28 +13,32 @@
                   class="form-control"
                   id="jobName"
                   placeholder="Job Name"
-                  maxlength="75">
+                  maxlength="75"
+                  required>
           </div>
           <div class="form-group">
               <label for="bidDate">Bid Date</label>
               <input
                   type="date"
                   class="form-control"
-                  id="bidDate">
+                  id="bidDate"
+                  required>
           </div>
           <div class="form-group">
               <label for="subcontractorBidsDue">Subcontractor Bid Deadline</label>
               <input
                   type="datetime-local"
                   class="form-control"
-                  id="subcontractorBidsDue">
+                  id="subcontractorBidsDue"
+                  required>
           </div>
           <div class="form-group">
               <label for="prebid">Prebid</label>
               <input
                   type="datetime-local"
                   class="form-control"
-                  id="prebid">
+                  id="prebid"
+                  required>
           </div>
           <div class="form-group">
               <label for="prebidAddress">Prebid Address</label>
@@ -41,7 +47,8 @@
                   classname="form-control"
                   placeholder="Prebid Address"
                   v-on:placechanged="getAddressData"
-                  country="us">
+                  country="us"
+                  required>
               </vue-google-autocomplete>
           </div>
           <div class="form-group">
@@ -51,29 +58,26 @@
                   class="form-control"
                   id="bidEmail"
                   placeholder="Bid Email"
-                  maxlength="100">
+                  maxlength="100"
+                  required>
           </div>
-          <div class="form-group">
-              <label for="bonding">Bonding</label>
-              <input
-                  type="checkbox"
-                  class="form-control"
-                  id="bonding">
+          <div id="checkboxes">
+            <div class="form-check form-check-inline">
+                <input
+                    type="checkbox"
+                    class="form-check-input"
+                    id="bonding">
+                  <label for="bonding" class="form-check-label">Bonding</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input
+                    type="checkbox"
+                    class="form-check-input"
+                    id="taxible">
+                <label for="taxible" class="form-check-label">Taxible</label>
+            </div>
           </div>
-          <div class="form-group">
-              <label for="bonding">Bonding</label>
-              <input
-                  type="checkbox"
-                  class="form-control"
-                  id="bonding">
-          </div>
-          <div class="form-group">
-              <label for="taxible">Taxible</label>
-              <input
-                  type="checkbox"
-                  class="form-control"
-                  id="taxible">
-          </div>
+          <button class="btn btn-outline-success" type="submit">Add Job</button>
         </div>
       </div>
     </form>
@@ -103,3 +107,14 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  input:invalid {
+    border: 2px solid red;
+    background-color: pink;
+  }
+  button {
+    margin-top: 30px;
+    width: 100%;
+  }
+</style>
