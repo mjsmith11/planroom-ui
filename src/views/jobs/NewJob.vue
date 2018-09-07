@@ -13,32 +13,28 @@
                   class="form-control"
                   id="jobName"
                   placeholder="Job Name"
-                  maxlength="75"
-                  required>
+                  maxlength="75">
           </div>
           <div class="form-group">
               <label for="bidDate">Bid Date</label>
               <input
                   type="date"
                   class="form-control"
-                  id="bidDate"
-                  required>
+                  id="bidDate">
           </div>
           <div class="form-group">
               <label for="subcontractorBidsDue">Subcontractor Bid Deadline</label>
               <input
                   type="datetime-local"
                   class="form-control"
-                  id="subcontractorBidsDue"
-                  required>
+                  id="subcontractorBidsDue">
           </div>
           <div class="form-group">
               <label for="prebid">Prebid</label>
               <input
                   type="datetime-local"
                   class="form-control"
-                  id="prebid"
-                  required>
+                  id="prebid">
           </div>
           <div class="form-group">
               <label for="prebidAddress">Prebid Address</label>
@@ -47,8 +43,7 @@
                   classname="form-control"
                   placeholder="Prebid Address"
                   v-on:placechanged="getAddressData"
-                  country="us"
-                  required>
+                  country="us">
               </vue-google-autocomplete>
           </div>
           <div class="form-group">
@@ -58,8 +53,7 @@
                   class="form-control"
                   id="bidEmail"
                   placeholder="Bid Email"
-                  maxlength="100"
-                  required>
+                  maxlength="100">
           </div>
           <div id="checkboxes">
             <div class="form-check form-check-inline">
