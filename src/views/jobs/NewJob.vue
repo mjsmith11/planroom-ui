@@ -17,21 +17,23 @@
                   v-model="name"
                   @blur="$v.name.$touch()">
           </div>
-          <div class="form-group">
+          <div class="form-group" :class="{invalid: $v.bidDate.$error}">
               <label for="bidDate">Bid Date</label>
               <input
                   type="date"
                   class="form-control"
                   id="bidDate"
-                  v-model="bidDate">
+                  v-model="bidDate"
+                  @blur="$v.bidDate.$touch()">
           </div>
-          <div class="form-group">
+          <div class="form-group" :class="{invalid: $v.bidsDue.$error}">
               <label for="subcontractorBidsDue">Subcontractor Bid Deadline</label>
               <input
                   type="datetime-local"
                   class="form-control"
                   id="subcontractorBidsDue"
-                  v-model="bidsDue">
+                  v-model="bidsDue"
+                  @blur="$v.bidsDue.$touch()">
           </div>
           <div class="form-group">
               <label for="prebid">Prebid</label>
@@ -41,18 +43,17 @@
                   id="prebid"
                   v-model="prebid">
           </div>
-          <div class="form-group">
+          <div class="form-group" :class="{invalid: $v.addressStr.$error}">
               <label for="prebidAddress">Prebid Address</label>
               <vue-google-autocomplete
                   id="prebidAddress"
                   classname="form-control"
                   placeholder="Prebid Address"
-                  v-on:placechanged="getAddressData"
-                  country="us"
-                  v-model="addressModel">
+                  @placechanged="getAddressData"
+                  country="us">
               </vue-google-autocomplete>
           </div>
-          <div class="form-group">
+          <div class="form-group" :class="{invalid: $v.bidEmail.$error}">
               <label for="bidEmail">Bid Email</label>
               <input
                   type="email"
@@ -60,7 +61,8 @@
                   id="bidEmail"
                   placeholder="Bid Email"
                   maxlength="100"
-                  v-model="bidEmail">
+                  v-model="bidEmail"
+                  @blur="$v.bidEmail.$touch()">
           </div>
           <div id="checkboxes">
             <div class="form-check form-check-inline">
@@ -80,7 +82,7 @@
                 <label for="taxible" class="form-check-label">Taxible</label>
             </div>
           </div>
-          <button class="btn btn-outline-success" type="submit">Add Job</button>
+          <button class="btn btn-outline-success" :disabled="$v.$invalid" type="submit">Add Job</button>
         </div>
       </div>
     </form>
@@ -98,7 +100,7 @@ export default {
       bidDate: '',
       bidsDue: '',
       prebid: '',
-      addressModel: '',
+      addressStr: '',
       bidEmail: '',
       bonding: false,
       taxible: false
@@ -118,7 +120,7 @@ export default {
     prebid: {
       required
     },
-    addressModel: {
+    addressStr: {
       required,
       maxLen: maxLength(150)
     },
@@ -136,7 +138,12 @@ export default {
     */
     getAddressData (addressData, placeResultData, id) {
       this.addressObj = addressData
-      console.log(this.addressModel)
+      this.addressStr = this.addressObj.street_number
+      this.addressStr += '^' + this.addressObj.route
+      this.addressStr += '^' + this.addressObj.locality
+      this.addressStr += '^' + this.addressObj.administrative_area_level_1
+      this.addressStr += '^' + this.addressObj.postal_code
+      this.$v.addressStr.$touch()
     }
   }
 }
