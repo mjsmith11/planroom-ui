@@ -3,38 +3,43 @@
     <div class="col-xs-12 col-sm-8 col-md-6 offset-md-3 offset-sm-2">
       <h1>Add a new Job</h1>
     </div>
-    <form action="" novalidate="">
+    <form action="">
       <div class="row">
         <div class="col-xs-12 col-sm-8 col-md-6 offset-md-3 offset-sm-2">
-          <div class="form-group">
+          <div class="form-group" :class="{invalid: $v.name.$error}">
               <label for="jobName">Name</label>
               <input
                   type="text"
                   class="form-control"
                   id="jobName"
                   placeholder="Job Name"
-                  maxlength="75">
+                  maxlength="75"
+                  v-model="name"
+                  @blur="$v.name.$touch()">
           </div>
           <div class="form-group">
               <label for="bidDate">Bid Date</label>
               <input
                   type="date"
                   class="form-control"
-                  id="bidDate">
+                  id="bidDate"
+                  v-model="bidDate">
           </div>
           <div class="form-group">
               <label for="subcontractorBidsDue">Subcontractor Bid Deadline</label>
               <input
                   type="datetime-local"
                   class="form-control"
-                  id="subcontractorBidsDue">
+                  id="subcontractorBidsDue"
+                  v-model="bidsDue">
           </div>
           <div class="form-group">
               <label for="prebid">Prebid</label>
               <input
                   type="datetime-local"
                   class="form-control"
-                  id="prebid">
+                  id="prebid"
+                  v-model="prebid">
           </div>
           <div class="form-group">
               <label for="prebidAddress">Prebid Address</label>
@@ -43,7 +48,8 @@
                   classname="form-control"
                   placeholder="Prebid Address"
                   v-on:placechanged="getAddressData"
-                  country="us">
+                  country="us"
+                  v-model="addressModel">
               </vue-google-autocomplete>
           </div>
           <div class="form-group">
@@ -53,21 +59,24 @@
                   class="form-control"
                   id="bidEmail"
                   placeholder="Bid Email"
-                  maxlength="100">
+                  maxlength="100"
+                  v-model="bidEmail">
           </div>
           <div id="checkboxes">
             <div class="form-check form-check-inline">
                 <input
                     type="checkbox"
                     class="form-check-input"
-                    id="bonding">
+                    id="bonding"
+                    v-model="bonding">
                   <label for="bonding" class="form-check-label">Bonding</label>
             </div>
             <div class="form-check form-check-inline">
                 <input
                     type="checkbox"
                     class="form-check-input"
-                    id="taxible">
+                    id="taxible"
+                    v-model="taxible">
                 <label for="taxible" class="form-check-label">Taxible</label>
             </div>
           </div>
@@ -79,12 +88,43 @@
 </template>
 <script>
 import VueGoogleAutocomplete from 'vue-google-autocomplete'
-
+import { required, email, maxLength } from 'vuelidate/lib/validators'
 export default {
   components: {VueGoogleAutocomplete},
   data () {
     return {
-      addressObj: ''
+      addressObj: '',
+      name: '',
+      bidDate: '',
+      bidsDue: '',
+      prebid: '',
+      addressModel: '',
+      bidEmail: '',
+      bonding: false,
+      taxible: false
+    }
+  },
+  validations: {
+    name: {
+      required,
+      maxLen: maxLength(75)
+    },
+    bidDate: {
+      required
+    },
+    bidsDue: {
+      required
+    },
+    prebid: {
+      required
+    },
+    addressModel: {
+      required,
+      maxLen: maxLength(150)
+    },
+    bidEmail: {
+      email,
+      maxLen: maxLength(100)
     }
   },
   methods: {
@@ -96,16 +136,19 @@ export default {
     */
     getAddressData (addressData, placeResultData, id) {
       this.addressObj = addressData
-      console.log(this.addressObj)
+      console.log(this.addressModel)
     }
   }
 }
 </script>
 
 <style scoped>
-  input:invalid {
-    border: 2px solid red;
-    background-color: pink;
+  .form-group.invalid input {
+    border: 1px solid red;
+    background-color: #ffcece;
+  }
+  .form-group.invalid label {
+    color: red;
   }
   button {
     margin-top: 30px;
