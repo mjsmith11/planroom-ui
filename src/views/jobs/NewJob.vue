@@ -35,13 +35,14 @@
                   v-model="bidsDue"
                   @blur="$v.bidsDue.$touch()">
           </div>
-          <div class="form-group">
+          <div class="form-group" :class="{invalid: $v.prebid.$error}">
               <label for="prebid">Prebid</label>
               <input
                   type="datetime-local"
                   class="form-control"
                   id="prebid"
-                  v-model="prebid">
+                  v-model="prebid"
+                  @blur="$v.prebid.$touch()">
           </div>
           <div class="form-group" :class="{invalid: $v.addressStr.$error}">
               <label for="prebidAddress">Prebid Address</label>
@@ -126,7 +127,8 @@ export default {
     },
     bidEmail: {
       email,
-      maxLen: maxLength(100)
+      maxLen: maxLength(100),
+      required
     }
   },
   methods: {
