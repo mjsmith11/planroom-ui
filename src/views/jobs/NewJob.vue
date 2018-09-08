@@ -2,8 +2,10 @@
   <div class="container">
     <div class="col-xs-12 col-sm-8 col-md-6 offset-md-3 offset-sm-2">
       <h1>Add a new Job</h1>
+      <div class="alert alert-success" role="alert" v-if="axiosSuccess">Job Added Successfully</div>
+      <div class="alert alert-danger" role="alert" v-if="axiosFailure">Failed to add Job</div>
     </div>
-    <form action="">
+    <form @submit.prevent = "onSubmit">
       <div class="row">
         <div class="col-xs-12 col-sm-8 col-md-6 offset-md-3 offset-sm-2">
           <div class="form-group" :class="{invalid: $v.name.$error}">
@@ -50,8 +52,9 @@
                   id="prebidAddress"
                   classname="form-control"
                   placeholder="Prebid Address"
-                  @placechanged="getAddressData"
-                  country="us">
+                  @change="onAddressChange"
+                  country="us"
+                  ref="addressControl">
               </vue-google-autocomplete>
           </div>
           <div class="form-group" :class="{invalid: $v.bidEmail.$error}">
@@ -92,11 +95,11 @@
 <script>
 import VueGoogleAutocomplete from 'vue-google-autocomplete'
 import { required, email, maxLength } from 'vuelidate/lib/validators'
+import axios from 'axios'
 export default {
   components: {VueGoogleAutocomplete},
   data () {
     return {
-      addressObj: '',
       name: '',
       bidDate: '',
       bidsDue: '',
@@ -104,7 +107,10 @@ export default {
       addressStr: '',
       bidEmail: '',
       bonding: false,
-      taxible: false
+      taxible: false,
+      axiosSuccess: false,
+      axiosFailure: false,
+      addressControl: ''
     }
   },
   validations: {
@@ -132,20 +138,44 @@ export default {
     }
   },
   methods: {
-    /**
-    * When the location found
-    * @param {Object} addressData Data of the found location
-    * @param {Object} placeResultData PlaceResult object
-    * @param {String} id Input container ID
-    */
-    getAddressData (addressData, placeResultData, id) {
-      this.addressObj = addressData
-      this.addressStr = this.addressObj.street_number
-      this.addressStr += '^' + this.addressObj.route
-      this.addressStr += '^' + this.addressObj.locality
-      this.addressStr += '^' + this.addressObj.administrative_area_level_1
-      this.addressStr += '^' + this.addressObj.postal_code
+    onAddressChange (text) {
+      this.addressStr = text
       this.$v.addressStr.$touch()
+    },
+    onSubmit () {
+      this.axiosSuccess = false
+      this.axiosFailure = false
+      const formData = {
+        name: this.name,
+        bidDate: this.bidDate,
+        subcontractorBidsDue: this.bidsDue,
+        prebidDateTime: this.prebid,
+        prebidAddress: this.addressStr,
+        bidEmail: this.bidEmail,
+        bonding: this.bonding,
+        taxible: this.taxible
+      }
+      axios.post('/jobs', formData)
+        .then(res => {
+          this.axiosSuccess = true
+          this.clearForm()
+        })
+        // eslint-disable-next-line
+        .catch(error => {
+          this.axiosFailure = true
+        })
+    },
+    clearForm () {
+      this.name = ''
+      this.bidDate = ''
+      this.bidsDue = ''
+      this.prebid = ''
+      this.addressStr = ''
+      this.$refs.addressControl.update('')
+      this.bidEmail = ''
+      this.bonding = false
+      this.taxible = false
+      this.$v.$reset()
     }
   }
 }
@@ -162,5 +192,10 @@ export default {
   button {
     margin-top: 30px;
     width: 100%;
+  }
+  #checkboxes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 </style>
