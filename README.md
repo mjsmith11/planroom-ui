@@ -3,15 +3,13 @@
 This repository contains a Vue.js front end for the planroom project.
 It adheres to [Semantic Versioning](https://semver.org/) and [Gitflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Ubuntu Environment Setup
+1. Setup an instance of [planroom-api](https://github.com/mjsmith11/planroom-api).
+1. Ensure that the URL in .env.development is correct for your instance of planroom-api.
+1. Install [npm](https://www.npmjs.com/get-npm).
+1. In `public/index.html`, replace `<API_KEY HERE>` with an [api key](https://developers.google.com/maps/documentation/javascript/get-api-key) for the google maps and places apis.
+1. Install dependencies `npm install`
+1. Run development server `npm run serve`
 
 ### Compiles and minifies for production
 ```
