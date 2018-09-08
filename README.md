@@ -11,6 +11,9 @@ It adheres to [Semantic Versioning](https://semver.org/) and [Gitflow](https://w
 1. Install dependencies `npm install`
 1. Run development server `npm run serve`
 
+## Helpful Tools
+ - Vue developer tools chrome add on.
+
 ### Compiles and minifies for production
 ```
 npm run build
