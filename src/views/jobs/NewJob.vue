@@ -10,8 +10,7 @@
         <div class="col-xs-12 col-sm-8 col-md-6 offset-md-3 offset-sm-2">
           <div class="form-group" :class="{invalid: $v.name.$error}">
               <label for="jobName">Name</label>
-              <input
-                  type="text"
+              <input type="text"
                   class="form-control"
                   id="jobName"
                   placeholder="Job Name"
@@ -96,6 +95,7 @@
 import VueGoogleAutocomplete from 'vue-google-autocomplete'
 import { required, email, maxLength } from 'vuelidate/lib/validators'
 import axios from 'axios'
+
 export default {
   components: {VueGoogleAutocomplete},
   data () {
