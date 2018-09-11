@@ -8,7 +8,7 @@
     <form @submit.prevent = "onSubmit">
       <div class="row">
         <div class="col-xs-12 col-sm-8 col-md-6 offset-md-3 offset-sm-2">
-          <div class="form-group" :class="{invalid: $v.name.$error}">
+          <div class="form-group" :class="{invalid: $v.name.$error}" id="jobNameGroup">
               <label for="jobName">Name</label>
               <input type="text"
                   class="form-control"
@@ -18,7 +18,7 @@
                   v-model="name"
                   @blur="$v.name.$touch()">
           </div>
-          <div class="form-group" :class="{invalid: $v.bidDate.$error}">
+          <div class="form-group" :class="{invalid: $v.bidDate.$error}" id="bidDateGroup">
               <label for="bidDate">Bid Date</label>
               <input
                   type="date"
@@ -27,7 +27,7 @@
                   v-model="bidDate"
                   @blur="$v.bidDate.$touch()">
           </div>
-          <div class="form-group" :class="{invalid: $v.bidsDue.$error}">
+          <div class="form-group" :class="{invalid: $v.bidsDue.$error}" id="subcontractorBidsDueGroup">
               <label for="subcontractorBidsDue">Subcontractor Bid Deadline</label>
               <input
                   type="datetime-local"
@@ -36,7 +36,7 @@
                   v-model="bidsDue"
                   @blur="$v.bidsDue.$touch()">
           </div>
-          <div class="form-group" :class="{invalid: $v.prebid.$error}">
+          <div class="form-group" :class="{invalid: $v.prebid.$error}" id="prebidGroup">
               <label for="prebid">Prebid</label>
               <input
                   type="datetime-local"
@@ -45,7 +45,7 @@
                   v-model="prebid"
                   @blur="$v.prebid.$touch()">
           </div>
-          <div class="form-group" :class="{invalid: $v.addressStr.$error}">
+          <div class="form-group" :class="{invalid: $v.addressStr.$error}" id="prebidAddressGroup">
               <label for="prebidAddress">Prebid Address</label>
               <vue-google-autocomplete
                   id="prebidAddress"
@@ -56,7 +56,7 @@
                   ref="addressControl">
               </vue-google-autocomplete>
           </div>
-          <div class="form-group" :class="{invalid: $v.bidEmail.$error}">
+          <div class="form-group" :class="{invalid: $v.bidEmail.$error}" id="bidEmailGroup">
               <label for="bidEmail">Bid Email</label>
               <input
                   type="email"

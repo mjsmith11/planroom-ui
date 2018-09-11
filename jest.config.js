@@ -11,7 +11,7 @@ module.exports = {
     '^.+\\.(js|jsx)?$': '<rootDir>/node_modules/babel-jest'
   },
   moduleNameMapper: {
-    '^@/(.*)$': '<rootDir>/src/$1',
+    '^@/(.*)$': '<rootDir>/src/$1'
   },
   snapshotSerializers: [
     'jest-serializer-vue'
@@ -20,5 +20,5 @@ module.exports = {
     '**/tests/unit/**/*.spec.(js|jsx|ts|tsx)|**/__tests__/*.(js|jsx|ts|tsx)'
   ],
   testURL: 'http://localhost/',
-  transformIgnorePatterns: ["/node_modules/(?!vue-google-autocomplete)"]
+  transformIgnorePatterns: ['/node_modules/(?!vue-google-autocomplete)']
 }
