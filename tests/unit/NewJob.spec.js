@@ -2,6 +2,7 @@ import { shallowMount } from '@vue/test-utils'
 import NewJob from '@/views/jobs/NewJob'
 import Vue from 'vue'
 import Vuelidate from 'vuelidate'
+import mockAxios from 'jest-mock-axios'
 
 Vue.use(Vuelidate)
 
@@ -10,6 +11,11 @@ describe('Add Job Form', () => {
 
   beforeEach(() => {
     cmp = shallowMount(NewJob)
+  })
+
+  afterEach(() => {
+    // cleaning up the mess left behind the previous test
+    mockAxios.reset();
   })
 
   it('has expected html structure', () => {
@@ -151,5 +157,7 @@ describe('Add Job Form', () => {
       expect(cmp.find('button[type="submit"]').attributes()['disabled']).toBe(undefined)
 
   })
-  // uses axios and shows alerts
+  it('uses api to save job', () => {
+    
+  })
 })
