@@ -9,6 +9,7 @@ It adheres to [Semantic Versioning](https://semver.org/) and [Gitflow](https://w
 1. Install [npm](https://www.npmjs.com/get-npm).
 1. In `public/index.html`, replace `<API_KEY HERE>` with an [api key](https://developers.google.com/maps/documentation/javascript/get-api-key) for the google maps and places apis.
 1. Install dependencies `npm install`
+1. Check to make sure the url for planroom api is correct in `.env.development`.
 1. Run development server `npm run serve`
 
 ## Helpful Tools
