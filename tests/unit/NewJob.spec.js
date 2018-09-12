@@ -15,7 +15,7 @@ describe('Add Job Form', () => {
 
   afterEach(() => {
     // cleaning up the mess left behind the previous test
-    mockAxios.reset();
+    mockAxios.reset()
   })
 
   it('has expected html structure', () => {
@@ -120,42 +120,41 @@ describe('Add Job Form', () => {
   })
 
   it('enables submit button with valid input', () => {
-      const nameField = cmp.find('#jobName')
-      nameField.setValue('abc')
-      nameField.trigger('blur')
+    const nameField = cmp.find('#jobName')
+    nameField.setValue('abc')
+    nameField.trigger('blur')
 
-      const bidDateField = cmp.find('#bidDate')
-      bidDateField.setValue('2018-03-23')
-      bidDateField.trigger('blur')
+    const bidDateField = cmp.find('#bidDate')
+    bidDateField.setValue('2018-03-23')
+    bidDateField.trigger('blur')
 
-      const subcontractorBidsDueField = cmp.find('#subcontractorBidsDue')
-      subcontractorBidsDueField.setValue('2017-06-01T08:30')
-      subcontractorBidsDueField.trigger('blur')
+    const subcontractorBidsDueField = cmp.find('#subcontractorBidsDue')
+    subcontractorBidsDueField.setValue('2017-06-01T08:30')
+    subcontractorBidsDueField.trigger('blur')
 
-      const prebidField = cmp.find('#prebid')
-      prebidField.setValue('2018-07-01T18:30')
-      prebidField.trigger('blur')
+    const prebidField = cmp.find('#prebid')
+    prebidField.setValue('2018-07-01T18:30')
+    prebidField.trigger('blur')
 
-      cmp.vm.addressStr = '123 Main St.'
-      cmp.vm.$v.addressStr.$touch()
+    cmp.vm.addressStr = '123 Main St.'
+    cmp.vm.$v.addressStr.$touch()
 
-      const bidEmailField = cmp.find('#bidEmail')
-      bidEmailField.setValue('abc@xyz.com')
-      bidEmailField.trigger('blur')
+    const bidEmailField = cmp.find('#bidEmail')
+    bidEmailField.setValue('abc@xyz.com')
+    bidEmailField.trigger('blur')
 
-      const bondingField = cmp.find('#bonding')
-      bondingField.setChecked(true)
+    const bondingField = cmp.find('#bonding')
+    bondingField.setChecked(true)
 
-      const taxibleField = cmp.find('#taxible')
-      taxibleField.setChecked(true)
+    const taxibleField = cmp.find('#taxible')
+    taxibleField.setChecked(true)
 
-      cmp.vm.$forceUpdate()
+    cmp.vm.$forceUpdate()
 
-      const groups = cmp.findAll('.form-group')
-      groups.wrappers.forEach(group => expect(group.classes()).not.toContain('invalid'))
+    const groups = cmp.findAll('.form-group')
+    groups.wrappers.forEach(group => expect(group.classes()).not.toContain('invalid'))
 
-      expect(cmp.find('button[type="submit"]').attributes()['disabled']).toBe(undefined)
-
+    expect(cmp.find('button[type="submit"]').attributes()['disabled']).toBe(undefined)
   })
   it('uses api to save job', () => {
     cmp.vm.clearForm = jest.fn()
@@ -192,40 +191,40 @@ describe('Add Job Form', () => {
     const groups = cmp.findAll('.form-group')
     groups.wrappers.forEach(group => expect(group.classes()).not.toContain('invalid'))
     expect(cmp.find('button[type="submit"]').attributes()['disabled']).toBe(undefined)
-    
+
     cmp.find('form').trigger('submit')
-    
-    expect(mockAxios.post).toHaveBeenCalledWith('/jobs', { 
-      "bidDate": "2018-03-23", 
-      "bidEmail": "abc@xyz.com", 
-      "bonding": true, 
-      "name": "abc", 
-      "prebidAddress": 
-      "123 Main St.", 
-      "prebidDateTime": 
-      "2018-07-01T18:30", 
-      "subcontractorBidsDue": "2017-06-01T08:30", 
-      "taxible": true 
+
+    expect(mockAxios.post).toHaveBeenCalledWith('/jobs', {
+      'bidDate': '2018-03-23',
+      'bidEmail': 'abc@xyz.com',
+      'bonding': true,
+      'name': 'abc',
+      'prebidAddress':
+      '123 Main St.',
+      'prebidDateTime':
+      '2018-07-01T18:30',
+      'subcontractorBidsDue': '2017-06-01T08:30',
+      'taxible': true
     })
 
     expect(mockAxios.post).toHaveBeenCalledTimes(1)
 
-    const responseObj = { 
-      "bidDate": "2018-03-23", 
-      "bidEmail": "abc@xyz.com", 
-      "bonding": true, 
-      "name": "abc", 
-      "prebidAddress": 
-      "123 Main St.", 
-      "prebidDateTime": 
-      "2018-07-01T18:30", 
-      "subcontractorBidsDue": "2017-06-01T08:30", 
-      "taxible": true,
-      "id": 25
+    const responseObj = {
+      'bidDate': '2018-03-23',
+      'bidEmail': 'abc@xyz.com',
+      'bonding': true,
+      'name': 'abc',
+      'prebidAddress':
+      '123 Main St.',
+      'prebidDateTime':
+      '2018-07-01T18:30',
+      'subcontractorBidsDue': '2017-06-01T08:30',
+      'taxible': true,
+      'id': 25
     }
 
     mockAxios.mockResponse(responseObj)
-    
+
     expect(cmp.vm.axiosSuccess).toBe(true)
     expect(cmp.vm.axiosFailure).toBe(false)
     const alerts = cmp.findAll('div.alert')
@@ -271,7 +270,6 @@ describe('Add Job Form', () => {
     groups.wrappers.forEach(group => expect(group.classes()).not.toContain('invalid'))
 
     expect(cmp.find('button[type="submit"]').attributes()['disabled']).toBe(undefined)
-
   })
   it('reports errors in saving', () => {
     cmp.vm.clearForm = jest.fn()
@@ -312,16 +310,16 @@ describe('Add Job Form', () => {
     cmp.find('form').trigger('submit')
 
     expect(mockAxios.post).toHaveBeenCalledWith('/jobs', {
-      "bidDate": "2018-03-23",
-      "bidEmail": "abc@xyz.com",
-      "bonding": true,
-      "name": "abc",
-      "prebidAddress":
-        "123 Main St.",
-      "prebidDateTime":
-        "2018-07-01T18:30",
-      "subcontractorBidsDue": "2017-06-01T08:30",
-      "taxible": true
+      'bidDate': '2018-03-23',
+      'bidEmail': 'abc@xyz.com',
+      'bonding': true,
+      'name': 'abc',
+      'prebidAddress':
+        '123 Main St.',
+      'prebidDateTime':
+        '2018-07-01T18:30',
+      'subcontractorBidsDue': '2017-06-01T08:30',
+      'taxible': true
     })
 
     expect(mockAxios.post).toHaveBeenCalledTimes(1)
