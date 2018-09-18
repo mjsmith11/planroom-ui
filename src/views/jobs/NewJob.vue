@@ -27,17 +27,8 @@
                   v-model="bidDate"
                   @blur="$v.bidDate.$touch()">
           </div>
-          <div class="form-group" :class="{invalid: $v.bidsDue.$error}" id="subcontractorBidsDueGroup">
-              <label for="subcontractorBidsDue">Subcontractor Bid Deadline</label>
-              <input
-                  type="datetime-local"
-                  class="form-control"
-                  id="subcontractorBidsDue"
-                  v-model="bidsDue"
-                  @blur="$v.bidsDue.$touch()">
-          </div>
           <div class="form-group" :class="{invalid: $v.prebid.$error}" id="prebidGroup">
-              <label for="prebid">Prebid</label>
+              <label for="prebid">Prebid (EST)</label>
               <input
                   type="datetime-local"
                   class="form-control"
@@ -55,6 +46,15 @@
                   country="us"
                   ref="addressControl">
               </vue-google-autocomplete>
+          </div>
+          <div class="form-group" :class="{invalid: $v.bidsDue.$error}" id="subcontractorBidsDueGroup">
+              <label for="subcontractorBidsDue">Subcontractor Bids Due to Benchmark (EST)</label>
+              <input
+                  type="datetime-local"
+                  class="form-control"
+                  id="subcontractorBidsDue"
+                  v-model="bidsDue"
+                  @blur="$v.bidsDue.$touch()">
           </div>
           <div class="form-group" :class="{invalid: $v.bidEmail.$error}" id="bidEmailGroup">
               <label for="bidEmail">Bid Email</label>
