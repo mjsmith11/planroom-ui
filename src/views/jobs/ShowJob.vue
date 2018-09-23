@@ -44,7 +44,7 @@
                     <h6><strong>Taxable</strong></h6>
                     <div>{{ TFtoYN(job.taxible)}}</div>
                     <br>
-                    <h6><strong>Bonding</strong></h6>
+                    <h6><strong>Subcontractor Bonding</strong></h6>
                     <div>{{ TFtoYN(job.bonding)}}</div>
                   </div>
                 </div>
