@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import NewJob from './views/jobs/NewJob.vue'
 import JobsIndex from './views/jobs/JobsIndex.vue'
+import ShowJob from './views/jobs/ShowJob.vue'
 
 Vue.use(Router)
 
@@ -32,6 +33,11 @@ export default new Router({
       path: '/jobs/new',
       name: 'new job',
       component: NewJob
+    },
+    {
+      path: '/jobs/:id',
+      name: 'show job',
+      component: ShowJob
     }
   ]
 })

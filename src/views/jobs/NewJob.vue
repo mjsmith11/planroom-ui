@@ -2,7 +2,6 @@
   <div class="container">
     <div class="col-xs-12 col-sm-8 col-md-6 offset-md-3 offset-sm-2">
       <h1>Add a new Job</h1>
-      <div class="alert alert-success" role="alert" v-if="axiosSuccess">Job Added Successfully</div>
       <div class="alert alert-danger" role="alert" v-if="axiosFailure">Failed to add Job</div>
     </div>
     <form @submit.prevent = "onSubmit">
@@ -108,7 +107,6 @@ export default {
       bidEmail: '',
       bonding: false,
       taxible: false,
-      axiosSuccess: false,
       axiosFailure: false,
       addressControl: ''
     }
@@ -143,7 +141,6 @@ export default {
       this.$v.addressStr.$touch()
     },
     onSubmit () {
-      this.axiosSuccess = false
       this.axiosFailure = false
       const formData = {
         name: this.name,
@@ -157,8 +154,8 @@ export default {
       }
       axios.post('/jobs', formData)
         .then(res => {
-          this.axiosSuccess = true
           this.clearForm()
+          this.$router.push('/jobs/' + res.data.id)
         })
         // eslint-disable-next-line
         .catch(error => {

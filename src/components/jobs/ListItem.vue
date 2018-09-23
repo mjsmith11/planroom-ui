@@ -1,11 +1,11 @@
 <template>
-    <a href="#" class="list-group-item-action list-group-item" :class="{'list-group-item-dark': inPast, 'list-group-item-light': !inPast}">
+    <router-link :to="link" class="list-group-item-action list-group-item" :class="{'list-group-item-dark': inPast, 'list-group-item-light': !inPast}">
         <div class="row">
             <div class="col-lg-9 col-xl-10">{{job.name}}</div>
             <!--Display div only on large a bigger viewport-->
             <div class="col-lg-3 col-xl-2 d-none d-lg-block"><strong>{{date.toLocaleDateString("en-US")}}</strong></div>
         </div>
-    </a>
+    </router-link>
 </template>
 <script>
 export default {
@@ -20,6 +20,9 @@ export default {
     inPast () {
       var today = new Date()
       return this.date < today
+    },
+    link () {
+      return 'jobs/' + this.job.id
     }
   }
 }

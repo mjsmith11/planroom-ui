@@ -23,11 +23,11 @@ export default {
   created () {
     axios.get('/jobs')
       .then(res => {
-        console.log(res)
         this.jobs = res.data
       })
+      // eslint-disable-next-line
       .catch(err => {
-        console.log(err)
+        // console.log(err)
       })
   }
 }
