@@ -17,13 +17,17 @@ export const datetimeFilters = {
       if (value === undefined) {
         return ''
       }
-      return moment.utc(value, 'YYYY-MM-DD HH:mm:ss').format('MM/DD/YYYY hh:mm A') + ' EST'
+      var m = moment(value, 'YYYY-MM-DD HH:mm:ss')
+      var tz = m.isDST() ? ' EDT' : ' EST'
+      return m.format('MM/DD/YYYY hh:mm A') + tz
     },
     datetimeCentral (value) {
       if (value === undefined) {
         return ''
       }
-      return moment.utc(value, 'YYYY-MM-DD HH:mm:ss').subtract({ 'hours': 1 }).format('MM/DD/YYYY hh:mm A') + ' CST'
+      var m = moment(value, 'YYYY-MM-DD HH:mm:ss').subtract({ 'hours': 1 })
+      var tz = m.isDST() ? ' CDT' : ' CST'
+      return m.format('MM/DD/YYYY hh:mm A') + tz
     }
   }
 }
