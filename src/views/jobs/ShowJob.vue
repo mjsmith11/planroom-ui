@@ -23,7 +23,7 @@
           </div>
           <div class="col-lg-4 col-md-6 col-sm-12 column">
             <div class="card">
-              <div class="card-header">Prebid</div>
+              <h5 class="card-header">Prebid</h5>
               <div class="card-body">
                 <div class="card-text">
                   <h6><strong>Date &amp; Time:</strong></h6>
@@ -38,7 +38,7 @@
           </div>
           <div class="col-lg-4 col-md-6 col-sm-12 column">
             <div class="card">
-              <div class="card-header">Details</div>
+              <h5 class="card-header">Details</h5>
                 <div class="card-body">
                   <div class="card-text">
                     <h6><strong>Taxable</strong></h6>
