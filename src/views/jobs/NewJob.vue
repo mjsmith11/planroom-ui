@@ -27,7 +27,7 @@
                   @blur="$v.bidDate.$touch()">
           </div>
           <div class="form-group" :class="{invalid: $v.prebid.$error}" id="prebidGroup">
-              <label for="prebid">Prebid (EST)</label>
+              <label for="prebid">Prebid (Eastern)</label>
               <input
                   type="datetime-local"
                   class="form-control"
@@ -47,7 +47,7 @@
               </vue-google-autocomplete>
           </div>
           <div class="form-group" :class="{invalid: $v.bidsDue.$error}" id="subcontractorBidsDueGroup">
-              <label for="subcontractorBidsDue">Subcontractor Bids Due to Benchmark (EST)</label>
+              <label for="subcontractorBidsDue">Subcontractor Bids Due to Benchmark (Eastern)</label>
               <input
                   type="datetime-local"
                   class="form-control"
