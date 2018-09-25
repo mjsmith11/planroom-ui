@@ -6,16 +6,25 @@ import mockAxios from 'jest-mock-axios'
 
 Vue.use(Vuelidate)
 
+const $router = {
+  push: jest.fn()
+}
+
 describe('Add Job Form', () => {
   let cmp
 
   beforeEach(() => {
-    cmp = shallowMount(NewJob)
+    cmp = shallowMount(NewJob, {
+      mocks: {
+        $router
+      }
+    })
   })
 
   afterEach(() => {
     // cleaning up the mess left behind the previous test
     mockAxios.reset()
+    cmp.vm.$router.push.mockClear()
   })
 
   it('has expected html structure', () => {
@@ -210,27 +219,25 @@ describe('Add Job Form', () => {
     expect(mockAxios.post).toHaveBeenCalledTimes(1)
 
     const responseObj = {
-      'bidDate': '2018-03-23',
-      'bidEmail': 'abc@xyz.com',
-      'bonding': true,
-      'name': 'abc',
-      'prebidAddress':
-      '123 Main St.',
-      'prebidDateTime':
-      '2018-07-01T18:30',
-      'subcontractorBidsDue': '2017-06-01T08:30',
-      'taxible': true,
-      'id': 25
+        data: {
+        'bidDate': '2018-03-23',
+        'bidEmail': 'abc@xyz.com',
+        'bonding': true,
+        'name': 'abc',
+        'prebidAddress':
+        '123 Main St.',
+        'prebidDateTime':
+        '2018-07-01T18:30',
+        'subcontractorBidsDue': '2017-06-01T08:30',
+        'taxible': true,
+        'id': 25
+      }
     }
 
     mockAxios.mockResponse(responseObj)
 
-    expect(cmp.vm.axiosSuccess).toBe(true)
+    expect(cmp.vm.$router.push).toHaveBeenCalledWith('/jobs/25')
     expect(cmp.vm.axiosFailure).toBe(false)
-    const alerts = cmp.findAll('div.alert')
-    expect(alerts.length).toBe(1)
-    expect(alerts.at(0).classes()).toContain('alert-success')
-    expect(alerts.at(0).html()).toContain('Job Added Successfully')
     expect(cmp.vm.clearForm).toHaveBeenCalledTimes(1)
   })
 
@@ -273,6 +280,7 @@ describe('Add Job Form', () => {
   })
   it('reports errors in saving', () => {
     cmp.vm.clearForm = jest.fn()
+
     const nameField = cmp.find('#jobName')
     nameField.setValue('abc')
     nameField.trigger('blur')
@@ -326,7 +334,7 @@ describe('Add Job Form', () => {
 
     mockAxios.mockError()
 
-    expect(cmp.vm.axiosSuccess).toBe(false)
+    expect(cmp.vm.$router.push).not.toHaveBeenCalled()
     expect(cmp.vm.axiosFailure).toBe(true)
     const alerts = cmp.findAll('div.alert')
     expect(alerts.length).toBe(1)
