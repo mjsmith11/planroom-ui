@@ -9,14 +9,14 @@
               <div class="card-body">
                 <div class="card-text">
                   <h6><strong>Date:</strong></h6>
-                  <div>{{ bidDate }}</div>
+                  <div>{{ job.bidDate | date }}</div>
                   <br>
                   <h6><strong>Email:</strong></h6>
                   <div>{{ job.bidEmail }}</div>
                   <br>
                   <h6><strong>Due To Benchmark:</strong></h6>
-                  <div>{{ bidsDue }}</div>
-                  <div>{{ bidsDueCentral }}</div>
+                  <div>{{ job.subcontractorBidsDue | datetime }}</div>
+                  <div>{{ job.subcontractorBidsDue | datetimeCentral }}</div>
                 </div>
               </div>
             </div>
@@ -27,8 +27,8 @@
               <div class="card-body">
                 <div class="card-text">
                   <h6><strong>Date &amp; Time:</strong></h6>
-                  <div>{{ prebid }}</div>
-                  <div>{{ prebidCentral }}</div>
+                  <div>{{ job.prebidDateTime | datetime }}</div>
+                  <div>{{ job.prebidDateTime | datetimeCentral }}</div>
                   <br>
                   <h6><strong>Address</strong></h6>
                   <div>{{ job.prebidAddress }}</div>
@@ -42,10 +42,10 @@
                 <div class="card-body">
                   <div class="card-text">
                     <h6><strong>Taxable</strong></h6>
-                    <div>{{ TFtoYN(job.taxible)}}</div>
+                    <div>{{ job.taxible | TFtoYN}}</div>
                     <br>
                     <h6><strong>Subcontractor Bonding</strong></h6>
-                    <div>{{ TFtoYN(job.bonding)}}</div>
+                    <div>{{ job.bonding | TFtoYN }}</div>
                   </div>
                 </div>
             </div>
@@ -55,7 +55,7 @@
   </div>
 </template>
 <script>
-import moment from 'moment'
+import { datetimeFilters } from '../../mixins/datetimeFilters'
 import axios from 'axios'
 export default {
   data () {
@@ -63,46 +63,14 @@ export default {
       job: {}
     }
   },
-  methods: {
+  mixins: [datetimeFilters],
+  filters: {
     TFtoYN (value) {
       if (value !== 1 && value !== 0) {
         return ''
       }
       return value ? 'Yes' : 'No'
     }
-  },
-  computed: {
-    bidDate () {
-      if (this.job.bidDate === undefined) {
-        return ''
-      }
-      return moment.utc(this.job.bidDate, 'YYYY-MM-DD').format('MM/DD/YYYY')
-    },
-    bidsDue () {
-      if (this.job.subcontractorBidsDue === undefined) {
-        return ''
-      }
-      return moment.utc(this.job.subcontractorBidsDue, 'YYYY-MM-DD HH:mm:ss').format('MM/DD/YYYY hh:mm A') + ' EST'
-    },
-    bidsDueCentral () {
-      if (this.job.subcontractorBidsDue === undefined) {
-        return ''
-      }
-      return moment.utc(this.job.subcontractorBidsDue, 'YYYY-MM-DD HH:mm:ss').subtract({'hours': 1}).format('MM/DD/YYYY hh:mm A') + ' CST'
-    },
-    prebid () {
-      if (this.job.prebidDateTime === undefined) {
-        return ''
-      }
-      return moment.utc(this.job.prebidDateTime, 'YYYY-MM-DD HH:mm:ss').format('MM/DD/YYYY hh:mm A') + ' EST'
-    },
-    prebidCentral () {
-      if (this.job.prebidDateTime === undefined) {
-        return ''
-      }
-      return moment.utc(this.job.prebidDateTime, 'YYYY-MM-DD HH:mm:ss').subtract({'hours': 1}).format('MM/DD/YYYY hh:mm A') + ' CST'
-    }
-
   },
   created () {
     axios.get('/jobs/' + this.$route.params.id)

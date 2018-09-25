@@ -3,23 +3,21 @@
         <div class="row">
             <div class="col-lg-9 col-xl-10">{{job.name}}</div>
             <!--Display div only on large a bigger viewport-->
-            <div class="col-lg-3 col-xl-2 d-none d-lg-block"><strong>{{date.toLocaleDateString("en-US")}}</strong></div>
+            <div class="col-lg-3 col-xl-2 d-none d-lg-block"><strong>{{ job.bidDate | date }}</strong></div>
         </div>
     </router-link>
 </template>
 <script>
+import { datetimeFilters } from '../../mixins/datetimeFilters'
 export default {
+  mixins: [datetimeFilters],
   props: {
     job: Object
   },
   computed: {
-    date () {
-      var parts = this.job.bidDate.split('-')
-      return new Date(parts[0], parts[1] - 1, parts[2]) // months are 0 based
-    },
     inPast () {
       var today = new Date()
-      return this.date < today
+      return this.$options.filters.dateObj(this.job.bidDate) < today
     },
     link () {
       return 'jobs/' + this.job.id
