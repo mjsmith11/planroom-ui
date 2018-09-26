@@ -21,6 +21,12 @@ describe('Job List Item', () => {
     bidDate: moment(new Date()).add(1, 'days').format('YYYY-MM-DD')
   }
 
+  const staticDate = {
+    id: 4,
+    name: 'Job With Static Date',
+    bidDate: '2018-09-25'
+  }
+
   it('creates link address', () => {
     let cmp = mount(ListItem, {
       propsData: {
@@ -75,7 +81,7 @@ describe('Job List Item', () => {
   it('has expected html structure', () => {
     let cmp = mount(ListItem, {
       propsData: {
-        job: today
+        job: staticDate
       },
       stubs: {
         RouterLink: RouterLinkStub
