@@ -18,9 +18,14 @@ describe('dateMoment filter', () => {
     let result = datetimeFilters.filters.dateMoment(undefined)
     expect(result).toBe('')
   })
-  it('returns Eastern Time Object', () => {
+  it('returns Eastern Time Object in DST', () => {
     let result = datetimeFilters.filters.dateMoment('2018-04-08')
-    var expected = moment.parseZone('2018-04-08T00:00:00.000-04:00')
+    var expected = moment.parseZone('2018-04-08T00:00:00.000Z')
+    expect(result.toString()).toBe(expected.toString())
+  })
+  it('returns Eastern Time Object not in DST', () => {
+    let result = datetimeFilters.filters.dateMoment('2018-03-08')
+    var expected = moment.parseZone('2018-03-08T00:00:00.000Z')
     expect(result.toString()).toBe(expected.toString())
   })
 })

@@ -18,7 +18,7 @@ export default {
   computed: {
     inPast () {
       var tmpToday = new Date()
-      var today = moment(new Date(tmpToday.setHours(0, 0, 0, 0))).tz('America/Indiana/Indianapolis')
+      var today = moment.utc(new Date(tmpToday.setHours(-4, 0, 0, 0))) //This results in today's time with time 00:00:00.000+00:00
       return this.$options.filters.dateMoment(this.job.bidDate) < today
     },
     link () {

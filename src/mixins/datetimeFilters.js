@@ -21,7 +21,7 @@ export const datetimeFilters = {
       if (value === undefined) {
         return ''
       }
-      return moment(value+'T00:00:00.000-04:00').tz('America/Indiana/Indianapolis')
+      return moment.utc(value)
     },
     /**
      *
@@ -32,7 +32,8 @@ export const datetimeFilters = {
       if (value === undefined) {
         return ''
       }
-      var m = moment(value, 'YYYY-MM-DD HH:mm:ss')
+      var pieces = value.split(' ')
+      var m = moment(pieces[0]+'T'+pieces[1]+'.000-04:00').tz('America/Indiana/Indianapolis')
       var tz = m.isDST() ? ' EDT' : ' EST'
       return m.format('MM/DD/YYYY hh:mm A') + tz
     },
