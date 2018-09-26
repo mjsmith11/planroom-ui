@@ -17,8 +17,8 @@ export default {
   },
   computed: {
     inPast () {
-      var tmpToday = new Date
-      var today = moment(new Date(tmpToday.setHours(0,0,0,0))).tz('America/Indiana/Indianapolis')
+      var tmpToday = new Date()
+      var today = moment(new Date(tmpToday.setHours(0, 0, 0, 0))).tz('America/Indiana/Indianapolis')
       return this.$options.filters.dateObj(this.job.bidDate) < today
     },
     link () {

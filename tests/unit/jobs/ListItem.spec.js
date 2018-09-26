@@ -5,19 +5,19 @@ import moment from 'moment-timezone'
 describe('Job List Item', () => {
   const yesterday = {
     id: 1,
-    name: "Job Bidding Yesterday",
+    name: 'Job Bidding Yesterday',
     bidDate: moment(new Date()).add(-1, 'days').format('YYYY-MM-DD')
   }
 
   const today = {
     id: 2,
-    name: "Job Bidding Today",
+    name: 'Job Bidding Today',
     bidDate: moment(new Date()).format('YYYY-MM-DD')
-  } 
+  }
 
   const tomorrow = {
     id: 3,
-    name: "Job Bidding Tomorrow",
+    name: 'Job Bidding Tomorrow',
     bidDate: moment(new Date()).add(1, 'days').format('YYYY-MM-DD')
   }
 

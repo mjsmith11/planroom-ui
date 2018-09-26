@@ -219,7 +219,7 @@ describe('Add Job Form', () => {
     expect(mockAxios.post).toHaveBeenCalledTimes(1)
 
     const responseObj = {
-        data: {
+      data: {
         'bidDate': '2018-03-23',
         'bidEmail': 'abc@xyz.com',
         'bonding': true,
