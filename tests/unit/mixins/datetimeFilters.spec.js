@@ -21,7 +21,7 @@ describe('dateObj filter', () => {
   it('returns Eastern Time Object', () => {
     let result = datetimeFilters.filters.dateMoment('2018-04-08')
     var expected = moment.parseZone('2018-04-08T00:00:00.000-04:00')
-    expect(expected.toString()).toBe(result.toString())
+    expect(result.toString()).toBe(expected.toString())
   })
 })
 
@@ -38,7 +38,7 @@ describe('datetime filter', () => {
 
   it('returns string with EDT', () => {
     let result = datetimeFilters.filters.datetime('2018-03-12 16:00:00')
-    expect(result).toBe('03/11/2018 04:00 PM EDT')
+    expect(result).toBe('03/12/2018 04:00 PM EDT')
   })
 })
 
@@ -55,7 +55,7 @@ describe('datetimeCentral filter', () => {
 
   it('returns string with CDT', () => {
     let result = datetimeFilters.filters.datetimeCentral('2018-03-12 16:00:00')
-    expect(result).toBe('03/11/2018 03:00 PM CDT')
+    expect(result).toBe('03/12/2018 03:00 PM CDT')
   })
 
   it('changes date', () => {
