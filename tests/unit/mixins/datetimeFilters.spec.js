@@ -13,7 +13,7 @@ describe('date filter', () => {
   })
 })
 
-describe('dateObj filter', () => {
+describe('dateMoment filter', () => {
   it('returns blank on undefined', () => {
     let result = datetimeFilters.filters.dateMoment(undefined)
     expect(result).toBe('')
