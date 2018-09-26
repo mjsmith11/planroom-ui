@@ -20,9 +20,9 @@ describe('dateObj filter', () => {
   })
   it('returns Eastern Time Object', () => {
     let result = datetimeFilters.filters.dateMoment('2018-04-08')
-    var expected = moment.parseZone("2018-04-08T00:00:00.000-04:00")
+    var expected = moment.parseZone('2018-04-08T00:00:00.000-04:00')
     expect(expected.toString()).toBe(result.toString())
-  })  
+  })
 })
 
 describe('datetime filter', () => {
