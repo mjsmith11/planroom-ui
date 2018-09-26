@@ -24,7 +24,7 @@ describe('Job List Item', () => {
   const staticDate = {
     id: 4,
     name: 'Job With Static Date',
-    bidDate: '2018-09-25'
+    bidDate: '2010-09-25' // it's important that this date is always in the past
   }
 
   it('creates link address', () => {
