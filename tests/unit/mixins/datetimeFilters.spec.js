@@ -59,8 +59,8 @@ describe('datetimeCentral filter', () => {
   })
 
   it('returns string with CDT', () => {
-    let result = datetimeFilters.filters.datetimeCentral('2018-03-12 16:00:00')
-    expect(result).toBe('03/12/2018 03:00 PM CDT')
+    let result = datetimeFilters.filters.datetimeCentral('2018-03-11 16:00:00')
+    expect(result).toBe('03/11/2018 03:00 PM CDT')
   })
 
   it('changes date', () => {

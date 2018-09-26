@@ -33,8 +33,8 @@ export const datetimeFilters = {
         return ''
       }
       //var pieces = value.split(' ')
-      var m = moment.utc(value)
-      var tz = moment(value).tz('America/Indiana/Indianapolis').isDST() ? ' EDT' : ' EST'
+      var m = moment.utc(value, 'YYYY-MM-DD HH:mm:ss')
+      var tz = moment(value, 'YYYY-MM-DD HH:mm:ss').tz('America/Indiana/Indianapolis').isDST() ? ' EDT' : ' EST'
       return m.format('MM/DD/YYYY hh:mm A') + tz
     },
     /**
@@ -46,8 +46,8 @@ export const datetimeFilters = {
       if (value === undefined) {
         return ''
       }
-      var m = moment(value, 'YYYY-MM-DD HH:mm:ss').subtract({ 'hours': 1 })
-      var tz = m.isDST() ? ' CDT' : ' CST'
+      var m = moment.utc(value, 'YYYY-MM-DD HH:mm:ss').subtract({ 'hours': 1 })
+      var tz = moment(value, 'YYYY-MM-DD HH:mm:ss').subtract({ 'hours': 1 }).tz('America/Chicago').isDST() ? ' CDT' : ' CST'
       return m.format('MM/DD/YYYY hh:mm A') + tz
     }
   }
