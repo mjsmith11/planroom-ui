@@ -32,7 +32,7 @@ export const datetimeFilters = {
       if (value === undefined) {
         return ''
       }
-      //var pieces = value.split(' ')
+      // var pieces = value.split(' ')
       var m = moment.utc(value, 'YYYY-MM-DD HH:mm:ss')
       var tz = moment(value, 'YYYY-MM-DD HH:mm:ss').tz('America/Indiana/Indianapolis').isDST() ? ' EDT' : ' EST'
       return m.format('MM/DD/YYYY hh:mm A') + tz
