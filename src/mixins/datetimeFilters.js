@@ -21,7 +21,7 @@ export const datetimeFilters = {
       if (value === undefined) {
         return ''
       }
-      return moment(value+'T00:00:00.000-04:00')
+      return moment(value+'T00:00:00.000-04:00').tz('America/Indiana/Indianapolis')
     },
     /**
      *
