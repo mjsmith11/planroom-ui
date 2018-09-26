@@ -1,4 +1,4 @@
-import moment from 'moment'
+import moment from 'moment-timezone'
 export const datetimeFilters = {
   filters: {
     date (value) {
@@ -11,7 +11,7 @@ export const datetimeFilters = {
       if (value === undefined) {
         return ''
       }
-      return moment.utc(value, 'YYYY-MM-DD').toDate()
+      return moment(value, 'YYYY-MM-DD').tz('America/Indiana/Indianapolis')
     },
     datetime (value) {
       if (value === undefined) {

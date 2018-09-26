@@ -9,6 +9,7 @@
 </template>
 <script>
 import { datetimeFilters } from '../../mixins/datetimeFilters'
+import moment from 'moment-timezone'
 export default {
   mixins: [datetimeFilters],
   props: {
@@ -16,7 +17,8 @@ export default {
   },
   computed: {
     inPast () {
-      var today = new Date()
+      var tmpToday = new Date
+      var today = moment(new Date(tmpToday.setHours(0,0,0,0))).tz('America/Indiana/Indianapolis')
       return this.$options.filters.dateObj(this.job.bidDate) < today
     },
     link () {

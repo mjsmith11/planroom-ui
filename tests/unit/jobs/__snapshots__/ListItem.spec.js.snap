@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Job List Item has expected html structure 1`] = `
+<a class="list-group-item-action list-group-item list-group-item-light">
+  <div class="row">
+    <div class="col-lg-9 col-xl-10">Job Bidding Today</div>
+    <div class="col-lg-3 col-xl-2 d-none d-lg-block"><strong>09/25/2018</strong></div>
+  </div>
+</a>
+`;
