@@ -42,8 +42,8 @@ describe('datetime filter', () => {
   })
 
   it('returns string with EDT', () => {
-    let result = datetimeFilters.filters.datetime('2018-03-12 16:00:00')
-    expect(result).toBe('03/12/2018 04:00 PM EDT')
+    let result = datetimeFilters.filters.datetime('2018-03-11 16:00:00')
+    expect(result).toBe('03/11/2018 04:00 PM EDT')
   })
 })
 

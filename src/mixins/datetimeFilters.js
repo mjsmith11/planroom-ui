@@ -33,7 +33,7 @@ export const datetimeFilters = {
         return ''
       }
       var pieces = value.split(' ')
-      var m = moment(pieces[0]+'T'+pieces[1]+'.000-04:00').tz('America/Indiana/Indianapolis')
+      var m = moment(value)
       var tz = m.isDST() ? ' EDT' : ' EST'
       return m.format('MM/DD/YYYY hh:mm A') + tz
     },
