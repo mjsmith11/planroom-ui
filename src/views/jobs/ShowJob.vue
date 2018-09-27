@@ -76,7 +76,6 @@ export default {
     axios.get('/jobs/' + this.$route.params.id)
       .then(res => {
         this.job = res.data
-        console.log(this.job)
       })
       // eslint-disable-next-line
       .catch(err => {

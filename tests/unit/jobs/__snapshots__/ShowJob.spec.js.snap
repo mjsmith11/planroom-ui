@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Job Index has expected html structure 1`] = `
+<div class="container">
+  <div class="col-xs-12 col-sm-10 col-md-8 offset-md-2 offset-sm-1 column">
+    <h1>abc</h1>
+    <div class="row">
+      <div class="col-lg-4 col-md-6 col-sm-12 column">
+        <div class="card">
+          <h5 class="card-header">Bid</h5>
+          <div class="card-body">
+            <div class="card-text">
+              <h6><strong>Date:</strong></h6>
+              <div>03/23/2017</div>
+              <br>
+              <h6><strong>Email:</strong></h6>
+              <div>abc@xyz.com</div>
+              <br>
+              <h6><strong>Due To Benchmark:</strong></h6>
+              <div>06/01/2017 08:30 AM EDT</div>
+              <div>06/01/2017 07:30 AM CDT</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-12 column">
+        <div class="card">
+          <h5 class="card-header">Prebid</h5>
+          <div class="card-body">
+            <div class="card-text">
+              <h6><strong>Date &amp; Time:</strong></h6>
+              <div>07/01/2018 06:30 PM EDT</div>
+              <div>07/01/2018 05:30 PM CDT</div>
+              <br>
+              <h6><strong>Address</strong></h6>
+              <div>123 Main St.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-12 column">
+        <div class="card">
+          <h5 class="card-header">Details</h5>
+          <div class="card-body">
+            <div class="card-text">
+              <h6><strong>Taxable</strong></h6>
+              <div>Yes</div>
+              <br>
+              <h6><strong>Subcontractor Bonding</strong></h6>
+              <div>No</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
