@@ -102,7 +102,7 @@ export const datetimeFilters = {
       var utc = Date.UTC(dateSplit[0], dateSplit[1], dateSplit[2], timeSplit[0], timeSplit[1], timeSplit[2])
       var d = new Date(utc)
       d.setHours(d.getHours() - 1)
-      
+
       var mm = d.getMonth()
       var dd = d.getDate()
       if (mm < 10) {
