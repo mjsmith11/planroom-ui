@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Job Index has expected html structure 1`] = `
+<div class="container">
+  <div class="col-xs-12 col-sm-10 col-md-8 offset-md-2 offset-sm-1">
+    <h1>Jobs</h1>
+    <div class="list-group">
+      <a class="list-group-item-action list-group-item list-group-item-dark">
+        <div class="row">
+          <div class="col-lg-9 col-xl-10">abc</div>
+          <div class="col-lg-3 col-xl-2 d-none d-lg-block"><strong>03/23/2017</strong></div>
+        </div>
+      </a>
+      <a class="list-group-item-action list-group-item list-group-item-dark">
+        <div class="row">
+          <div class="col-lg-9 col-xl-10">def</div>
+          <div class="col-lg-3 col-xl-2 d-none d-lg-block"><strong>12/23/2017</strong></div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+`;
