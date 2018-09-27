@@ -1,6 +1,6 @@
 import moment from 'moment-timezone'
 const helpers = {
-  date(value) {
+  date (value) {
     var splits = value.split('-')
     var dd = splits[2]
     var mm = splits[1]
@@ -8,13 +8,13 @@ const helpers = {
 
     return mm + '/' + dd + '/' + yyyy
   },
-  time(value) {
+  time (value) {
     var AMPM = 'AM'
     var pieces = value.split(':')
     var HH = pieces[0]
     var mm = pieces[1]
     var hh = ''
-    if (HH == 0) {
+    if (HH === 0) {
       hh = 12
     } else if (HH > 12) {
       hh = HH - 12
@@ -27,19 +27,19 @@ const helpers = {
     }
     return hh + ':' + mm + ' ' + AMPM
   },
-  isDST(date) {
-      // A free script from: www.mresoftware.com
-      var yr = date.getFullYear();
-      var dst_start = new Date("March 14, " + yr + " 02:00:00"); // 2nd Sunday in March can't occur after the 14th 
-      var dst_end = new Date("November 07, " + yr + " 02:00:00"); // 1st Sunday in November can't occur after the 7th
-      var day = dst_start.getDay(); // day of week of 14th
-      dst_start.setDate(14 - day); // Calculate 2nd Sunday in March of this year
-      day = dst_end.getDay(); // day of the week of 7th
-      dst_end.setDate(7 - day); // Calculate first Sunday in November of this year
-      if (date >= dst_start && date < dst_end) { //does today fall inside of DST period?
-        return true; //if so then return true
-      }
-      return false; //if not then return false
+  isDST (date) {
+    // A free script from: www.mresoftware.com
+    var yr = date.getFullYear()
+    var dstStart = new Date('March 14, ' + yr + ' 02:00:00') // 2nd Sunday in March can't occur after the 14th
+    var dstEnd = new Date('November 07, ' + yr + ' 02:00:00') // 1st Sunday in November can't occur after the 7th
+    var day = dstStart.getDay() // day of week of 14th
+    dstStart.setDate(14 - day) // Calculate 2nd Sunday in March of this year
+    day = dstEnd.getDay() // day of the week of 7th
+    dstEnd.setDate(7 - day) // Calculate first Sunday in November of this year
+    if (date >= dstStart && date < dstEnd) { // does today fall inside of DST period?
+      return true // if so then return true
+    }
+    return false // if not then return false
   }
 }
 export const datetimeFilters = {
@@ -55,7 +55,6 @@ export const datetimeFilters = {
       }
 
       return helpers.date(value)
-
     },
     /**
      *
@@ -83,9 +82,6 @@ export const datetimeFilters = {
       var datetime = datePart + ' ' + timePart
       var tz = helpers.isDST(new Date(datetime)) ? ' EDT' : ' EST'
       return datetime + tz
-      //var m = moment.utc(value, 'YYYY-MM-DD HH:mm:ss')
-      //var tz = moment(value, 'YYYY-MM-DD HH:mm:ss').tz('America/Indiana/Indianapolis').isDST() ? ' EDT' : ' EST'
-      //return m.format('MM/DD/YYYY hh:mm A') + tz
     },
     /**
      *
@@ -96,9 +92,46 @@ export const datetimeFilters = {
       if (value === undefined) {
         return ''
       }
-      var m = moment.utc(value, 'YYYY-MM-DD HH:mm:ss').subtract({ 'hours': 1 })
-      var tz = moment(value, 'YYYY-MM-DD HH:mm:ss').subtract({ 'hours': 1 }).tz('America/Chicago').isDST() ? ' CDT' : ' CST'
-      return m.format('MM/DD/YYYY hh:mm A') + tz
+      var pieces = value.split(' ')
+
+      var datePiece = pieces[0]
+      var timePiece = pieces[1]
+
+      var dateSplit = datePiece.split('-')
+      var timeSplit = timePiece.split(':')
+      var utc = Date.UTC(dateSplit[0], dateSplit[1], dateSplit[2], timeSplit[0], timeSplit[1], timeSplit[2])
+      var d = new Date(utc)
+      d.setHours(d.getHours() - 1)
+      
+      var mm = d.getMonth()
+      var dd = d.getDate()
+      if (mm < 10) {
+        mm = '0' + mm
+      }
+      if (dd < 10) {
+        dd = '0' + dd
+      }
+      var dateString = d.getFullYear() + '-' + mm + '-' + dd
+      var hh = d.getUTCHours()
+      var min = d.getMinutes()
+      var ss = d.getSeconds()
+      if (hh < 10) {
+        hh = '0' + hh
+      }
+      if (min < 10) {
+        min = '0' + min
+      }
+      if (ss < 10) {
+        ss = '0' + ss
+      }
+      var timeString = hh + ':' + min + ':' + ss
+
+      var datePart = helpers.date(dateString)
+      var timePart = helpers.time(timeString)
+
+      var datetime = datePart + ' ' + timePart
+      var tz = helpers.isDST(new Date(datetime)) ? ' CDT' : ' CST'
+      return datetime + tz
     }
   }
 }
