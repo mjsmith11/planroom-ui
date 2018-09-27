@@ -50,6 +50,9 @@ describe('Job Index', () => {
   })
 
   it('processes api response', () => {
+    expect(mockAxios.get).toHaveBeenCalledWith('/jobs')
+    expect(mockAxios.get).toHaveBeenCalledTimes(1)
+
     const response = {
       data: [
         {
