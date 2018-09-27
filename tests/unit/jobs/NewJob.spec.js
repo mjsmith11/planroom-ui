@@ -228,7 +228,7 @@ describe('Add Job Form', () => {
         '123 Main St.',
         'prebidDateTime':
         '2018-07-01T18:30',
-        'subcontractorBidsDue': '2017-06-01T08:30',
+        'subcontractorBidsDue': '2017-06-08T08:30',
         'taxible': true,
         'id': 25
       }

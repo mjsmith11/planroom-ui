@@ -27,8 +27,8 @@ describe('Job Index', () => {
           'bonding': true,
           'name': 'abc',
           'prebidAddress': '123 Main St.',
-          'prebidDateTime': '2018-07-01T18:30',
-          'subcontractorBidsDue': '2017-06-01T08:30',
+          'prebidDateTime': '2018-07-01 18:30',
+          'subcontractorBidsDue': '2017-06-01 08:30',
           'taxible': true,
           'id': 25
         },
@@ -38,8 +38,8 @@ describe('Job Index', () => {
           'bonding': false,
           'name': 'def',
           'prebidAddress': '234 Main St.',
-          'prebidDateTime': '2018-07-01T18:30',
-          'subcontractorBidsDue': '2017-06-01T08:30',
+          'prebidDateTime': '2018-07-01 18:30',
+          'subcontractorBidsDue': '2017-06-01 08:30',
           'taxible': true,
           'id': 20
         }
@@ -61,8 +61,8 @@ describe('Job Index', () => {
           'bonding': true,
           'name': 'My Test Job',
           'prebidAddress': '123 Main St.',
-          'prebidDateTime': '2018-07-01T18:30',
-          'subcontractorBidsDue': '2017-06-01T08:30',
+          'prebidDateTime': '2018-07-01 18:30',
+          'subcontractorBidsDue': '2017-06-01 08:30',
           'taxible': true,
           'id': 25
         },
@@ -72,8 +72,8 @@ describe('Job Index', () => {
           'bonding': false,
           'name': 'My Second Test Job',
           'prebidAddress': '234 Main St.',
-          'prebidDateTime': '2018-07-01T18:30',
-          'subcontractorBidsDue': '2017-06-01T08:30',
+          'prebidDateTime': '2018-07-01 18:30',
+          'subcontractorBidsDue': '2017-06-01 08:30',
           'taxible': true,
           'id': 20
         }
