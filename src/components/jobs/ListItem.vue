@@ -9,7 +9,6 @@
 </template>
 <script>
 import { datetimeFilters } from '../../mixins/datetimeFilters'
-import moment from 'moment-timezone'
 export default {
   mixins: [datetimeFilters],
   props: {
@@ -17,11 +16,8 @@ export default {
   },
   computed: {
     inPast () {
-      //var tmpToday = new Date()
-      //var today = moment.utc(new Date(tmpToday.setHours(-4, 0, 0, 0))) // This results in today's time with time 00:00:00.000+00:00
-      //return this.$options.filters.dateMoment(this.job.bidDate) < today
       var today = new Date()
-      today.setHours(0,0,0,0)
+      today.setHours(0, 0, 0, 0)
       var todayUTC = Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate(), 0, 0, 0, 0)
       var pieces = this.job.bidDate.split('-')
       var utc = Date.UTC(pieces[0], pieces[1] - 1, pieces[2], 0, 0, 0, 0)
