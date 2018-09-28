@@ -1,4 +1,3 @@
-import moment from 'moment-timezone'
 const helpers = {
   date (value) {
     var splits = value.split('-')
@@ -55,17 +54,6 @@ export const datetimeFilters = {
       }
 
       return helpers.date(value)
-    },
-    /**
-     *
-     * @param { string } value date represented as YYYY-MM-DD
-     * @returns { object } moment with Indianapolis timezone. No timezone adjustments to the date itself are made
-     */
-    dateMoment (value) {
-      if (value === undefined) {
-        return ''
-      }
-      return moment.utc(value)
     },
     /**
      *

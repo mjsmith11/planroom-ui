@@ -1,5 +1,4 @@
 import { datetimeFilters } from '@/mixins/datetimeFilters'
-import moment from 'moment-timezone'
 
 describe('date filter', () => {
   it('returns blank on undefined', () => {
@@ -10,23 +9,6 @@ describe('date filter', () => {
   it('returns date as MM/DD/YYYY', () => {
     let result = datetimeFilters.filters.date('2018-04-08')
     expect(result).toBe('04/08/2018')
-  })
-})
-
-describe('dateMoment filter', () => {
-  it('returns blank on undefined', () => {
-    let result = datetimeFilters.filters.dateMoment(undefined)
-    expect(result).toBe('')
-  })
-  it('returns Eastern Time Object in DST', () => {
-    let result = datetimeFilters.filters.dateMoment('2018-04-08')
-    var expected = moment.parseZone('2018-04-08T00:00:00.000Z')
-    expect(result.toString()).toBe(expected.toString())
-  })
-  it('returns Eastern Time Object not in DST', () => {
-    let result = datetimeFilters.filters.dateMoment('2018-03-08')
-    var expected = moment.parseZone('2018-03-08T00:00:00.000Z')
-    expect(result.toString()).toBe(expected.toString())
   })
 })
 
