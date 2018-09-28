@@ -1,6 +1,6 @@
 import { mount, RouterLinkStub } from '@vue/test-utils'
 import ListItem from '@/components/jobs/ListItem'
-import moment from 'moment-timezone'
+import moment from 'moment'
 
 describe('Job List Item', () => {
   const yesterday = {

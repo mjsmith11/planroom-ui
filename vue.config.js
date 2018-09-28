@@ -1,3 +1,8 @@
 module.exports = {
-  lintOnSave: undefined
+  lintOnSave: undefined,
+  configureWebpack: {
+    performance: {
+      maxEntrypointSize: 400000
+    }
+  }
 }
