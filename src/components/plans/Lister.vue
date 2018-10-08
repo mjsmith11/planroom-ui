@@ -1,7 +1,7 @@
 <template>
     <div class="lister">
       <h4>Plans</h4>
-      <ul>
+      <ul :class="{listborder : plans.length > 0}">
         <li v-for="plan in plans" :key="plan.key"><a :href="plan.url">{{ plan.key | removeDir }}</a></li>
       </ul>
     </div>
@@ -46,9 +46,17 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
   .lister {
-    width: 100%;
     margin-top: 25px;
+    width: 100%
+  }
+  ul {
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .listborder {
+    border: 2px solid #e4e4e4;
   }
 </style>
