@@ -51,17 +51,30 @@
             </div>
           </div>
         </div>
+        <div class="row">
+          <plan-lister :job-id = job.id></plan-lister>
+        </div>
+        <div class="row">
+          <uploader :jobId = job.id></uploader>
+        </div>
     </div>
   </div>
 </template>
 <script>
 import { datetimeFilters } from '../../mixins/datetimeFilters'
+import uploader from '../../components/plans/Uploader'
+import lister from '../../components/plans/Lister'
 import axios from 'axios'
+import { EventBus } from '../../event-bus.js'
 export default {
   data () {
     return {
       job: {}
     }
+  },
+  components: {
+    uploader: uploader,
+    planLister: lister
   },
   mixins: [datetimeFilters],
   filters: {
@@ -76,6 +89,7 @@ export default {
     axios.get('/jobs/' + this.$route.params.id)
       .then(res => {
         this.job = res.data
+        EventBus.$emit('job-read')
       })
       // eslint-disable-next-line
       .catch(err => {
