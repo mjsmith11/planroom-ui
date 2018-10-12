@@ -56,7 +56,7 @@ describe('Job Index', () => {
   })
 
   it('processes api response', () => {
-    let evtHandler = jest.fn();
+    let evtHandler = jest.fn()
     EventBus.$on('job-read', evtHandler)
     expect(mockAxios.get).toHaveBeenCalledWith('/jobs/12')
     expect(mockAxios.get).toHaveBeenCalledTimes(1)
