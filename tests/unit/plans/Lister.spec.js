@@ -2,7 +2,6 @@ import { mount } from '@vue/test-utils'
 import Lister from '@/components/plans/Lister'
 import mockAxios from 'jest-mock-axios'
 import { EventBus } from '@/event-bus.js'
-import Vue from 'vue';
 
 describe('Job Index', () => {
   let cmp
