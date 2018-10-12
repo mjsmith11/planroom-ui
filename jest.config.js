@@ -11,6 +11,7 @@ module.exports = {
     '^.+\\.(js|jsx)?$': '<rootDir>/node_modules/babel-jest'
   },
   moduleNameMapper: {
+    "\\.(css|less)$": "identity-obj-proxy",
     '^@/(.*)$': '<rootDir>/src/$1'
   },
   snapshotSerializers: [

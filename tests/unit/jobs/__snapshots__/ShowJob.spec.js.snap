@@ -53,6 +53,22 @@ exports[`Job Index has expected html structure 1`] = `
         </div>
       </div>
     </div>
+    <div class="row">
+      <div class="lister">
+        <h4>Plans</h4>
+        <ul class=""></ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="uploader">
+        <h4>Add Plans</h4>
+        <!---->
+        <div id="" class="vue-dropzone dropzone dz-clickable">
+          <!---->
+          <div class="dz-default dz-message"><span>Drop files here to upload</span></div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;
