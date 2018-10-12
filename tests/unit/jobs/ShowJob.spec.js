@@ -1,6 +1,7 @@
 import { mount } from '@vue/test-utils'
 import ShowJob from '@/views/jobs/ShowJob'
 import mockAxios from 'jest-mock-axios'
+import { EventBus } from '@/event-bus.js'
 
 describe('Job Index', () => {
   let cmp
@@ -9,6 +10,7 @@ describe('Job Index', () => {
       id: 12
     }
   }
+
   beforeEach(() => {
     cmp = mount(ShowJob, {
       mocks: {
@@ -54,6 +56,8 @@ describe('Job Index', () => {
   })
 
   it('processes api response', () => {
+    let evtHandler = jest.fn();
+    EventBus.$on('job-read', evtHandler)
     expect(mockAxios.get).toHaveBeenCalledWith('/jobs/12')
     expect(mockAxios.get).toHaveBeenCalledTimes(1)
 
@@ -72,6 +76,7 @@ describe('Job Index', () => {
     }
     mockAxios.mockResponse(response)
     expect(cmp.vm.job).toBe(response.data)
+    expect(evtHandler).toHaveBeenCalledTimes(1)
   })
 
   // TODO add tests for error handling when it's implemented
