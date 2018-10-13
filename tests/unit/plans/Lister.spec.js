@@ -5,6 +5,7 @@ import { EventBus } from '@/event-bus.js'
 
 describe('Job Index', () => {
   let cmp
+  let eventAttachSpy
 
   beforeEach(() => {
     cmp = mount((Lister), {
@@ -12,6 +13,7 @@ describe('Job Index', () => {
         jobId: 1
       }
     })
+    eventAttachSpy = jest.spyOn(EventBus, '$on')
   })
 
   afterEach(() => {
@@ -19,6 +21,7 @@ describe('Job Index', () => {
     mockAxios.reset()
     EventBus.$off('job-read')
     EventBus.$off('file-uploaded')
+    jest.clearAllMocks()
   })
 
   it('filters object keys', () => {
@@ -62,13 +65,8 @@ describe('Job Index', () => {
   })
 
   it('attaches events', () => {
-      const spy = jest.spyOn(cmp.vm, 'loadList')
-      cmp.vm.loadList();
-    //   console.log('attach begin')
-    //   EventBus.$emit('file-uploaded')
-    //   cmp.vm.$forceUpdate()
-    //   console.log('attach end')
-
-      expect(spy).toHaveBeenCalledTimes(1)
+        // two events should get attached in the create hook
+        expect(eventAttachSpy).toHaveBeenCalledTimes(2)
+      
   })
 })
