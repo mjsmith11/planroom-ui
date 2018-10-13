@@ -31,14 +31,14 @@ describe('Job Index', () => {
   it('has expected html structure', () => {
     const response = {
       data: [
-          {
-              key: '1/a blueprint.pdf',
-              url: 'http://test.com/1/aBlueprint.com'
-          },
-          {
-              key: '1/another blueprint.pdf',
-              url: 'http://test.com/1/anotherBlueprint.com'
-          }
+        {
+          key: '1/a blueprint.pdf',
+          url: 'http://test.com/1/aBlueprint.com'
+        },
+        {
+          key: '1/another blueprint.pdf',
+          url: 'http://test.com/1/anotherBlueprint.com'
+        }
       ]
     }
     cmp.vm.loadList()
@@ -47,26 +47,25 @@ describe('Job Index', () => {
   })
 
   it('loads the list', () => {
-      const response = {
-          data: [
-              {
-                  key: '1/a blueprint.pdf',
-                  url: 'http://test.com/1/aBlueprint.com'
-              },
-              {
-                  key: '1/another blueprint.pdf',
-                  url: 'http://test.com/1/anotherBlueprint.com'
-              }
-          ]
-      }
-      cmp.vm.loadList()
-      mockAxios.mockResponse(response)
-      expect(cmp.vm.plans).toBe(response.data)
+    const response = {
+      data: [
+        {
+          key: '1/a blueprint.pdf',
+          url: 'http://test.com/1/aBlueprint.com'
+        },
+        {
+          key: '1/another blueprint.pdf',
+          url: 'http://test.com/1/anotherBlueprint.com'
+        }
+      ]
+    }
+    cmp.vm.loadList()
+    mockAxios.mockResponse(response)
+    expect(cmp.vm.plans).toBe(response.data)
   })
 
   it('attaches events', () => {
-        // two events should get attached in the create hook
-        expect(eventAttachSpy).toHaveBeenCalledTimes(2)
-      
+    // two events should get attached in the create hook
+    expect(eventAttachSpy).toHaveBeenCalledTimes(2)
   })
 })
