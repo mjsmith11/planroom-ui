@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Job Index has expected html structure 1`] = `
+<div class="uploader">
+  <h4>Add Plans</h4>
+  <!---->
+  <div id="" class="vue-dropzone dropzone dz-clickable">
+    <!---->
+    <div class="dz-default dz-message"><span>Drop files here to upload</span></div>
+  </div>
+</div>
+`;
