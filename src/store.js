@@ -29,6 +29,7 @@ export default new Vuex.Store({
       state.refresher = ''
     },
     auth_refresh (state, token) {
+      state.status = 'success'
       state.token = token
     },
     logout (state) {
@@ -48,7 +49,7 @@ export default new Vuex.Store({
             const token = resp.data.token
             const decoded = parseJwt(token)
             const user = decoded.email
-            const refresher = setInterval(dispatch.bind(this, 'refresh'), 13 * 60 * 1000)
+            const refresher = setInterval(dispatch.bind(this, 'refresh'), 1 * 60 * 1000)
             axios.defaults.headers.common['Authorization'] = 'Bearer ' + token
             commit('auth_success', { token, user, refresher })
             resolve(resp)
