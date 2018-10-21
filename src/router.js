@@ -1,14 +1,16 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import store from './store'
 import Home from './views/Home.vue'
 import NewJob from './views/jobs/NewJob.vue'
 import JobsIndex from './views/jobs/JobsIndex.vue'
 import ShowJob from './views/jobs/ShowJob.vue'
 import Login from './views/Login.vue'
 
+
 Vue.use(Router)
 
-export default new Router({
+let router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
@@ -28,17 +30,26 @@ export default new Router({
     {
       path: '/jobs',
       name: 'jobs index',
-      component: JobsIndex
+      component: JobsIndex,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/jobs/new',
       name: 'new job',
-      component: NewJob
+      component: NewJob,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/jobs/:id',
       name: 'show job',
-      component: ShowJob
+      component: ShowJob,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/login',
@@ -47,3 +58,17 @@ export default new Router({
     }
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (store.getters.isLoggedIn) {
+      next()
+      return
+    }
+    next('/login')
+  } else {
+    next()
+  }
+})
+
+export default router
