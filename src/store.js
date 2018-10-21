@@ -8,27 +8,39 @@ export default new Vuex.Store({
   state: {
     status: '',
     token: '',
-    user: {}
+    user: '',
+    refresher: ''
   },
   mutations: {
     auth_request (state) {
       state.status = 'loading'
     },
-    auth_success (state, token, user) {
+    auth_success (state, data) {
       state.status = 'success'
-      state.token = token
-      state.user = user
+      state.token = data.token
+      state.user = data.user
+      state.refresher = data.refresher
     },
     auth_error (state) {
       state.status = 'error'
+      state.token = ''
+      state.user = ''
+      clearInterval(state.refresher)
+      state.refresher = ''
+    },
+    auth_refresh (state, token) {
+      state.token = token
     },
     logout (state) {
       state.status = ''
       state.token = ''
+      state.user = ''
+      clearInterval(state.refresher)
+      state.refresher = ''
     }
   },
   actions: {
-    login ({ commit }, user) {
+    login ({ commit, dispatch }, user) {
       return new Promise((resolve, reject) => {
         commit('auth_request')
         axios.post('/login', user)
@@ -36,8 +48,9 @@ export default new Vuex.Store({
             const token = resp.data.token
             const decoded = parseJwt(token)
             const user = decoded.email
+            const refresher = setInterval(dispatch.bind(this, 'refresh'), 13 * 60 * 1000)
             axios.defaults.headers.common['Authorization'] = 'Bearer ' + token
-            commit('auth_success', token, user)
+            commit('auth_success', { token, user, refresher })
             resolve(resp)
           })
           .catch(err => {
@@ -59,10 +72,8 @@ export default new Vuex.Store({
         axios.get('/token-refresh')
           .then(resp => {
             const token = resp.data.token
-            const decoded = parseJwt(token)
-            const user = decoded.email
             axios.defaults.headers.common['Authorization'] = 'Bearer ' + token
-            commit('auth_success', token, user)
+            commit('auth_refresh', token)
             resolve(resp)
           })
           .catch(err => {
