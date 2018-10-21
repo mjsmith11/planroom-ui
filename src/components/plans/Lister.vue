@@ -1,6 +1,6 @@
 <template>
     <div class="lister">
-      <h4>Plans</h4>
+      <h4>Bidding Documents</h4>
       <ul :class="{listborder : plans.length > 0}">
         <li v-for="plan in plans" :key="plan.key"><a :href="plan.url">{{ plan.key | removeDir }}</a></li>
       </ul>

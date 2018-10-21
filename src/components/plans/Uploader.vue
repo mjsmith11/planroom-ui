@@ -1,8 +1,8 @@
 <template>
     <div class='uploader'>
-      <h4>Add Plans</h4>
+      <h4>Add Bidding Documents</h4>
       <div class="alert alert-danger" v-if="uploadProblem">
-        <strong>Warning!</strong> One or more plans failed to upload
+        <strong>Warning!</strong> One or more documents failed to upload
       </div>
       <vue-dropzone
         :awss3="awss3"
