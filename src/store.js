@@ -73,7 +73,18 @@ export default new Vuex.Store({
     }
   },
   getters: {
-    isLoggedIn: state => !!state.token,
+    isLoggedIn: state => {
+      if (!state.token) {
+        // if no token, we aren't logged in
+        return false
+      } else {
+        // see if the token is expired
+        let decoded = parseJwt(state.token)
+        let now = Math.round((new Date()).getTime() / 1000)
+        // using a 5 second threshold to give caller time to do something if this is true
+        return (decoded.exp - now >= 5)
+      }
+    },
     authStatus: state => state.status
   }
 })

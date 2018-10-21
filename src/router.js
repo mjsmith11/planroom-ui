@@ -1,12 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import store from './store'
-import Home from './views/Home.vue'
 import NewJob from './views/jobs/NewJob.vue'
 import JobsIndex from './views/jobs/JobsIndex.vue'
 import ShowJob from './views/jobs/ShowJob.vue'
 import Login from './views/Login.vue'
-
 
 Vue.use(Router)
 
@@ -16,8 +14,7 @@ let router = new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: Home
+      redirect: '/jobs'
     },
     {
       path: '/about',
