@@ -2,7 +2,7 @@
     <div class="container">
         <div class="col-xs-10 col-sm-8 col-md-6 offset-md-3 offset-sm-2 offset-xs-1 column">
             <div class="card">
-                <h2 class="card-header">Planroom Login</h2>
+                <h4 class="card-header">Login</h4>
                 <div class="card-body">
                     <div class="alert alert-danger" role="alert" v-if="loginFailure">Login Failed</div>
                     <form @submit.prevent = "login">
