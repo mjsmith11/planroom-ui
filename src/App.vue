@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-dark">
     <router-link :to="brandLink" class="navbar-brand" tag="a">
       Planroom
     </router-link>
@@ -75,6 +75,7 @@ export default {
 <style>
 nav{
   margin-bottom: 25px;
+  background-color: #101063;
 }
 img {
   height: 50px;
