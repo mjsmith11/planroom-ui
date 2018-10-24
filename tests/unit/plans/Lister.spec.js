@@ -3,7 +3,7 @@ import Lister from '@/components/plans/Lister'
 import mockAxios from 'jest-mock-axios'
 import { EventBus } from '@/event-bus.js'
 
-describe('Job Index', () => {
+describe('Lister', () => {
   let cmp
   let eventAttachSpy
 

@@ -3,7 +3,7 @@ import Uploader from '@/components/plans/Uploader'
 // import mockAxios from 'jest-mock-axios'
 import { EventBus } from '@/event-bus.js'
 
-describe('Job Index', () => {
+describe('Uploader', () => {
   let cmp
 
   beforeEach(() => {
@@ -29,7 +29,7 @@ describe('Job Index', () => {
     const alerts = cmp.findAll('div.alert')
     expect(alerts.length).toBe(1)
     expect(alerts.at(0).classes()).toContain('alert-danger')
-    expect(alerts.at(0).html()).toContain('<strong>Warning!</strong> One or more plans failed to upload')
+    expect(alerts.at(0).html()).toContain('<strong>Warning!</strong> One or more documents failed to upload')
   })
 
   it('emits file-uploaded event', () => {

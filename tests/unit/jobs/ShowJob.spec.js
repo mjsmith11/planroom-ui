@@ -3,7 +3,7 @@ import ShowJob from '@/views/jobs/ShowJob'
 import mockAxios from 'jest-mock-axios'
 import { EventBus } from '@/event-bus.js'
 
-describe('Job Index', () => {
+describe('Show Job', () => {
   let cmp
   const $route = {
     params: {
