@@ -1,0 +1,107 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App has correct html structure logged in 1`] = `
+<div id="app">
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <router-link-stub to="/jobs" tag="a" class="navbar-brand">
+      Planroom
+    </router-link-stub>
+    <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
+    <div id="navbarSupportedContent" class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <router-link-stub to="/jobs" tag="a" class="nav-link">
+            Job List
+          </router-link-stub>
+        </li>
+        <li class="nav-item">
+          <router-link-stub to="/jobs/new" tag="a" class="nav-link">
+            New Job
+          </router-link-stub>
+        </li>
+      </ul>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <div id="logout-link" class="nav-link">Logout</div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <router-view-stub></router-view-stub>
+</div>
+`;
+
+exports[`App has correct html structure logged out 1`] = `
+<div id="app">
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <router-link-stub to="/login" tag="a" class="navbar-brand">
+      Planroom
+    </router-link-stub>
+    <!---->
+    <!---->
+  </nav>
+  <router-view-stub></router-view-stub>
+</div>
+`;
+
+exports[`App has correct html structure on jobs index route 1`] = `
+<div id="app">
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <router-link-stub to="/jobs" tag="a" class="navbar-brand">
+      Planroom
+    </router-link-stub>
+    <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
+    <div id="navbarSupportedContent" class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <router-link-stub to="/jobs" tag="a" class="nav-link">
+            Job List
+          </router-link-stub>
+        </li>
+        <li class="nav-item">
+          <router-link-stub to="/jobs/new" tag="a" class="nav-link">
+            New Job
+          </router-link-stub>
+        </li>
+      </ul>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <div id="logout-link" class="nav-link">Logout</div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <router-view-stub></router-view-stub>
+</div>
+`;
+
+exports[`App has correct html structure on jobs new job 1`] = `
+<div id="app">
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <router-link-stub to="/jobs" tag="a" class="navbar-brand">
+      Planroom
+    </router-link-stub>
+    <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
+    <div id="navbarSupportedContent" class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <router-link-stub to="/jobs" tag="a" class="nav-link">
+            Job List
+          </router-link-stub>
+        </li>
+        <li class="nav-item active">
+          <router-link-stub to="/jobs/new" tag="a" class="nav-link">
+            New Job
+          </router-link-stub>
+        </li>
+      </ul>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <div id="logout-link" class="nav-link">Logout</div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <router-view-stub></router-view-stub>
+</div>
+`;

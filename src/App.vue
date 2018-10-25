@@ -23,7 +23,7 @@
       </ul>
       <ul class="navbar-nav">
         <li class="nav-item">
-          <div class="nav-link" @click="logout">Logout</div>
+          <div class="nav-link" id = 'logout-link' @click="logout">Logout</div>
         </li>
       </ul>
     </div>
