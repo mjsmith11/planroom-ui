@@ -2,7 +2,6 @@ import { mount, createLocalVue } from '@vue/test-utils'
 import App from '@/App'
 import Vuex from 'vuex'
 import axios from 'axios'
-// import VueRouter from 'vue-router'
 
 const localVue = createLocalVue()
 
