@@ -52,18 +52,20 @@ let router = new Router({
       path: '/login',
       name: 'login',
       component: Login,
-      beforeEnter: (to, from, next) => {
-        if (store.getters.isLoggedIn) {
-          next('/jobs')
-        } else {
-          next()
-        }
-      }
+      beforeEnter: (to, from, next) => beforeLoginEnter(to, from, next)
     }
   ]
 })
 
-router.beforeEach((to, from, next) => {
+export function beforeLoginEnter (to, from, next) {
+  if (store.getters.isLoggedIn) {
+    next('/jobs')
+  } else {
+    next()
+  }
+}
+
+export function beforeEach (to, from, next) {
   if (to.matched.some(record => record.meta.requiresAuth)) {
     if (store.getters.isLoggedIn) {
       next()
@@ -73,6 +75,8 @@ router.beforeEach((to, from, next) => {
   } else {
     next()
   }
-})
+}
+
+router.beforeEach((to, from, next) => beforeEach(to, from, next))
 
 export default router
