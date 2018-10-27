@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0] - 2018-10-27
+### Added
+ - Navbar
+ - Login component
+ - Vuex store for authentication state
+ - Route guards based on authentication status
+
 ## [0.3.0] - 2018-10-13
 ### Added
  - Uploading Files to a Job
