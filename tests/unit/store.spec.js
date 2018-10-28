@@ -83,13 +83,13 @@ describe('Vuex store', () => {
     expect(store.state.token).toBe('test token')
     expect(store.state.user).toBe('abc')
     expect(store.state.refresher).toBe(refresherVal)
-    expect(axios.defaults.headers.common['Authorization']).toBe('Bearer test token')
+    expect(axios.defaults.headers.common['Planroom-Authorization']).toBe('Bearer test token')
   })
   it('logs out', () => {
     axios.defaults = {}
     axios.defaults.headers = {}
     axios.defaults.headers.common = []
-    axios.defaults.headers.common['Authorization'] = 'some token'
+    axios.defaults.headers.common['Planroom-Authorization'] = 'some token'
     const pause = function () {
       // nothing
     }
@@ -111,7 +111,7 @@ describe('Vuex store', () => {
     expect(store.state.token).toBe('')
     expect(store.state.user).toBe('')
     expect(store.state.refresher).toBe('')
-    expect(axios.defaults.headers.common['Authorization']).toBe(undefined)
+    expect(axios.defaults.headers.common['Planroom-Authorization']).toBe(undefined)
   })
   it('handles failed logins', () => {
     const pause = function () {
@@ -168,6 +168,6 @@ describe('Vuex store', () => {
     expect(store.state.token).toBe(token)
     expect(store.state.user).toBe('JOE@joe.com') // caps because that's how the token has it
     expect(store.state.refresher).toBeTruthy()
-    expect(axios.defaults.headers.common['Authorization']).toBe('Bearer ' + token)
+    expect(axios.defaults.headers.common['Planroom-Authorization']).toBe('Bearer ' + token)
   })
 })

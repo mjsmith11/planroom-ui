@@ -50,7 +50,7 @@ export default new Vuex.Store({
             const decoded = parseJwt(token)
             const user = decoded.email
             const refresher = setInterval(dispatch.bind(this, 'refresh'), 14 * 60 * 1000) // every 14 minutes
-            axios.defaults.headers.common['Authorization'] = 'Bearer ' + token
+            axios.defaults.headers.common['Planroom-Authorization'] = 'Bearer ' + token
             commit('auth_success', { token, user, refresher })
             resolve(resp)
           })
@@ -63,7 +63,7 @@ export default new Vuex.Store({
     logout ({ commit }) {
       return new Promise((resolve, reject) => {
         commit('logout')
-        delete axios.defaults.headers.common['Authorization']
+        delete axios.defaults.headers.common['Planroom-Authorization']
         resolve()
       })
     },
@@ -73,7 +73,7 @@ export default new Vuex.Store({
         axios.get('/token-refresh')
           .then(resp => {
             const token = resp.data.token
-            axios.defaults.headers.common['Authorization'] = 'Bearer ' + token
+            axios.defaults.headers.common['Planroom-Authorization'] = 'Bearer ' + token
             commit('auth_refresh', token)
             resolve(resp)
           })

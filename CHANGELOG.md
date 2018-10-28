@@ -6,10 +6,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.3] - 2018-10-28
+### Changed
+ - Token header is now Planroom-Authorization
+
 ## [1.0.2] - 2018-10-28
 ### Fixed
  - Send API calls to https
- ### Added
+### Added
   - .htaccess Rule to redirect http to https
 
 ## [1.0.0] - 2018-10-27
