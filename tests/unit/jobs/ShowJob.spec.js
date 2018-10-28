@@ -1,10 +1,21 @@
-import { mount } from '@vue/test-utils'
+import { mount, createLocalVue } from '@vue/test-utils'
 import ShowJob from '@/views/jobs/ShowJob'
 import mockAxios from 'jest-mock-axios'
 import { EventBus } from '@/event-bus.js'
+import Vuex from 'vuex'
+
+const localVue = createLocalVue()
+
+localVue.use(Vuex)
 
 describe('Show Job', () => {
   let cmp
+  let getters = {
+    token: () => 'eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjEyMzQ1Njc3ODc3fQ.6xV-z88Nvmag8i4jVwmOZjX3MhCYAgb3rqttN4ROix3EbtHLwYIG3utNVaCpCN2cS7QFAJM3CPnfiS5_s9luiA'
+  }
+  let store = new Vuex.Store({
+    getters
+  })
   const $route = {
     params: {
       id: 12
@@ -15,7 +26,9 @@ describe('Show Job', () => {
     cmp = mount(ShowJob, {
       mocks: {
         $route
-      }
+      },
+      store,
+      localVue
     })
   })
 

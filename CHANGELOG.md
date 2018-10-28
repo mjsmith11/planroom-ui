@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.4] - 2018-10-28
+### Changed
+ - Make Dropzone use Planroom-Authorization header
+
 ## [1.0.3] - 2018-10-28
 ### Changed
  - Token header is now Planroom-Authorization

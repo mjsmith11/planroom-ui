@@ -97,7 +97,8 @@ export default new Vuex.Store({
         return (decoded.exp - now >= 5)
       }
     },
-    authStatus: state => state.status
+    authStatus: state => state.status,
+    token: state => state.token
   }
 })
 

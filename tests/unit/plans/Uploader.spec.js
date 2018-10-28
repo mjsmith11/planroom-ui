@@ -1,16 +1,30 @@
-import { mount } from '@vue/test-utils'
+import { mount, createLocalVue } from '@vue/test-utils'
 import Uploader from '@/components/plans/Uploader'
 // import mockAxios from 'jest-mock-axios'
 import { EventBus } from '@/event-bus.js'
+import Vuex from 'vuex'
+
+const localVue = createLocalVue()
+
+localVue.use(Vuex)
 
 describe('Uploader', () => {
   let cmp
+  let getters = {
+    token: () => 'eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjEyMzQ1Njc3ODc3fQ.6xV-z88Nvmag8i4jVwmOZjX3MhCYAgb3rqttN4ROix3EbtHLwYIG3utNVaCpCN2cS7QFAJM3CPnfiS5_s9luiA'
+  }
+  let store = new Vuex.Store({
+    getters
+  })
+  
 
   beforeEach(() => {
     cmp = mount((Uploader), {
       propsData: {
         jobId: 1
-      }
+      },
+      store,
+      localVue
     })
   })
 

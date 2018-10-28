@@ -16,6 +16,10 @@ describe('Vuex store', () => {
     store.state.status = 'test status'
     expect(store.getters.authStatus).toBe('test status')
   })
+  it('gets token', () => {
+    store.state.token = 'test token'
+    expect(store.getters.token).toBe('test token')
+  })
   it('reports not logged in without a token', () => {
     expect(store.getters.isLoggedIn).toBe(false)
   })
