@@ -16,7 +16,6 @@ describe('Uploader', () => {
   let store = new Vuex.Store({
     getters
   })
-  
 
   beforeEach(() => {
     cmp = mount((Uploader), {
