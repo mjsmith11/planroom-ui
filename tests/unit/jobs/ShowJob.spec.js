@@ -8,10 +8,11 @@ const localVue = createLocalVue()
 
 localVue.use(Vuex)
 
-describe('Show Job', () => {
+describe('Show Job to Contractor', () => {
   let cmp
   let getters = {
-    token: () => 'eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjEyMzQ1Njc3ODc3fQ.6xV-z88Nvmag8i4jVwmOZjX3MhCYAgb3rqttN4ROix3EbtHLwYIG3utNVaCpCN2cS7QFAJM3CPnfiS5_s9luiA'
+    token: () => 'eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjEyMzQ1Njc3ODc3fQ.6xV-z88Nvmag8i4jVwmOZjX3MhCYAgb3rqttN4ROix3EbtHLwYIG3utNVaCpCN2cS7QFAJM3CPnfiS5_s9luiA',
+    isContractorUser: () => true
   }
   let store = new Vuex.Store({
     getters

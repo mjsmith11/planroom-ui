@@ -54,7 +54,7 @@
         <div class="row">
           <plan-lister :job-id = job.id></plan-lister>
         </div>
-        <div class="row">
+        <div class="row" v-if="$store.getters.isContractorUser">
           <uploader :jobId = job.id></uploader>
         </div>
     </div>

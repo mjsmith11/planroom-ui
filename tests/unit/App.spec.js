@@ -15,7 +15,8 @@ describe('App', () => {
     axios.interceptors.response.use = jest.fn()
 
     let getters = {
-      isLoggedIn: () => true
+      isLoggedIn: () => true,
+      isContractorUser: () => true
     }
     let store = new Vuex.Store({
       getters
@@ -44,7 +45,8 @@ describe('App', () => {
     axios.interceptors.response.use = jest.fn()
 
     let getters = {
-      isLoggedIn: () => false
+      isLoggedIn: () => false,
+      isContractorUser: () => true
     }
     let store = new Vuex.Store({
       getters
@@ -67,7 +69,8 @@ describe('App', () => {
     axios.interceptors.response.use = jest.fn()
 
     let getters = {
-      isLoggedIn: () => true
+      isLoggedIn: () => true,
+      isContractorUser: () => true
     }
     let store = new Vuex.Store({
       getters
@@ -96,7 +99,8 @@ describe('App', () => {
     axios.interceptors.response.use = jest.fn()
 
     let getters = {
-      isLoggedIn: () => true
+      isLoggedIn: () => true,
+      isContractorUser: () => true
     }
     let store = new Vuex.Store({
       getters
@@ -125,7 +129,8 @@ describe('App', () => {
     axios.interceptors.response.use = jest.fn()
 
     let getters = {
-      isLoggedIn: () => true
+      isLoggedIn: () => true,
+      isContractorUser: () => true
     }
     let actions = {
       logout: jest.fn()

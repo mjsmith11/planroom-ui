@@ -98,7 +98,8 @@ export default new Vuex.Store({
       }
     },
     authStatus: state => state.status,
-    token: state => state.token
+    token: state => state.token,
+    isContractorUser: state => false
   }
 })
 

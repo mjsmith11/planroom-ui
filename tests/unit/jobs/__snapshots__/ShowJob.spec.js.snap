@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Show Job has expected html structure 1`] = `
+exports[`Show Job to Contractor has expected html structure 1`] = `
 <div class="container">
   <div class="col-xs-12 col-sm-10 col-md-8 offset-md-2 offset-sm-1 column">
     <h1>abc</h1>

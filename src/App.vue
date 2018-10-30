@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-  <nav class="navbar navbar-expand-lg navbar-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark" v-if="$store.getters.isContractorUser">
     <router-link :to="brandLink" class="navbar-brand" tag="a">
       Planroom
     </router-link>
