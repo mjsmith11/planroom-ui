@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <div class="col-xs-12 col-sm-10 col-md-8 offset-md-2 offset-sm-1 column">
+      <logo-header v-if="!$store.getters.isContractorUser"></logo-header>
         <h1>{{ job.name }}</h1>
         <div class="row">
           <div class="col-lg-4 col-md-6 col-sm-12 column">
@@ -66,6 +67,7 @@ import uploader from '../../components/plans/Uploader'
 import lister from '../../components/plans/Lister'
 import axios from 'axios'
 import { EventBus } from '../../event-bus.js'
+import LogoHeader from '../../components/LogoHeader'
 export default {
   data () {
     return {
@@ -74,7 +76,8 @@ export default {
   },
   components: {
     uploader: uploader,
-    planLister: lister
+    planLister: lister,
+    logoHeader: LogoHeader
   },
   mixins: [datetimeFilters],
   filters: {
