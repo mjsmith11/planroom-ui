@@ -109,4 +109,8 @@ export default {
     height: 100%;
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.19);
   }
+  h1 {
+    font-style: italic;
+    font-weight: 600;
+  }
 </style>

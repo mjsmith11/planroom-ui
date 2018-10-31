@@ -59,4 +59,8 @@ export default {
   .listborder {
     border: 2px solid #e4e4e4;
   }
+  h4 {
+    font-style: italic;
+    font-weight: 600;
+  }
 </style>

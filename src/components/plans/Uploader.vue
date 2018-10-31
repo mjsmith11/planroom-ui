@@ -60,4 +60,8 @@ export default {
     width: 100%;
     margin-top: 25px;
   }
+  h4 {
+    font-style: italic;
+    font-weight: 600;
+  }
 </style>
