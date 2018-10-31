@@ -1,7 +1,7 @@
 <template>
   <div class="container">
+    <logo-header v-if="!$store.getters.isContractorUser"></logo-header>
     <div class="col-xs-12 col-sm-10 col-md-8 offset-md-2 offset-sm-1 column">
-      <logo-header v-if="!$store.getters.isContractorUser"></logo-header>
         <h1>{{ job.name }}</h1>
         <div class="row">
           <div class="col-lg-4 col-md-6 col-sm-12 column">
