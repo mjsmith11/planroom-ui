@@ -59,6 +59,7 @@
           <uploader :jobId = job.id></uploader>
         </div>
     </div>
+    <contact-info v-if="!$store.getters.isContractorUser"></contact-info>
   </div>
 </template>
 <script>
@@ -68,6 +69,7 @@ import lister from '../../components/plans/Lister'
 import axios from 'axios'
 import { EventBus } from '../../event-bus.js'
 import LogoHeader from '../../components/LogoHeader'
+import ContactInfo from '../../components/ContactInfo'
 export default {
   data () {
     return {
@@ -77,7 +79,8 @@ export default {
   components: {
     uploader: uploader,
     planLister: lister,
-    logoHeader: LogoHeader
+    logoHeader: LogoHeader,
+    contactInfo: ContactInfo
   },
   mixins: [datetimeFilters],
   filters: {
