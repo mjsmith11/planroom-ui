@@ -105,3 +105,10 @@ exports[`App has correct html structure on jobs new job 1`] = `
   <router-view-stub></router-view-stub>
 </div>
 `;
+
+exports[`App renders for subcontractor 1`] = `
+<div id="app">
+  <!---->
+  <router-view-stub></router-view-stub>
+</div>
+`;

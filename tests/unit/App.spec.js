@@ -162,4 +162,34 @@ describe('App', () => {
     expect(actions.logout).toHaveBeenCalled()
     expect($router.push).toHaveBeenCalledWith('/login')
   })
+  it('renders for subcontractor', () => {
+    // This is a workaround because axios is still the mocked axios
+    axios.interceptors = {}
+    axios.interceptors.response = {}
+    axios.interceptors.response.use = jest.fn()
+
+    let getters = {
+      isLoggedIn: () => true,
+      isContractorUser: () => false
+    }
+    let store = new Vuex.Store({
+      getters
+    })
+    const $route = {
+      name: 'test'
+    }
+    let cmp = mount(App, {
+      stubs: [
+        'router-view',
+        'router-link'
+      ],
+      store,
+      localVue,
+      mocks: {
+        $route
+      }
+
+    })
+    expect(cmp.html()).toMatchSnapshot()
+  })
 })
