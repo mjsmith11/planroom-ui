@@ -3,6 +3,7 @@
     <logo-header v-if="!$store.getters.isContractorUser"></logo-header>
     <div class="col-xs-12 col-sm-10 col-md-8 offset-md-2 offset-sm-1 column">
         <h1>{{ job.name }}</h1>
+        <h6 v-if="!$store.getters.isContractorUser" class="expiration">You can access this job unitl mm/dd/yyyy at HH:MM:SS AA TTT </h6>
         <div class="row">
           <div class="col-lg-4 col-md-6 col-sm-12 column">
             <div class="card">
@@ -115,5 +116,10 @@ export default {
   h1 {
     font-style: italic;
     font-weight: 600;
+  }
+  .expiration {
+    font-style: italic;
+    font-size: 0.85em;
+    color: #b0b0b0;
   }
 </style>
