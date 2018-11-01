@@ -16,6 +16,7 @@
         font-size: 14px;
         font-family: Georgia, 'Times New Roman', Times, serif;
         margin: 3px 3px;
+        color: #515151;
     }
     .row {
         margin-top: 50px;
