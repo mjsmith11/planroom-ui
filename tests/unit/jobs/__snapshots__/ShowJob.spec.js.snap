@@ -75,3 +75,91 @@ exports[`Show Job to Contractor has expected html structure 1`] = `
   <!---->
 </div>
 `;
+
+exports[`Show Job to Contractor shows job for subcontractor 1`] = `
+<div class="container">
+  <div class="jumbotron">
+    <div class="row">
+      <div class="offset-lg-1 col-lg-5 offset-md-1 col-md-10">
+        <img src="../assets/logo1.png" alt="Benchmark logo" class="src">
+      </div>
+      <div class="col-lg-5 offset-md-1 offset-lg-0 col-md-10 text">
+        <h1>Planroom</h1>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-12 col-sm-10 col-md-8 offset-md-2 offset-sm-1 column">
+    <h1></h1>
+    <h6 class="expiration">You can access this job unitl mm/dd/yyyy at HH:MM:SS AA TTT </h6>
+    <div class="row">
+      <div class="col-lg-4 col-md-6 col-sm-12 column">
+        <div class="card">
+          <h5 class="card-header">Bid</h5>
+          <div class="card-body">
+            <div class="card-text">
+              <h6><strong>Date:</strong></h6>
+              <div></div>
+              <br>
+              <h6><strong>Email:</strong></h6>
+              <div></div>
+              <br>
+              <h6><strong>Due To Benchmark:</strong></h6>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-12 column">
+        <div class="card">
+          <h5 class="card-header">Prebid</h5>
+          <div class="card-body">
+            <div class="card-text">
+              <h6><strong>Date &amp; Time:</strong></h6>
+              <div></div>
+              <div></div>
+              <br>
+              <h6><strong>Address</strong></h6>
+              <div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-12 column">
+        <div class="card">
+          <h5 class="card-header">Details</h5>
+          <div class="card-body">
+            <div class="card-text">
+              <h6><strong>Taxable</strong></h6>
+              <div></div>
+              <br>
+              <h6><strong>Subcontractor Bonding</strong></h6>
+              <div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="lister">
+        <h4>Bidding Documents</h4>
+        <ul class=""></ul>
+      </div>
+    </div>
+    <!---->
+  </div>
+  <div class="row">
+    <div class="col-lg-2 offset-lg-4 col-md-12">
+      <div class="info">
+        <font-awesome-icon-stub icon="map-marker-alt"></font-awesome-icon-stub>&nbsp;&nbsp;318 E. Monroe St.</div>
+      <div class="info">Kokomo, IN 46901</div>
+    </div>
+    <div class="col-lg-2 col-md-12">
+      <div class="info">
+        <font-awesome-icon-stub icon="phone"></font-awesome-icon-stub>&nbsp;&nbsp;(765) 452-9500</div>
+      <div class="info">
+        <font-awesome-icon-stub icon="fax"></font-awesome-icon-stub>&nbsp;&nbsp;(765) 452-9505</div>
+    </div>
+  </div>
+</div>
+`;

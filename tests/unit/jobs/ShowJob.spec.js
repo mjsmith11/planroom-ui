@@ -93,5 +93,31 @@ describe('Show Job to Contractor', () => {
     expect(evtHandler).toHaveBeenCalledTimes(1)
   })
 
+  it('shows job for subcontractor', () => {
+    let getters = {
+      token: () => 'eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjEyMzQ1Njc3ODc3fQ.6xV-z88Nvmag8i4jVwmOZjX3MhCYAgb3rqttN4ROix3EbtHLwYIG3utNVaCpCN2cS7QFAJM3CPnfiS5_s9luiA',
+      isContractorUser: () => false
+    }
+    let store = new Vuex.Store({
+      getters
+    })
+    const $route = {
+      params: {
+        id: 12
+      }
+    }
+    cmp = mount(ShowJob, {
+      mocks: {
+        $route
+      },
+      store,
+      localVue,
+      stubs: [
+        'font-awesome-icon'
+      ]
+    })
+    expect(cmp.html()).toMatchSnapshot()
+  })
+
   // TODO add tests for error handling when it's implemented
 })
