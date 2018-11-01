@@ -5,6 +5,7 @@ import NewJob from './views/jobs/NewJob.vue'
 import JobsIndex from './views/jobs/JobsIndex.vue'
 import ShowJob from './views/jobs/ShowJob.vue'
 import Login from './views/Login.vue'
+import Expired from './views/subcontractor/ExpiredToken.vue'
 
 Vue.use(Router)
 
@@ -44,6 +45,14 @@ let router = new Router({
       path: '/jobs/:id',
       name: 'show job',
       component: ShowJob,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/expired',
+      name: 'expired token',
+      component: Expired,
       meta: {
         requiresAuth: true
       }
