@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Expired Token has correct html structure 1`] = `
+<div class="container">
+  <logo-header-stub></logo-header-stub>
+  <div class="card message">
+    <div class="card-body">
+      <div class="card-text">
+        We're sorry. Your link has expired. Please contact our office if you still require access.
+      </div>
+    </div>
+  </div>
+  <contact-info-stub></contact-info-stub>
+</div>
+`;
