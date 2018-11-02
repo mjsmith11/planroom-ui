@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LogoHeader has correct html structure 1`] = `
+<div class="jumbotron">
+  <div class="row">
+    <div class="offset-lg-1 col-lg-5 offset-md-1 col-md-10">
+      <img src="../assets/logo1.png" alt="Benchmark logo" class="src">
+    </div>
+    <div class="col-lg-5 offset-md-1 offset-lg-0 col-md-10 text">
+      <h1>Planroom</h1>
+    </div>
+  </div>
+</div>
+`;
