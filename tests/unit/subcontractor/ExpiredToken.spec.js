@@ -2,13 +2,13 @@ import { mount } from '@vue/test-utils'
 import ExpiredToken from '@/views/subcontractor/ExpiredToken'
 
 describe('Expired Token', () => {
-    it('has correct html structure', () => {
-        let cmp = mount(ExpiredToken, {
-            stubs: [
-                'logo-header',
-                'contact-info'
-            ]
-        })
-    expect(cmp.html()).toMatchSnapshot()
+  it('has correct html structure', () => {
+    let cmp = mount(ExpiredToken, {
+      stubs: [
+        'logo-header',
+        'contact-info'
+      ]
     })
+    expect(cmp.html()).toMatchSnapshot()
+  })
 })

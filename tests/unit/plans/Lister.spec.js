@@ -68,4 +68,14 @@ describe('Lister', () => {
     // two events should get attached in the create hook
     expect(eventAttachSpy).toHaveBeenCalledTimes(2)
   })
+  it('sets up url refreshes', () => {
+    EventBus.$emit('job-read')
+    expect(cmp.vm.refresher).not.toBe('')
+  })
+  it('clears auto-refresh', () => {
+    EventBus.$emit('job-read')
+    expect(cmp.vm.refresher).not.toBe('')
+    cmp.destroy()
+    expect(cmp.vm.refresher).toBe('')
+  })
 })

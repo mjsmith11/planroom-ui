@@ -12,7 +12,8 @@ import axios from 'axios'
 export default {
   data () {
     return {
-      plans: []
+      plans: [],
+      refresher: ''
     }
   },
   methods: {
@@ -41,8 +42,13 @@ export default {
     // setTimeout(this.loadList, 1000)
     EventBus.$on('job-read', () => {
       this.$nextTick(this.loadList)
+      this.refresher = setTimeout(this.loadList, 14 * 60 * 1000) // every 14 minutes
     })
     EventBus.$on('file-uploaded', this.loadList)
+  },
+  beforeDestroy () {
+    clearInterval(this.refresher)
+    this.refresher = ''
   }
 }
 </script>
