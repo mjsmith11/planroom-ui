@@ -42,7 +42,7 @@ export default {
     // setTimeout(this.loadList, 1000)
     EventBus.$on('job-read', () => {
       this.$nextTick(this.loadList)
-      this.refresher = setTimeout(this.loadList, 14 * 60 * 1000) // every 14 minutes
+      this.refresher = setInterval(this.loadList, 14 * 60 * 1000) // every 14 minutes
     })
     EventBus.$on('file-uploaded', this.loadList)
   },
