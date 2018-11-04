@@ -1,11 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import store from './store'
-import NewJob from './views/jobs/NewJob.vue'
-import JobsIndex from './views/jobs/JobsIndex.vue'
-import ShowJob from './views/jobs/ShowJob.vue'
-import Login from './views/Login.vue'
-import Expired from './views/subcontractor/ExpiredToken.vue'
 
 Vue.use(Router)
 
@@ -17,18 +12,10 @@ let router = new Router({
       path: '/',
       redirect: '/jobs'
     },
-    // {
-    //   path: '/about',
-    //   name: 'about',
-    //   // route level code-splitting
-    //   // this generates a separate chunk (about.[hash].js) for this route
-    //   // which is lazy-loaded when the route is visited.
-    //   component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
-    // },
     {
       path: '/jobs',
       name: 'jobs index',
-      component: JobsIndex,
+      component: import(/* webpackChunkName: "contractor" */ './views/jobs/JobsIndex.vue'),
       meta: {
         requiresAuth: true
       }
@@ -36,7 +23,7 @@ let router = new Router({
     {
       path: '/jobs/new',
       name: 'new job',
-      component: NewJob,
+      component: import(/* webpackChunkName: "contractor" */ './views/jobs/NewJob.vue'),
       meta: {
         requiresAuth: true
       }
@@ -44,7 +31,7 @@ let router = new Router({
     {
       path: '/jobs/:id',
       name: 'show job',
-      component: ShowJob,
+      component: () => import(/* webpackChunkName: "show_job" */ './views/jobs/ShowJob.vue'),
       meta: {
         requiresAuth: true
       }
@@ -52,15 +39,12 @@ let router = new Router({
     {
       path: '/expired',
       name: 'expired token',
-      component: Expired,
-      meta: {
-        requiresAuth: true
-      }
+      component: () => import(/* webpackChunkName: "expired" */ './views/subcontractor/ExpiredToken.vue')
     },
     {
       path: '/login',
       name: 'login',
-      component: Login,
+      component: import(/* webpackChunkName: "contractor" */ './views/Login.vue'),
       beforeEnter: (to, from, next) => beforeLoginEnter(to, from, next)
     }
   ]
