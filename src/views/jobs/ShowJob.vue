@@ -1,6 +1,7 @@
 <template>
+<div>
+  <logo-header v-if="!$store.getters.isContractorUser"></logo-header>
   <div class="container">
-    <logo-header v-if="!$store.getters.isContractorUser"></logo-header>
     <div class="col-xs-12 col-sm-10 col-md-8 offset-md-2 offset-sm-1 column">
         <h1>{{ job.name }}</h1>
         <h6 v-if="!$store.getters.isContractorUser" class="expiration">You can access this job unitl mm/dd/yyyy at HH:MM:SS AA TTT </h6>
@@ -62,6 +63,7 @@
     </div>
     <contact-info v-if="!$store.getters.isContractorUser"></contact-info>
   </div>
+</div>
 </template>
 <script>
 import { datetimeFilters } from '../../mixins/datetimeFilters'

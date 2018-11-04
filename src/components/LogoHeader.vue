@@ -1,26 +1,37 @@
 <template>
     <div class="jumbotron">
         <div class="row">
-            <div class="offset-lg-1 col-lg-5 offset-md-1 col-md-10"><img src="../assets/logo1.png" alt="Benchmark logo" class="src"></div>
-            <div class="col-lg-5 offset-md-1 offset-lg-0 col-md-10 text"><h1>Planroom</h1></div>
+            <h4 class="offset-md-1 col-md-10">Welcome To The</h4>
+            <div class="offset-md-1 col-md-10"><img src="../assets/logo1.png" alt="Benchmark logo" class="src"></div>
+            <div class="offset-md-1 col-md-10 text"><h1>Planroom</h1></div>
         </div>
     </div>
 </template>
 <style scoped>
 img {
-    width: 100%;
+    width: 80%;
     display: block;
     height: auto;
     margin: auto;
 }
 h1 {
     font-weight: 600;
-    font-size: 5.2em;
+    font-size: 5.2vw;
     text-align: center;
-    color: #0000f1;
+    color: goldenrod;
     font-style: italic;
     font-family: Georgia, 'Times New Roman', Times, serif;
+    padding-top: 15px;
 
+}
+h4 {
+    font-weight: 600;
+    font-size: 4.0vw;
+    color: goldenrod;
+    font-style: italic;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    padding-bottom: 15px;
 }
 .text {
     display: flex;
@@ -29,12 +40,11 @@ h1 {
 }
 
 .jumbotron {
-    margin-bottom: 50px;
-    margin-top: 10px;
-    background-color: #f9f9f9;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    padding-top: 40px;
-    padding-bottom: 40px;
+    margin: 15px 15px 40px 15px;
+    background-color: #f4f1b0;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
+    padding-top: 25px;
+    padding-bottom: 25px;
+    border: 8px solid goldenrod;
 }
-
 </style>

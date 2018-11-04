@@ -100,7 +100,7 @@ export default new Vuex.Store({
     authStatus: state => state.status,
     token: state => state.token,
     // assume contractor with no token because a subcontractor should always have one.
-    isContractorUser: state => false
+    isContractorUser: state => true
   }
 })
 
