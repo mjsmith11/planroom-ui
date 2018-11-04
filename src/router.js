@@ -15,7 +15,7 @@ let router = new Router({
     {
       path: '/jobs',
       name: 'jobs index',
-      component: import(/* webpackChunkName: "contractor" */ './views/jobs/JobsIndex.vue'),
+      component: require(/* webpackChunkName: "contractor" */ './views/jobs/JobsIndex.vue').default,
       meta: {
         requiresAuth: true
       }
@@ -23,7 +23,7 @@ let router = new Router({
     {
       path: '/jobs/new',
       name: 'new job',
-      component: import(/* webpackChunkName: "contractor" */ './views/jobs/NewJob.vue'),
+      component: require(/* webpackChunkName: "contractor" */ './views/jobs/NewJob.vue').default,
       meta: {
         requiresAuth: true
       }
@@ -31,7 +31,7 @@ let router = new Router({
     {
       path: '/jobs/:id',
       name: 'show job',
-      component: () => import(/* webpackChunkName: "show_job" */ './views/jobs/ShowJob.vue'),
+      component: () => require(/* webpackChunkName: "show_job" */ './views/jobs/ShowJob.vue').default,
       meta: {
         requiresAuth: true
       }
@@ -39,12 +39,12 @@ let router = new Router({
     {
       path: '/expired',
       name: 'expired token',
-      component: () => import(/* webpackChunkName: "expired" */ './views/subcontractor/ExpiredToken.vue')
+      component: () => require(/* webpackChunkName: "expired" */ './views/subcontractor/ExpiredToken.vue').default
     },
     {
       path: '/login',
       name: 'login',
-      component: import(/* webpackChunkName: "contractor" */ './views/Login.vue'),
+      component: require(/* webpackChunkName: "contractor" */ './views/Login.vue').default,
       beforeEnter: (to, from, next) => beforeLoginEnter(to, from, next)
     }
   ]
@@ -59,12 +59,19 @@ export function beforeLoginEnter (to, from, next) {
 }
 
 export function beforeEach (to, from, next) {
+  if (to.query.token !== undefined) {
+    store.dispatch('subcontractorToken', to.query.token)
+  }
   if (to.matched.some(record => record.meta.requiresAuth)) {
     if (store.getters.isLoggedIn) {
       next()
       return
     }
-    next('/login')
+    if (store.getters.isContractorUser) {
+      next('/login')
+    } else {
+      next('/expired')
+    }
   } else {
     next()
   }

@@ -38,6 +38,14 @@ export default new Vuex.Store({
       state.user = ''
       clearInterval(state.refresher)
       state.refresher = ''
+    },
+    set_token (state, token) {
+      state.status = 'manual'
+      state.token = token
+      const decoded = parseJwt(token)
+      state.user = decoded.email
+      clearInterval(state.refresher)
+      state.refresher = ''
     }
   },
   actions: {
@@ -82,6 +90,9 @@ export default new Vuex.Store({
             reject(err)
           })
       })
+    },
+    subcontractorToken ({ commit }, token) {
+      commit('set_token', token)
     }
   },
   getters: {
