@@ -2,6 +2,36 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import store from './store'
 
+const Login = resolve => {
+  require.ensure(['./views/Login.vue'], () => {
+    resolve(require('./views/Login.vue'))
+  }, 'contractor')
+}
+
+const JobsIndex = resolve => {
+  require.ensure(['./views/jobs/JobsIndex.vue'], () => {
+    resolve(require('./views/jobs/JobsIndex.vue'))
+  }, 'contractor')
+}
+
+const NewJob = resolve => {
+  require.ensure(['./views/jobs/NewJob.vue'], () => {
+    resolve(require('./views/jobs/NewJob.vue'))
+  }, 'contractor')
+}
+
+const ShowJob = resolve => {
+  require.ensure(['./views/jobs/ShowJob.vue'], () => {
+    resolve(require('./views/jobs/ShowJob.vue'))
+  }, 'show_job')
+}
+
+const ExpiredToken = resolve => {
+  require.ensure(['./views/subcontractor/ExpiredToken.vue'], () => {
+    resolve(require('./views/subcontractor/ExpiredToken.vue'))
+  }, 'expired')
+}
+
 Vue.use(Router)
 
 let router = new Router({
@@ -15,7 +45,7 @@ let router = new Router({
     {
       path: '/jobs',
       name: 'jobs index',
-      component: require(/* webpackChunkName: "contractor" */ './views/jobs/JobsIndex.vue').default,
+      component: JobsIndex,
       meta: {
         requiresAuth: true
       }
@@ -23,7 +53,7 @@ let router = new Router({
     {
       path: '/jobs/new',
       name: 'new job',
-      component: require(/* webpackChunkName: "contractor" */ './views/jobs/NewJob.vue').default,
+      component: NewJob,
       meta: {
         requiresAuth: true
       }
@@ -31,7 +61,7 @@ let router = new Router({
     {
       path: '/jobs/:id',
       name: 'show job',
-      component: () => require(/* webpackChunkName: "show_job" */ './views/jobs/ShowJob.vue').default,
+      component: () => ShowJob,
       meta: {
         requiresAuth: true
       }
@@ -39,12 +69,12 @@ let router = new Router({
     {
       path: '/expired',
       name: 'expired token',
-      component: () => require(/* webpackChunkName: "expired" */ './views/subcontractor/ExpiredToken.vue').default
+      component: ExpiredToken
     },
     {
       path: '/login',
       name: 'login',
-      component: require(/* webpackChunkName: "contractor" */ './views/Login.vue').default,
+      component: Login,
       beforeEnter: (to, from, next) => beforeLoginEnter(to, from, next)
     }
   ]
