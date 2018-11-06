@@ -61,7 +61,7 @@ let router = new Router({
     {
       path: '/jobs/:id',
       name: 'show job',
-      component: () => ShowJob,
+      component: ShowJob,
       meta: {
         requiresAuth: true
       }
@@ -97,7 +97,11 @@ export function beforeEach (to, from, next) {
       if (store.getters.isContractorUser) {
         next()
       } else {
-        next('/jobs/' + store.getters.job)
+        if (to.path !== '/jobs/' + store.getters.job) {
+          next('/jobs/' + store.getters.job)
+        } else {
+          next()
+        }
       }
       return
     }

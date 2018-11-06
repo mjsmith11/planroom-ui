@@ -92,6 +92,7 @@ export default new Vuex.Store({
       })
     },
     subcontractorToken ({ commit }, token) {
+      axios.defaults.headers.common['Planroom-Authorization'] = 'Bearer ' + token
       commit('set_token', token)
     }
   },
