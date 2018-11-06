@@ -111,7 +111,18 @@ export default new Vuex.Store({
     authStatus: state => state.status,
     token: state => state.token,
     // assume contractor with no token because a subcontractor should always have one.
-    isContractorUser: state => true
+    isContractorUser: state => {
+      if (state.token === undefined || state.token === '') {
+        return true
+      } else {
+        let decoded = parseJwt(state.token)
+        return decoded.role === 'contractor'
+      }
+    },
+    job: state => {
+      let decoded = parseJwt(state.token)
+      return decoded.job
+    }
   }
 })
 

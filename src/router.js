@@ -94,7 +94,11 @@ export function beforeEach (to, from, next) {
   }
   if (to.matched.some(record => record.meta.requiresAuth)) {
     if (store.getters.isLoggedIn) {
-      next()
+      if (store.getters.isContractorUser) {
+        next()
+      } else {
+        next('/jobs/' + store.getters.job)
+      }
       return
     }
     if (store.getters.isContractorUser) {
