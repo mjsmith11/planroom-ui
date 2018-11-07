@@ -22,7 +22,7 @@ describe('Router', () => {
     }
     const next = jest.fn()
     // make vuex think we are logged in.  Expires in 2361
-    store.state.token = 'eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjEyMzQ1Njc3ODc3fQ.6xV-z88Nvmag8i4jVwmOZjX3MhCYAgb3rqttN4ROix3EbtHLwYIG3utNVaCpCN2cS7QFAJM3CPnfiS5_s9luiA'
+    store.state.token = 'eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjEyMzQ1Njc3ODc3LCJyb2xlIjoiY29udHJhY3RvciIsImpvYiI6IioiLCJlbWFpbCI6InRlc3RAdGVzdC5jb20ifQ.Ag4_7ra6_LKtw2ZdguCeVE0Xoq16HvNXPaGvlqYysR_xKX7GArJ9FiA8MkFDhfiXCOEY6S-REhqMg4caLRpuFw'
 
     beforeEach(to, undefined, next)
 
@@ -52,7 +52,7 @@ describe('Router', () => {
     const next = jest.fn()
 
     // make vuex think we are logged in.  Expires in 2361
-    store.state.token = 'eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjEyMzQ1Njc3ODc3fQ.6xV-z88Nvmag8i4jVwmOZjX3MhCYAgb3rqttN4ROix3EbtHLwYIG3utNVaCpCN2cS7QFAJM3CPnfiS5_s9luiA'
+    store.state.token = 'eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjEyMzQ1Njc3ODc3LCJyb2xlIjoiY29udHJhY3RvciIsImpvYiI6IioiLCJlbWFpbCI6InRlc3RAdGVzdC5jb20ifQ.Ag4_7ra6_LKtw2ZdguCeVE0Xoq16HvNXPaGvlqYysR_xKX7GArJ9FiA8MkFDhfiXCOEY6S-REhqMg4caLRpuFw'
 
     beforeLoginEnter(undefined, undefined, next)
 

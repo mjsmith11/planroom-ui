@@ -89,7 +89,7 @@ export function beforeLoginEnter (to, from, next) {
 }
 
 export function beforeEach (to, from, next) {
-  if (to.query.token !== undefined) {
+  if (to.query !== undefined && to.query.token !== undefined) {
     store.dispatch('subcontractorToken', to.query.token)
   }
   if (to.matched.some(record => record.meta.requiresAuth)) {
