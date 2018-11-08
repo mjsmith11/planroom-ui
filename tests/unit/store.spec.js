@@ -52,6 +52,10 @@ describe('Vuex store', () => {
     store.state.token = 'eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjEyMzQ1Njc3LCJyb2xlIjoic3ViY29udHJhY3RvciIsImpvYiI6IjciLCJlbWFpbCI6InRlc3RAdGVzdC5jb20ifQ.UibZSs0Bc0HMaacj7EnGR95X38DH5cTw5Hf90aiUq-y-38xjMIgJYiowa_IM8BujLvB1fHj6ucVniv7yx22uFw'
     expect(store.getters.isContractorUser).toBe(false)
   })
+  it('gets exp', () => {
+    store.state.token = 'eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjEyMzQ1Njc3LCJyb2xlIjoic3ViY29udHJhY3RvciIsImpvYiI6IjciLCJlbWFpbCI6InRlc3RAdGVzdC5jb20ifQ.UibZSs0Bc0HMaacj7EnGR95X38DH5cTw5Hf90aiUq-y-38xjMIgJYiowa_IM8BujLvB1fHj6ucVniv7yx22uFw'
+    expect(store.getters.exp).toBe(12345677)
+  })
   it('handles failed refresh', () => {
     const pause = function () {
       // nothing

@@ -123,6 +123,10 @@ export default new Vuex.Store({
     job: state => {
       let decoded = parseJwt(state.token)
       return decoded.job
+    },
+    exp: state => {
+      let decoded = parseJwt(state.token)
+      return decoded.exp
     }
   }
 })
