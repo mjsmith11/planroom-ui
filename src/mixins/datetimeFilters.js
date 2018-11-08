@@ -61,7 +61,7 @@ export const datetimeFilters = {
      * @returns { string } formatted date time MM/DD/YYYY hh:mm A (12 hour time) with EST or EDT appended appropriately
      */
     datetime (value) {
-      if (value === undefined) {
+      if (value === undefined || value === '') {
         return ''
       }
       var pieces = value.split(' ')

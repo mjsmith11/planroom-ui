@@ -12,7 +12,8 @@ describe('Show Job to Contractor', () => {
   let cmp
   let getters = {
     token: () => 'eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjEyMzQ1Njc3ODc3fQ.6xV-z88Nvmag8i4jVwmOZjX3MhCYAgb3rqttN4ROix3EbtHLwYIG3utNVaCpCN2cS7QFAJM3CPnfiS5_s9luiA',
-    isContractorUser: () => true
+    isContractorUser: () => true,
+    exp: () => 1541649000
   }
   let store = new Vuex.Store({
     getters
@@ -96,7 +97,8 @@ describe('Show Job to Contractor', () => {
   it('shows job for subcontractor', () => {
     let getters = {
       token: () => 'eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjEyMzQ1Njc3ODc3fQ.6xV-z88Nvmag8i4jVwmOZjX3MhCYAgb3rqttN4ROix3EbtHLwYIG3utNVaCpCN2cS7QFAJM3CPnfiS5_s9luiA',
-      isContractorUser: () => false
+      isContractorUser: () => false,
+      exp: () => 1541649000
     }
     let store = new Vuex.Store({
       getters
