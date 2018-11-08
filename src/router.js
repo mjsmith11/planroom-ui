@@ -95,22 +95,28 @@ export function beforeEach (to, from, next) {
   if (to.matched.some(record => record.meta.requiresAuth)) {
     if (store.getters.isLoggedIn) {
       if (store.getters.isContractorUser) {
+        // logged in contractor
         next()
       } else {
         if (to.path !== '/jobs/' + store.getters.job) {
+          // logged in subcontractor who has wrong path
           next('/jobs/' + store.getters.job)
         } else {
+          // logged in subcontractor with correct path
           next()
         }
       }
       return
     }
     if (store.getters.isContractorUser) {
+      // Contractor user not logged in
       next('/login')
     } else {
+      // Subcontractor not logged in
       next('/expired')
     }
   } else {
+    // route doesn't require authentication
     next()
   }
 }

@@ -1,5 +1,8 @@
 import { beforeEach, beforeLoginEnter } from '@/router.js'
 import store from '@/store'
+import axios from 'axios'
+
+/// Tokens in this file can be decoded at jwt.io with secret 'your-256-bit-secret'
 
 describe('Router', () => {
   afterEach(() => {
@@ -17,7 +20,24 @@ describe('Router', () => {
     expect(next).toBeCalledWith('/login')
   })
 
-  it('allows the request when authenticated', () => {
+  it('redirects to expired with expired subcontractor token', () => {
+    axios.defaults = {}
+    axios.defaults.headers = {}
+    axios.defaults.headers.common = []
+    const to = {
+      matched: [{ meta: { requiresAuth: true } }],
+      query: {
+        token: 'eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjEyMzQ1Njc3LCJyb2xlIjoic3ViY29udHJhY3RvciIsImpvYiI6IjciLCJlbWFpbCI6InRlc3RAdGVzdC5jb20ifQ.UibZSs0Bc0HMaacj7EnGR95X38DH5cTw5Hf90aiUq-y-38xjMIgJYiowa_IM8BujLvB1fHj6ucVniv7yx22uFw'
+      },
+      path: '/jobs/7'
+    }
+    const next = jest.fn()
+    beforeEach(to, undefined, next)
+
+    expect(next).toBeCalledWith('/expired')
+  })
+
+  it('allows contractor request when authenticated', () => {
     const to = {
       matched: [{ meta: { requiresAuth: true } }]
     }
@@ -28,6 +48,40 @@ describe('Router', () => {
     beforeEach(to, undefined, next)
 
     expect(next).toBeCalledWith()
+  })
+
+  it('allows subcontractor with valid path', () => {
+    axios.defaults = {}
+    axios.defaults.headers = {}
+    axios.defaults.headers.common = []
+    const to = {
+      matched: [{ meta: { requiresAuth: true } }],
+      query: {
+        token: 'eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjEyMzQ1Njc3ODc3LCJyb2xlIjoic3ViY29udHJhY3RvciIsImpvYiI6IjciLCJlbWFpbCI6InRlc3RAdGVzdC5jb20ifQ.XSgVi9BvS1-5-wkC2YMMSuxym7TQdmA_btdxL4-PsAxSEQyW-QPN2kdEOEEftQiSzRjtS4O99Ra5SEGM5g0cXw'
+      },
+      path: '/jobs/7'
+    }
+    const next = jest.fn()
+    beforeEach(to, undefined, next)
+
+    expect(next).toBeCalledWith()
+  })
+
+  it('redirects subcontractor with invalid path', () => {
+    axios.defaults = {}
+    axios.defaults.headers = {}
+    axios.defaults.headers.common = []
+    const to = {
+      matched: [{ meta: { requiresAuth: true } }],
+      query: {
+        token: 'eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjEyMzQ1Njc3ODc3LCJyb2xlIjoic3ViY29udHJhY3RvciIsImpvYiI6IjciLCJlbWFpbCI6InRlc3RAdGVzdC5jb20ifQ.XSgVi9BvS1-5-wkC2YMMSuxym7TQdmA_btdxL4-PsAxSEQyW-QPN2kdEOEEftQiSzRjtS4O99Ra5SEGM5g0cXw'
+      },
+      path: '/jobs/new'
+    }
+    const next = jest.fn()
+    beforeEach(to, undefined, next)
+
+    expect(next).toBeCalledWith('/jobs/7')
   })
 
   it('allows request to unauthenticated route', () => {
@@ -76,7 +130,7 @@ describe('Router', () => {
     const to = {
       matched: [{ meta: { requiresAuth: false } }],
       query: {
-        someField: "someValue"
+        someField: 'someValue'
       }
     }
 
@@ -90,7 +144,7 @@ describe('Router', () => {
     const to = {
       matched: [{ meta: { requiresAuth: false } }],
       query: {
-        token: "myToken"
+        token: 'myToken'
       }
     }
 
