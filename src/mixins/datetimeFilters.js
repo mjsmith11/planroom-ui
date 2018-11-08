@@ -73,6 +73,23 @@ export const datetimeFilters = {
     },
     /**
      *
+     * @param { number } value unix timestamp
+     * @returns { string } formatted date time YYYY-MM-DD HH:mm:ss (24 hour Eastern time)
+     */
+    unixDatetime (value) {
+      if (value === undefined) {
+        return ''
+      }
+
+      let date = new Date(value * 1000)
+      let minutes = date.getMinutes()
+      if (minutes < 10) {
+        minutes = '0' + minutes
+      }
+      return date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + ' ' + date.getHours() + ':' + minutes + ':00'
+    },
+    /**
+     *
      * @param { string } value datetime formatted with YYYY-MM-DD HH:mm:ss (24 hour Eastern time)
      * @returns { string } formatted date time MM/DD/YYYY hh:mm A (12 hour time adjusted by 1 hour) with CST or CDT appended appropriately
      */

@@ -50,3 +50,14 @@ describe('datetimeCentral filter', () => {
     expect(result).toBe('03/08/2018 11:30 PM CST')
   })
 })
+
+describe('unixDatetime filter', () => {
+  it('returns date string with minutes under 10', () => {
+    let result = datetimeFilters.filters.unixDatetime(1541646000)
+    expect(result).toBe('2018-11-7 22:00:00')
+  })
+  it('returns date string with minutes over 10', () => {
+    let result = datetimeFilters.filters.unixDatetime(1541649000)
+    expect(result).toBe('2018-11-7 22:50:00')
+  })
+})
