@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
  - View for subcontractor users
+ - Routing for subcontractors
+ - Vuex getters, action, and mutator for subcontractors
 
 ## [1.0.4] - 2018-10-28
 ### Changed
