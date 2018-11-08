@@ -3,6 +3,8 @@ import mockAxios from 'jest-mock-axios'
 import axios from 'axios'
 // import flushPromises from 'flush-promises'
 
+// tokens can be decoded with https://jwt.io
+
 describe('Vuex store', () => {
   beforeEach(() => {
     store.replaceState({
@@ -31,6 +33,24 @@ describe('Vuex store', () => {
     // make vuex think we are logged in.  Expires in 2361
     store.state.token = 'eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjEyMzQ1Njc3ODc3fQ.6xV-z88Nvmag8i4jVwmOZjX3MhCYAgb3rqttN4ROix3EbtHLwYIG3utNVaCpCN2cS7QFAJM3CPnfiS5_s9luiA'
     expect(store.getters.isLoggedIn).toBe(true)
+  })
+  it('gets job', () => {
+    store.state.token = 'eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjEyMzQ1Njc3LCJyb2xlIjoic3ViY29udHJhY3RvciIsImpvYiI6IjciLCJlbWFpbCI6InRlc3RAdGVzdC5jb20ifQ.UibZSs0Bc0HMaacj7EnGR95X38DH5cTw5Hf90aiUq-y-38xjMIgJYiowa_IM8BujLvB1fHj6ucVniv7yx22uFw'
+    expect(store.getters.job).toBe('7')
+  })
+  it('assumes contractor role with no token', () => {
+    store.state.token = ''
+    expect(store.getters.isContractorUser).toBe(true)
+    store.state.token = undefined
+    expect(store.getters.isContractorUser).toBe(true)
+  })
+  it('recognizes contractor token', () => {
+    store.state.token = 'eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjEyMzQ1Njc3LCJyb2xlIjoiY29udHJhY3RvciIsImpvYiI6IjciLCJlbWFpbCI6InRlc3RAdGVzdC5jb20ifQ.cJSBk6Sxiwf194U0sa6XfWfGcpi6G_GNr-AXjl0CQQOZlCfwH254zo7fLTt80tQQgoC5O9JR2K1Hv3et1zzomA'
+    expect(store.getters.isContractorUser).toBe(true)
+  })
+  it('recognizes subcontractor token', () => {
+    store.state.token = 'eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjEyMzQ1Njc3LCJyb2xlIjoic3ViY29udHJhY3RvciIsImpvYiI6IjciLCJlbWFpbCI6InRlc3RAdGVzdC5jb20ifQ.UibZSs0Bc0HMaacj7EnGR95X38DH5cTw5Hf90aiUq-y-38xjMIgJYiowa_IM8BujLvB1fHj6ucVniv7yx22uFw'
+    expect(store.getters.isContractorUser).toBe(false)
   })
   it('handles failed refresh', () => {
     const pause = function () {
@@ -172,6 +192,27 @@ describe('Vuex store', () => {
     expect(store.state.token).toBe(token)
     expect(store.state.user).toBe('JOE@joe.com') // caps because that's how the token has it
     expect(store.state.refresher).toBeTruthy()
+    expect(axios.defaults.headers.common['Planroom-Authorization']).toBe('Bearer ' + token)
+  })
+  it('stores subcontractor token', () => {
+    store.replaceState({
+      status: 'abc',
+      token: 'abc',
+      user: 'abc',
+      refresher: 'fakeFunction'
+    })
+
+    axios.defaults = {}
+    axios.defaults.headers = {}
+    axios.defaults.headers.common = []
+
+    const token = 'eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjEyMzQ1Njc3LCJyb2xlIjoiY29udHJhY3RvciIsImpvYiI6IjciLCJlbWFpbCI6InRlc3RAdGVzdC5jb20ifQ.cJSBk6Sxiwf194U0sa6XfWfGcpi6G_GNr-AXjl0CQQOZlCfwH254zo7fLTt80tQQgoC5O9JR2K1Hv3et1zzomA'
+    store.dispatch('subcontractorToken', token)
+
+    expect(store.state.status).toBe('manual')
+    expect(store.state.token).toBe(token)
+    expect(store.state.user).toBe('test@test.com') // caps because that's how the token has it
+    expect(store.state.refresher).toBe('')
     expect(axios.defaults.headers.common['Planroom-Authorization']).toBe('Bearer ' + token)
   })
 })
