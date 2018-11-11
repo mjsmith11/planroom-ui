@@ -142,4 +142,11 @@ describe('Add Job Form', () => {
     expect(cmp.find('#sendButton').attributes()['disabled']).toBe(undefined)
   })
 
+  it('Adds an address', () => {
+    cmp.vm.formEmail = 'email@somewhere.com'
+    cmp.vm.$v.formEmail.$touch()
+    cmp.vm.addEmail()
+    expect(cmp.vm.addresses.length).toBe(1)
+    expect(cmp.vm.addresses[0]).toBe('email@somewhere.com')
+  })
 })

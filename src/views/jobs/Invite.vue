@@ -105,11 +105,6 @@ export default {
         })
     }
   },
-  computed: {
-    sendEmailsDisabled () {
-      return ((this.addresses.length === 0) || (this.formEmail !== '')) || this.sending
-    }
-  },
   validations: {
     formEmail: {
       email,
