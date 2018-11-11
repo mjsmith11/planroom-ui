@@ -38,7 +38,7 @@
             </div>
             <div class="col-md-6 col-sm-12">
                <ul class="list-group">
-                   <li v-for = "email in addresses" :key="email" class="list-group-item">{{ email }}</li>
+                   <li v-for = "(email, index) in addresses" :key="index" class="list-group-item">{{ email }}<span class="delete float-right" @click="deleteEmail(index)"><font-awesome-icon icon="trash-alt" /></span></li>
                </ul>
             </div>
         </div>
@@ -55,9 +55,15 @@ export default {
       validDays: 3,
       addresses: [
         'test@abc.com',
-        'abc@xyz.com'
+        'abc@xyz.com',
+        'matt@smith.com'
       ]
     }
+  },
+  methods: {
+      deleteEmail (index)  {
+          this.addresses.splice(index,1)
+      }
   },
   validations: {
     formEmail: {
@@ -125,5 +131,7 @@ export default {
   #left {
       padding-bottom: 40px;
   }
-
+  .delete {
+      cursor: pointer;
+  }
 </style>

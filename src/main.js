@@ -6,12 +6,13 @@ import Vuelidate from 'vuelidate'
 import axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faMapMarkerAlt, faPhone, faFax } from '@fortawesome/free-solid-svg-icons'
+import { faMapMarkerAlt, faPhone, faFax, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 library.add(faMapMarkerAlt)
 library.add(faPhone)
 library.add(faFax)
+library.add(faTrashAlt)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
