@@ -5,7 +5,7 @@
         <div class="row" id="content">
             <div class="col-md-6 col-sm-12" id="left">
                 <form @submit.prevent = "addEmail" class="">
-                    <div class="form-group form-inline" :class="{invalid: $v.formEmail.$error}" id="formEmailGroup">
+                    <div class="form-group form-inline" :class="{invalid: emailInvalid}" id="formEmailGroup">
                         <label for="formEmail" class="hide">Email</label>
                         <div class="col-md-8 col-sm-12" id="emailInputDiv">
                         <input
@@ -33,7 +33,7 @@
                             max = "99"
                         >
                     </div>
-                    <button class="btn btn-outline-success float-right" id="sendButton">Send Emails</button>
+                    <button class="btn btn-outline-success float-right" id="sendButton" @click="sendEmails" :disabled = "sendEmailsDisabled">Send Emails</button>
                 </form>
             </div>
             <div class="col-md-6 col-sm-12">
@@ -57,14 +57,39 @@ export default {
     }
   },
   methods: {
-      deleteEmail (index)  {
-          this.addresses.splice(index,1)
-      },
-      addEmail () {
-          this.addresses.push(this.formEmail)
-          this.formEmail = ''
-          this.$v.$reset()
+    deleteEmail (index) {
+      this.addresses.splice(index, 1)
+    },
+    addEmail () {
+      if (!this.$v.formEmail.$invalid) {
+        this.addresses.push(this.formEmail)
+        this.formEmail = ''
+        this.$v.$reset()
       }
+    },
+    sendEmails () {
+      const postData = {
+        emails: this.addresses,
+        validDays: this.validDays
+      }
+      const postUrl = '/jobs/' + this.$route.params.id + '/invite'
+      axios.post(postUrl, postData)
+        .then(res => {
+          console.log('success')
+        })
+        // eslint-disable-next-line
+        .catch(error => {
+          console.log('failure')
+        })
+    }
+  },
+  computed: {
+    sendEmailsDisabled () {
+      return (this.addresses.length === 0) || (this.formEmail !== '')
+    },
+    emailInvalid () {
+        return (this.$v.formEmail.$error) && (this.formEmail !== '')
+    }
   },
   validations: {
     formEmail: {
