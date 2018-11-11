@@ -1,4 +1,4 @@
-import { mount, createLocalVue } from '@vue/test-utils'
+import { mount, createLocalVue, RouterLinkStub } from '@vue/test-utils'
 import ShowJob from '@/views/jobs/ShowJob'
 import mockAxios from 'jest-mock-axios'
 import { EventBus } from '@/event-bus.js'
@@ -30,7 +30,10 @@ describe('Show Job to Contractor', () => {
         $route
       },
       store,
-      localVue
+      localVue,
+      stubs: {
+        RouterLink: RouterLinkStub
+      }
     })
   })
 
