@@ -16,6 +16,7 @@ describe('Add Job Form', () => {
   }
 
   beforeEach(() => {
+    mockAxios.reset()
     cmp = mount(Invite, {
       mocks: {
         $route
@@ -104,7 +105,7 @@ describe('Add Job Form', () => {
 
     cmp.vm.formEmail = 'email@somewhere.com'
     cmp.vm.$v.formEmail.$touch()
-    expect(cmp.find('#formEmailGroup').classes()).not.toContain('invalid')    
+    expect(cmp.find('#formEmailGroup').classes()).not.toContain('invalid')
   })
 
   it('disables add email button', () => {
@@ -117,10 +118,9 @@ describe('Add Job Form', () => {
 
     expect(cmp.find('#addButton').attributes()['disabled']).toBe('disabled')
 
-    cmp.vm.sending = false;
+    cmp.vm.sending = false
 
     expect(cmp.find('#addButton').attributes()['disabled']).toBe(undefined)
-
   })
 
   it('disables send button', () => {
@@ -132,11 +132,11 @@ describe('Add Job Form', () => {
 
     expect(cmp.find('#sendButton').attributes()['disabled']).toBe('disabled')
 
-    cmp.vm.sending = false;
+    cmp.vm.sending = false
     cmp.vm.formEmail = 'something'
 
     expect(cmp.find('#sendButton').attributes()['disabled']).toBe('disabled')
-    
+
     cmp.vm.formEmail = ''
 
     expect(cmp.find('#sendButton').attributes()['disabled']).toBe(undefined)
@@ -148,5 +148,34 @@ describe('Add Job Form', () => {
     cmp.vm.addEmail()
     expect(cmp.vm.addresses.length).toBe(1)
     expect(cmp.vm.addresses[0]).toBe('email@somewhere.com')
+  })
+
+  it('sends emails', async () => {
+    cmp.vm.formEmail = 'test1@email.com'
+    cmp.vm.$v.formEmail.$touch()
+    cmp.vm.addEmail()
+
+    cmp.vm.formEmail = 'test2@email.com'
+    cmp.vm.$v.formEmail.$touch()
+    cmp.vm.addEmail()
+
+    cmp.vm.sendEmails()
+    cmp.find('#sendButton').trigger('click')
+
+    let sendingDiv = cmp.find('.working')
+
+    expect(sendingDiv.html()).toContain('Sending... Please do not navigate away from this page')
+    expect(mockAxios.post).toHaveBeenCalledWith('/jobs/12/invite', {emails: cmp.vm.addresses, validDays: 3})
+    expect(mockAxios.post).toHaveBeenCalledTimes(1)
+    mockAxios.mockResponse({})
+
+    expect(cmp.vm.sendSuccess).toBe(true)
+    const alerts = cmp.findAll('div.alert')
+    expect(alerts.length).toBe(1)
+    expect(alerts.at(0).classes()).toContain('alert-success')
+    expect(alerts.at(0).html()).toContain('Emails Sent')
+
+    sendingDiv = cmp.findAll('.working')
+    expect(sendingDiv.length).toBe(0)
   })
 })

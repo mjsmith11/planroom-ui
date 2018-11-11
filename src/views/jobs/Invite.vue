@@ -81,6 +81,7 @@ export default {
       }
     },
     sendEmails () {
+      console.log('sending')
       this.sending = true
       this.sendSuccess = false
       this.sendFail = false
@@ -89,8 +90,10 @@ export default {
         validDays: this.validDays
       }
       const postUrl = '/jobs/' + this.$route.params.id + '/invite'
+      console.log("posting")
       axios.post(postUrl, postData)
         .then(res => {
+          console.log('success')
           this.sending = false
           this.sendSuccess = true
           this.formEmails = ''
@@ -100,6 +103,7 @@ export default {
         })
         // eslint-disable-next-line
         .catch(error => {
+          console.log('fail')
           this.sending = false
           this.sendFail = true
         })
