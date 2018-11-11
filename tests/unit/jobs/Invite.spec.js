@@ -90,8 +90,6 @@ describe('Add Job Form', () => {
   })
 
   it('validates the email', () => {
-    const emailField = cmp.find('#formEmail')
-
     cmp.vm.formEmail = ''
     cmp.vm.$v.formEmail.$touch()
     expect(cmp.find('#formEmailGroup').classes()).not.toContain('invalid')
@@ -107,6 +105,22 @@ describe('Add Job Form', () => {
     cmp.vm.formEmail = 'email@somewhere.com'
     cmp.vm.$v.formEmail.$touch()
     expect(cmp.find('#formEmailGroup').classes()).not.toContain('invalid')    
+  })
+
+  it('disables add email button', () => {
+    // the form should be invalid thus disabled
+    expect(cmp.find('#addButton').attributes()['disabled']).toBe('disabled')
+
+    cmp.vm.formEmail = 'email@somewhere.com'
+    cmp.vm.$v.formEmail.$touch()
+    cmp.vm.sending = true
+
+    expect(cmp.find('#addButton').attributes()['disabled']).toBe('disabled')
+
+    cmp.vm.sending = false;
+
+    expect(cmp.find('#addButton').attributes()['disabled']).toBe(undefined)
+
   })
 
 })

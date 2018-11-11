@@ -25,7 +25,7 @@
                         >
                         </div>
                         <div class="col-md-4 col-sm-12" id="addButtonDiv">
-                        <button class="btn btn-outline-primary" id="addButton" type="submit" :disabled="$v.formEmail.$invalid">Add</button>
+                        <button class="btn btn-outline-primary" id="addButton" type="submit" :disabled="($v.formEmail.$invalid) || sending">Add</button>
                         </div>
                     </div>
                     <div class="form-group" id="validDaysGroup">
@@ -108,9 +108,6 @@ export default {
   computed: {
     sendEmailsDisabled () {
       return ((this.addresses.length === 0) || (this.formEmail !== '')) || this.sending
-    },
-    addEmailDisabled () {
-      return (this.$v.formEmail.$invalid) || this.sending
     }
   },
   validations: {
