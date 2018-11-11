@@ -26,6 +26,12 @@ const ShowJob = resolve => {
   }, 'show_job')
 }
 
+const Invite = resolve => {
+  require.ensure(['./views/jobs/Invite.vue'], () => {
+    resolve(require('./views/jobs/Invite.vue'))
+  }, 'contractor')
+}
+
 const ExpiredToken = resolve => {
   require.ensure(['./views/subcontractor/ExpiredToken.vue'], () => {
     resolve(require('./views/subcontractor/ExpiredToken.vue'))
@@ -62,6 +68,14 @@ let router = new Router({
       path: '/jobs/:id',
       name: 'show job',
       component: ShowJob,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/jobs/:id/invite',
+      name: 'job invite',
+      component: Invite,
       meta: {
         requiresAuth: true
       }
