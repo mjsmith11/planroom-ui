@@ -2,6 +2,12 @@
     <div class="container">
         <h1>{{ job.name }}</h1>
         <h3>Subcontractor Invitations</h3>
+        <div class="alert alert-success" v-if="sendSuccess">
+          Emails Sent.
+        </div>
+        <div class="alert alert-danger" v-if="sendFail">
+          Something went wrong. Emails may not have sent.
+        </div>
         <div class="row" id="content">
             <div class="col-md-6 col-sm-12" id="left">
                 <form @submit.prevent = "addEmail" class="">
@@ -58,7 +64,9 @@ export default {
       formEmail: '',
       validDays: 3,
       addresses: [],
-      sending: false
+      sending: false,
+      sendSuccess: false,
+      sendFail: false
     }
   },
   methods: {
@@ -74,6 +82,8 @@ export default {
     },
     sendEmails () {
       this.sending = true
+      this.sendSuccess = false
+      this.sendFail = false
       const postData = {
         emails: this.addresses,
         validDays: this.validDays
@@ -82,12 +92,16 @@ export default {
       axios.post(postUrl, postData)
         .then(res => {
           this.sending = false
-          console.log('success')
+          this.sendSuccess = true
+          this.formEmails = ''
+          this.validDays = 3
+          this.addresses = []
+          this.$v.$reset()
         })
         // eslint-disable-next-line
         .catch(error => {
           this.sending = false
-          console.log('failure')
+          this.sendFail = true
         })
     }
   },
