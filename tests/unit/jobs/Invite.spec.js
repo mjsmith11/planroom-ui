@@ -123,4 +123,23 @@ describe('Add Job Form', () => {
 
   })
 
+  it('disables send button', () => {
+    // there should be no addresses
+    expect(cmp.find('#sendButton').attributes()['disabled']).toBe('disabled')
+
+    cmp.vm.addresses.push('email@aol.com')
+    cmp.vm.sending = true
+
+    expect(cmp.find('#sendButton').attributes()['disabled']).toBe('disabled')
+
+    cmp.vm.sending = false;
+    cmp.vm.formEmail = 'something'
+
+    expect(cmp.find('#sendButton').attributes()['disabled']).toBe('disabled')
+    
+    cmp.vm.formEmail = ''
+
+    expect(cmp.find('#sendButton').attributes()['disabled']).toBe(undefined)
+  })
+
 })

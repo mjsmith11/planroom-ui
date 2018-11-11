@@ -39,7 +39,7 @@
                             max = "99"
                         >
                     </div>
-                    <button class="btn btn-outline-success float-right" id="sendButton" @click="sendEmails" :disabled = "sendEmailsDisabled">Send Emails</button>
+                    <button class="btn btn-outline-success float-right" id="sendButton" @click="sendEmails" :disabled = "(addresses.length === 0) || (formEmail !== '') || sending">Send Emails</button>
                 </form>
                 <div v-if="sending" class="working float-right">
                   <img src="../../assets/working.gif" alt="Working" class="src">
