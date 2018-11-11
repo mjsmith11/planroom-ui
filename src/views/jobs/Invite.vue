@@ -53,11 +53,7 @@ export default {
       job: {},
       formEmail: '',
       validDays: 3,
-      addresses: [
-        'test@abc.com',
-        'abc@xyz.com',
-        'matt@smith.com'
-      ]
+      addresses: []
     }
   },
   methods: {
