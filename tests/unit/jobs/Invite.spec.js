@@ -71,4 +71,22 @@ describe('Add Job Form', () => {
     mockAxios.mockResponse(response)
     expect(cmp.vm.job).toBe(response.data)
   })
+
+  it('deletes an email address', () => {
+    cmp.vm.formEmail = 'test1@email.com'
+    cmp.vm.$v.formEmail.$touch()
+    cmp.vm.addEmail()
+
+    cmp.vm.formEmail = 'test2@email.com'
+    cmp.vm.$v.formEmail.$touch()
+    cmp.vm.addEmail()
+
+    // delete the first and check for only the second
+    const spans = cmp.findAll('span.delete')
+    spans.wrappers[0].trigger('click')
+
+    expect(cmp.vm.addresses.length).toBe(1)
+    expect(cmp.vm.addresses[0]).toBe('test2@email.com')
+  })
+
 })
