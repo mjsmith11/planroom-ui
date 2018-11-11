@@ -5,6 +5,7 @@
     <div class="col-xs-12 col-sm-10 col-md-8 offset-md-2 offset-sm-1 column">
         <h1>{{ job.name }}</h1>
         <h6 v-if="!$store.getters.isContractorUser" class="expiration">You can access this job unitl {{ $store.getters.exp | unixDatetime | datetime }} </h6>
+        <router-link v-else :to="'/jobs/' + this.$route.params.id + '/invite'" tag="button" class="btn btn-outline-primary btn-sm btn-invite">Invite Subcontractors</router-link>
         <div class="row">
           <div class="col-lg-4 col-md-6 col-sm-12 column">
             <div class="card">
@@ -123,5 +124,8 @@ export default {
     font-style: italic;
     font-size: 0.85em;
     color: #b0b0b0;
+  }
+  .btn-invite{
+    margin-bottom: 15px;
   }
 </style>
