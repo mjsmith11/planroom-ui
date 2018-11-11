@@ -35,6 +35,10 @@
                     </div>
                     <button class="btn btn-outline-success float-right" id="sendButton" @click="sendEmails" :disabled = "sendEmailsDisabled">Send Emails</button>
                 </form>
+                <div v-if="sending" class="working float-right">
+                  <img src="../../assets/working.gif" alt="Working" class="src">
+                  Sending... Please do not navigate away from this page.
+                </div>
             </div>
             <div class="col-md-6 col-sm-12">
                <ul class="list-group">
@@ -53,7 +57,8 @@ export default {
       job: {},
       formEmail: '',
       validDays: 3,
-      addresses: []
+      addresses: [],
+      sending: false
     }
   },
   methods: {
@@ -68,6 +73,7 @@ export default {
       }
     },
     sendEmails () {
+      this.sending = true
       const postData = {
         emails: this.addresses,
         validDays: this.validDays
@@ -75,20 +81,25 @@ export default {
       const postUrl = '/jobs/' + this.$route.params.id + '/invite'
       axios.post(postUrl, postData)
         .then(res => {
+          this.sending = false
           console.log('success')
         })
         // eslint-disable-next-line
         .catch(error => {
+          this.sending = false
           console.log('failure')
         })
     }
   },
   computed: {
     sendEmailsDisabled () {
-      return (this.addresses.length === 0) || (this.formEmail !== '')
+      return ((this.addresses.length === 0) || (this.formEmail !== '')) || this.sending
     },
     emailInvalid () {
-        return (this.$v.formEmail.$error) && (this.formEmail !== '')
+      return (this.$v.formEmail.$error) && (this.formEmail !== '')
+    },
+    addEmailDisabled () {
+      return (this.$v.formEmail.$invalid) || this.sending
     }
   },
   validations: {
@@ -160,4 +171,5 @@ export default {
   .delete {
       cursor: pointer;
   }
+
 </style>
