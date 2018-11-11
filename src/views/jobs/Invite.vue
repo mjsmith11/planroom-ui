@@ -19,7 +19,7 @@
                         >
                         </div>
                         <div class="col-md-4 col-sm-12" id="addButtonDiv">
-                        <button class="btn btn-outline-primary" id="addButton" type="submit">Add</button>
+                        <button class="btn btn-outline-primary" id="addButton" type="submit" :disabled="$v.formEmail.$invalid">Add</button>
                         </div>
                     </div>
                     <div class="form-group" id="validDaysGroup">
