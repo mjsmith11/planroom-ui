@@ -1,10 +1,10 @@
 <template>
     <div class="container">
-        <h1>Placeholder {{ job.name }}</h1>
+        <h1>{{ job.name }}</h1>
         <h3>Subcontractor Invitations</h3>
         <div class="row" id="content">
             <div class="col-md-6 col-sm-12" id="left">
-                <form @submit.prevent = "a" class="">
+                <form @submit.prevent = "addEmail" class="">
                     <div class="form-group form-inline" :class="{invalid: $v.formEmail.$error}" id="formEmailGroup">
                         <label for="formEmail" class="hide">Email</label>
                         <div class="col-md-8 col-sm-12" id="emailInputDiv">
@@ -63,6 +63,11 @@ export default {
   methods: {
       deleteEmail (index)  {
           this.addresses.splice(index,1)
+      },
+      addEmail () {
+          this.addresses.push(this.formEmail)
+          this.formEmail = ''
+          this.$v.$reset()
       }
   },
   validations: {
