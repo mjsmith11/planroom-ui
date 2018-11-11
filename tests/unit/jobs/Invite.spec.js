@@ -89,4 +89,24 @@ describe('Add Job Form', () => {
     expect(cmp.vm.addresses[0]).toBe('test2@email.com')
   })
 
+  it('validates the email', () => {
+    const emailField = cmp.find('#formEmail')
+
+    cmp.vm.formEmail = ''
+    cmp.vm.$v.formEmail.$touch()
+    expect(cmp.find('#formEmailGroup').classes()).not.toContain('invalid')
+
+    cmp.vm.formEmail = 'not an email'
+    cmp.vm.$v.formEmail.$touch()
+    expect(cmp.find('#formEmailGroup').classes()).toContain('invalid')
+
+    cmp.vm.formEmail = 'toolongtoolongtoolongtoolongtoolongtoolongtoolong@toolongtoolongtoolongtoolongtoolongtoolongtoolongtoolongtoolong.com'
+    cmp.vm.$v.formEmail.$touch()
+    expect(cmp.find('#formEmailGroup').classes()).toContain('invalid')
+
+    cmp.vm.formEmail = 'email@somewhere.com'
+    cmp.vm.$v.formEmail.$touch()
+    expect(cmp.find('#formEmailGroup').classes()).not.toContain('invalid')    
+  })
+
 })

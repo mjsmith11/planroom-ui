@@ -11,7 +11,7 @@
         <div class="row" id="content">
             <div class="col-md-6 col-sm-12" id="left">
                 <form @submit.prevent = "addEmail" class="">
-                    <div class="form-group form-inline" :class="{invalid: emailInvalid}" id="formEmailGroup">
+                    <div class="form-group form-inline" :class="{invalid: ($v.formEmail.$error) && (formEmail !== '')}" id="formEmailGroup">
                         <label for="formEmail" class="hide">Email</label>
                         <div class="col-md-8 col-sm-12" id="emailInputDiv">
                         <input
@@ -108,9 +108,6 @@ export default {
   computed: {
     sendEmailsDisabled () {
       return ((this.addresses.length === 0) || (this.formEmail !== '')) || this.sending
-    },
-    emailInvalid () {
-      return (this.$v.formEmail.$error) && (this.formEmail !== '')
     },
     addEmailDisabled () {
       return (this.$v.formEmail.$invalid) || this.sending
