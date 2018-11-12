@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+ - View for contractor to send invitations
  - View for subcontractor users
  - Routing for subcontractors
  - Vuex getters, action, and mutator for subcontractors
