@@ -16,7 +16,7 @@
                   <div>{{ job.bidDate | date }}</div>
                   <br>
                   <h6><strong>Email:</strong></h6>
-                  <div>{{ job.bidEmail }}</div>
+                  <div><a :href="'mailto:'+job.bidEmail">{{ job.bidEmail }}</a></div>
                   <br>
                   <h6><strong>Due To Benchmark:</strong></h6>
                   <div>{{ job.subcontractorBidsDue | datetime }}</div>
