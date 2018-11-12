@@ -150,7 +150,23 @@ describe('Add Job Form', () => {
     expect(cmp.vm.addresses[0]).toBe('email@somewhere.com')
   })
 
-  it('sends emails', async () => {
+  it('sends emails', () => {
+    // resolve axios on created hook
+    const response = {
+      data: {
+        'bidDate': '2017-12-23',
+        'bidEmail': 'abcdef@xyz.com',
+        'bonding': false,
+        'name': 'My Second Test Job',
+        'prebidAddress': '234 Main St.',
+        'prebidDateTime': '2018-07-01 18:30:00',
+        'subcontractorBidsDue': '2017-06-01 08:30:00',
+        'taxible': true,
+        'id': 20
+      }
+    }
+    mockAxios.mockResponse(response)
+
     cmp.vm.formEmail = 'test1@email.com'
     cmp.vm.$v.formEmail.$touch()
     cmp.vm.addEmail()
@@ -159,17 +175,17 @@ describe('Add Job Form', () => {
     cmp.vm.$v.formEmail.$touch()
     cmp.vm.addEmail()
 
+    cmp.vm.validDays = 4
+
     cmp.vm.sendEmails()
-    cmp.find('#sendButton').trigger('click')
 
     let sendingDiv = cmp.find('.working')
 
     expect(sendingDiv.html()).toContain('Sending... Please do not navigate away from this page')
-    expect(mockAxios.post).toHaveBeenCalledWith('/jobs/12/invite', {emails: cmp.vm.addresses, validDays: 3})
+    expect(mockAxios.post).toHaveBeenCalledWith('/jobs/12/invite', {emails: cmp.vm.addresses, validDays: 4})
     expect(mockAxios.post).toHaveBeenCalledTimes(1)
     mockAxios.mockResponse({})
 
-    expect(cmp.vm.sendSuccess).toBe(true)
     const alerts = cmp.findAll('div.alert')
     expect(alerts.length).toBe(1)
     expect(alerts.at(0).classes()).toContain('alert-success')
@@ -177,5 +193,58 @@ describe('Add Job Form', () => {
 
     sendingDiv = cmp.findAll('.working')
     expect(sendingDiv.length).toBe(0)
+
+    expect(cmp.vm.addresses.length).toBe(0)
+    expect(cmp.vm.validDays).toBe(3)
   })
+
+  it('handles failure to send emails', () => {
+    // resolve axios on created hook
+    const response = {
+      data: {
+        'bidDate': '2017-12-23',
+        'bidEmail': 'abcdef@xyz.com',
+        'bonding': false,
+        'name': 'My Second Test Job',
+        'prebidAddress': '234 Main St.',
+        'prebidDateTime': '2018-07-01 18:30:00',
+        'subcontractorBidsDue': '2017-06-01 08:30:00',
+        'taxible': true,
+        'id': 20
+      }
+    }
+    mockAxios.mockResponse(response)
+
+    cmp.vm.formEmail = 'test1@email.com'
+    cmp.vm.$v.formEmail.$touch()
+    cmp.vm.addEmail()
+
+    cmp.vm.formEmail = 'test2@email.com'
+    cmp.vm.$v.formEmail.$touch()
+    cmp.vm.addEmail()
+
+    cmp.vm.validDays = 4
+
+    cmp.vm.sendEmails()
+
+    let sendingDiv = cmp.find('.working')
+
+    expect(sendingDiv.html()).toContain('Sending... Please do not navigate away from this page')
+    expect(mockAxios.post).toHaveBeenCalledWith('/jobs/12/invite', { emails: cmp.vm.addresses, validDays: 4 })
+    expect(mockAxios.post).toHaveBeenCalledTimes(1)
+    mockAxios.mockError()
+
+    const alerts = cmp.findAll('div.alert')
+    expect(alerts.length).toBe(1)
+    expect(alerts.at(0).classes()).toContain('alert-danger')
+    expect(alerts.at(0).html()).toContain('Something went wrong. Emails may not have sent.')
+
+    sendingDiv = cmp.findAll('.working')
+    expect(sendingDiv.length).toBe(0)
+
+    expect(cmp.vm.addresses.length).toBe(2)
+    expect(cmp.vm.validDays).toBe(4)
+  })
+
+
 })
