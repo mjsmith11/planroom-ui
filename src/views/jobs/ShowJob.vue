@@ -1,6 +1,7 @@
 <template>
 <div>
   <logo-header v-if="!$store.getters.isContractorUser"></logo-header>
+  <div class="content">
   <div class="container">
     <div class="col-xs-12 col-sm-10 col-md-8 offset-md-2 offset-sm-1 column">
         <h1>{{ job.name }}</h1>
@@ -65,6 +66,7 @@
     <contact-info v-if="!$store.getters.isContractorUser"></contact-info>
   </div>
 </div>
+</div>
 </template>
 <script>
 import { datetimeFilters } from '../../mixins/datetimeFilters'
@@ -127,5 +129,11 @@ export default {
   }
   .btn-invite{
     margin-bottom: 15px;
+  }
+  .content {
+    position: relative;
+    top: 550px;
+    width: 100%;
+    background-color: white;
   }
 </style>

@@ -1,18 +1,25 @@
 <template>
-    <div class="jumbotron">
+    <div class="banner">
         <div class="row">
-            <h4 class="offset-md-1 col-md-10">Welcome To The</h4>
-            <div class="offset-md-1 col-md-10"><img src="../assets/logo1.png" alt="Benchmark logo" class="src"></div>
-            <div class="offset-md-1 col-md-10 text"><h1>Planroom</h1></div>
+            <!--<h4 class="offset-md-1 col-md-10">Welcome To The</h4>-->
+            <!--<div class="offset-md-1 col-md-10">--><img src="../assets/logo1.png" alt="Benchmark logo" class="src"><!--</div>-->
+            <!--<div class="offset-md-1 col-md-10 text"><h1>Planroom</h1></div>-->
         </div>
     </div>
 </template>
 <style scoped>
 img {
-    width: 80%;
+    width: auto;
     display: block;
     height: auto;
     margin: auto;
+    max-width: 90%;
+    max-height: 80%;
+    min-height: 75%;
+}
+.row {
+    width: 100%;
+    height: 100%;
 }
 h1 {
     font-weight: 600;
@@ -39,12 +46,14 @@ h4 {
     align-items: center;
 }
 
-.jumbotron {
-    margin: 15px 15px 40px 15px;
-    background-color: #f4f1b0;
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
+.banner {
+    background: url(../assets/piping.jpg);
+    background-size: cover;
+    width: 100%;
     padding-top: 25px;
     padding-bottom: 25px;
-    border: 8px solid goldenrod;
+    height: 400px;
+    position: fixed;
+    top: 50px;
 }
 </style>
