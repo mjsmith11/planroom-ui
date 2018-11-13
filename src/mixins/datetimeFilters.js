@@ -13,7 +13,7 @@ const helpers = {
     var HH = pieces[0]
     var mm = pieces[1]
     var hh = ''
-    if (HH === 0) {
+    if (HH === '00') {
       hh = 12
     } else if (HH > 12) {
       hh = HH - 12
@@ -22,6 +22,9 @@ const helpers = {
       }
       AMPM = 'PM'
     } else {
+      if (HH === '12') {
+        AMPM = 'PM'
+      }
       hh = HH
     }
     return hh + ':' + mm + ' ' + AMPM
