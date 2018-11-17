@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.2] - 2018-11-17
+### Fixed
+ - Encode symbols correctly in upload filenames
+ - Always download files instead of opening in the browser tab
+
 ## [1.1.1] - 2018-11-13
 ### Fixed
  - Datetime display for noon and midnight
