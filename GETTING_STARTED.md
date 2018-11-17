@@ -23,10 +23,10 @@ Vuex can be used for state management in Vue.js applications.  A standard Vuex s
  The Vuex store for this application is in `src/store.js` and keeps track of the current user and login status.
 
 ### Event Bus
-This application uses a secondary Vue instance as an event bus for communication between Vue components. This event bus is created in src/event-bus.js.
+This application uses a secondary Vue instance as an event bus for communication between Vue components. This event bus is created in `src/event-bus.js`.
 
 ### Public Assets
-The `public` directory contains the applications static assets. `index.html` shows the Vue component in src/App.vue. The template for this component contains `<router-view/>` which is where the component indicated by the route will be rendered. The Vue Router is using [HTML5 History Mode](https://router.vuejs.org/guide/essentials/history-mode.html#example-server-configurations) which requires that the server always serves `index.html` for any route.  The `.htaccess` file contains configuration for an Apache server to serve `index.html` in this manner.
+The `public` directory contains the applications static assets. `index.html` shows the Vue component in `src/App.vue`. The template for this component contains `<router-view/>` which is where the component indicated by the route will be rendered. The Vue Router is using [HTML5 History Mode](https://router.vuejs.org/guide/essentials/history-mode.html#example-server-configurations) which requires that the server always serves `index.html` for any route.  The `.htaccess` file contains configuration for an Apache server to serve `index.html` in this manner.
 
 ## PostCSS
 [PostCSS](https://postcss.org/) provides CSS transforming features and is configured in `postcssrc.js`.
@@ -41,7 +41,7 @@ The `public` directory contains the applications static assets. `index.html` sho
 [Babel](https://babeljs.io/) is used as a JavaScript compiler. It allows JavaScript ES6 syntax and will output browser-compatible JavaScript. It is configured in `babel.config.js`.
 
 ## Targeted Browsers
-(browserslist)[https://github.com/browserslist/browserslist] allows configuration in `.browserslistrc` to specify targeted browsers and be shared with multiple tools used in the project.
+[browserslist](https://github.com/browserslist/browserslist) allows configuration in `.browserslistrc` to specify targeted browsers. This configuration is shared with multiple tools used in the project.
 
 ## Travis
 [Travis CI](https://travis-ci.org/) is used for [Continuous Integration Builds](https://travis-ci.org/mjsmith11/planroom-ui). Build settings, scripts, etc. are in `.travis.yml`.
