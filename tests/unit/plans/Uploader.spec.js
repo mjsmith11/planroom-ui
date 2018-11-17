@@ -58,4 +58,12 @@ describe('Uploader', () => {
     let result = cmp.vm.getUrl(file)
     expect(result).toBe('http://test-api.com/jobs/1/plans?filename=myfile.pdf')
   })
+
+  it('encodes signing URL', () => {
+    let file = {
+      name: 'myfile#4.pdf'
+    }
+    let result = cmp.vm.getUrl(file)
+    expect(result).toBe('http://test-api.com/jobs/1/plans?filename=myfile%234.pdf')
+  })
 })
