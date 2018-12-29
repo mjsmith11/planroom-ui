@@ -3,6 +3,9 @@
 This repository contains a Vue.js front end for the planroom project.
 It adheres to [Semantic Versioning](https://semver.org/) and [Gitflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)
 
+## Honorary Dependency
+ - [lkf](https://github.cm/mjsmith11/lkf)
+
 ## Ubuntu Environment Setup
 1. Setup an instance of [planroom-api](https://github.com/mjsmith11/planroom-api).
 1. Ensure that the URL in .env.development is correct for your instance of planroom-api.
