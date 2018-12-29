@@ -5,6 +5,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Changed
+ - favicon to company branding
+
+## [1.1.2] - 2018-11-17
+### Fixed
+ - Encode symbols correctly in upload filenames
+ - Always download files instead of opening in the browser tab
+
+## [1.1.1] - 2018-11-13
+### Fixed
+ - Datetime display for noon and midnight
 
 ## [1.1.0] - 2018-11-11
 ### Added

@@ -245,6 +245,4 @@ describe('Add Job Form', () => {
     expect(cmp.vm.addresses.length).toBe(2)
     expect(cmp.vm.validDays).toBe(4)
   })
-
-
 })

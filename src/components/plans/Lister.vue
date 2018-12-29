@@ -2,7 +2,7 @@
     <div class="lister">
       <h4>Bidding Documents</h4>
       <ul :class="{listborder : plans.length > 0}">
-        <li v-for="plan in plans" :key="plan.key"><a :href="plan.url">{{ plan.key | removeDir }}</a></li>
+        <li v-for="plan in plans" :key="plan.key"><a :href="plan.url" download>{{ plan.key | removeDir }}</a></li>
       </ul>
     </div>
 </template>

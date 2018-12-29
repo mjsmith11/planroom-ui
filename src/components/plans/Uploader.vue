@@ -47,7 +47,7 @@ export default {
       EventBus.$emit('file-uploaded')
     },
     getUrl (file) {
-      return process.env.VUE_APP_API_URL + '/jobs/' + this.jobId + '/plans?filename=' + file.name
+      return process.env.VUE_APP_API_URL + '/jobs/' + this.jobId + '/plans?filename=' + encodeURIComponent(file.name)
     }
   },
   props: {

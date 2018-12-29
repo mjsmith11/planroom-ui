@@ -18,6 +18,16 @@ It adheres to [Semantic Versioning](https://semver.org/) and [Gitflow](https://w
 ## Helpful Tools
  - Vue developer tools chrome add on.
 
+### Install Dependencies
+```
+npm install
+```
+
+### Run Development Server
+```
+npm run serve
+```
+
 ### Compiles and minifies for production
 ```
 npm run build
@@ -35,4 +45,4 @@ npm run test:unit
 
 
 
-
+**For details on the contents of this repository, see [GETTING_STARTED](https://github.com/mjsmith11/planroom-ui/blob/master/GETTING_STARTED.md)**
