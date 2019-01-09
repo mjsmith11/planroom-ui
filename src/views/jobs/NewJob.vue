@@ -81,7 +81,7 @@
                     class="form-check-input"
                     id="taxible"
                     v-model="taxible">
-                <label for="taxible" class="form-check-label">Taxible</label>
+                <label for="taxible" class="form-check-label">Taxable</label>
             </div>
           </div>
           <button class="btn btn-outline-success" :disabled="$v.$invalid" type="submit">Add Job</button>

@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Changed
  - favicon to company branding
+### Added
+ - lkf honorary dependency
+ - mailto link in job view
+### Fixed
+ - Taxable spelling
 
 ## [1.1.2] - 2018-11-17
 ### Fixed
