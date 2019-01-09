@@ -17,7 +17,9 @@ exports[`Show Job to Contractor has expected html structure 1`] = `
                 <div>03/23/2017</div>
                 <br>
                 <h6><strong>Email:</strong></h6>
-                <div>abc@xyz.com</div>
+                <div>
+                  <a href="mailto:abc@xyz.com">abc@xyz.com</a>
+                </div>
                 <br>
                 <h6><strong>Due To Benchmark:</strong></h6>
                 <div>06/01/2017 08:30 AM EDT</div>
@@ -105,7 +107,9 @@ exports[`Show Job to Contractor shows job for subcontractor 1`] = `
                 <div></div>
                 <br>
                 <h6><strong>Email:</strong></h6>
-                <div></div>
+                <div>
+                  <a href="mailto:undefined"></a>
+                </div>
                 <br>
                 <h6><strong>Due To Benchmark:</strong></h6>
                 <div></div>

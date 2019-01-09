@@ -40,7 +40,7 @@ exports[`Add Job Form has expected html structure 1`] = `
           </div>
           <div class="form-check form-check-inline">
             <input type="checkbox" id="taxible" class="form-check-input">
-            <label for="taxible" class="form-check-label">Taxible</label>
+            <label for="taxible" class="form-check-label">Taxable</label>
           </div>
         </div>
         <button disabled="disabled" type="submit" class="btn btn-outline-success">Add Job</button>
