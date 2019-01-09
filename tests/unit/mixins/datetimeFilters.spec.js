@@ -27,6 +27,26 @@ describe('datetime filter', () => {
     let result = datetimeFilters.filters.datetime('2018-03-11 16:00:00')
     expect(result).toBe('03/11/2018 04:00 PM EDT')
   })
+
+  it('handles midnight eastern', () => {
+    let result = datetimeFilters.filters.datetime('2018-03-10 00:00:00')
+    expect(result).toBe('03/10/2018 12:00 AM EST')
+  })
+
+  it('handles noon eastern', () => {
+    let result = datetimeFilters.filters.datetime('2018-03-10 12:00:00')
+    expect(result).toBe('03/10/2018 12:00 PM EST')
+  })
+
+  it('handles December dates', () => {
+    let result = datetimeFilters.filters.datetime('2018-12-10 08:00:00')
+    expect(result).toBe('12/10/2018 08:00 AM EST')
+  })
+
+  it('handles January dates', () => {
+    let result = datetimeFilters.filters.datetime('2018-01-10 08:00:00')
+    expect(result).toBe('01/10/2018 08:00 AM EST')
+  })
 })
 
 describe('datetimeCentral filter', () => {
@@ -50,24 +70,24 @@ describe('datetimeCentral filter', () => {
     expect(result).toBe('03/08/2018 11:30 PM CST')
   })
 
-  it('handles noon eastern', () => {
-    let result = datetimeFilters.filters.datetime('2018-03-10 12:00:00')
-    expect(result).toBe('03/10/2018 12:00 PM EST')
-  })
-
   it('handles noon central', () => {
     let result = datetimeFilters.filters.datetimeCentral('2018-03-10 13:00:00')
     expect(result).toBe('03/10/2018 12:00 PM CST')
   })
 
-  it('handles midnight eastern', () => {
-    let result = datetimeFilters.filters.datetime('2018-03-10 00:00:00')
-    expect(result).toBe('03/10/2018 12:00 AM EST')
-  })
-
   it('handles midnight central', () => {
     let result = datetimeFilters.filters.datetimeCentral('2018-03-10 01:00:00')
     expect(result).toBe('03/09/2018 12:00 AM CST')
+  })
+
+  it('handles December dates', () => {
+    let result = datetimeFilters.filters.datetimeCentral('2018-12-10 08:00:00')
+    expect(result).toBe('12/10/2018 07:00 AM CST')
+  })
+
+  it('handles January dates', () => {
+    let result = datetimeFilters.filters.datetimeCentral('2018-01-10 08:00:00')
+    expect(result).toBe('01/10/2018 07:00 AM CST')
   })
 })
 

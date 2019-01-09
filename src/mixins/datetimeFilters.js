@@ -107,11 +107,12 @@ export const datetimeFilters = {
 
       var dateSplit = datePiece.split('-')
       var timeSplit = timePiece.split(':')
-      var utc = Date.UTC(dateSplit[0], dateSplit[1], dateSplit[2], timeSplit[0], timeSplit[1], timeSplit[2])
+      var utc = Date.UTC(dateSplit[0], dateSplit[1] - 1, dateSplit[2], timeSplit[0], timeSplit[1], timeSplit[2]) // months are 0 based
+
       var d = new Date(utc)
       d.setHours(d.getHours() - 1)
 
-      var mm = d.getMonth()
+      var mm = d.getMonth() + 1 // months are zero based
       var dd = d.getDate()
       if (mm < 10) {
         mm = '0' + mm

@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
  - lkf honorary dependency
  - mailto link in job view
+ - Handling of months in datetime filters
 ### Fixed
  - Taxable spelling
 
