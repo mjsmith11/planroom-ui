@@ -4,9 +4,7 @@ exports[`LogoHeader has correct html structure 1`] = `
 <div class="jumbotron">
   <div class="row">
     <h4 class="offset-md-1 col-md-10">Welcome To The</h4>
-    <div class="offset-md-1 col-md-10">
-      <img src="../assets/logo1.png" alt="Benchmark logo" class="src">
-    </div>
+    <div class="offset-md-1 col-md-10"><img src="../assets/logo1.png" alt="Benchmark logo" class="src"></div>
     <div class="offset-md-1 col-md-10 text">
       <h1>Planroom</h1>
     </div>

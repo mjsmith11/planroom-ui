@@ -9,41 +9,18 @@ exports[`Add Job Form has expected html structure 1`] = `
   <form>
     <div class="row">
       <div class="col-xs-12 col-sm-8 col-md-6 offset-md-3 offset-sm-2">
-        <div id="jobNameGroup" class="form-group">
-          <label for="jobName">Name</label>
-          <input type="text" id="jobName" placeholder="Job Name" maxlength="75" class="form-control">
-        </div>
-        <div id="bidDateGroup" class="form-group">
-          <label for="bidDate">Bid Date</label>
-          <input type="date" id="bidDate" class="form-control">
-        </div>
-        <div id="prebidGroup" class="form-group">
-          <label for="prebid">Prebid (Eastern)</label>
-          <input type="datetime-local" id="prebid" class="form-control">
-        </div>
-        <div id="prebidAddressGroup" class="form-group">
-          <label for="prebidAddress">Prebid Address</label>
+        <div id="jobNameGroup" class="form-group"><label for="jobName">Name</label> <input type="text" id="jobName" placeholder="Job Name" maxlength="75" class="form-control"></div>
+        <div id="bidDateGroup" class="form-group"><label for="bidDate">Bid Date</label> <input type="date" id="bidDate" class="form-control"></div>
+        <div id="prebidGroup" class="form-group"><label for="prebid">Prebid (Eastern)</label> <input type="datetime-local" id="prebid" class="form-control"></div>
+        <div id="prebidAddressGroup" class="form-group"><label for="prebidAddress">Prebid Address</label>
           <vuegoogleautocomplete-stub id="prebidAddress" classname="form-control" placeholder="Prebid Address" types="address" country="us"></vuegoogleautocomplete-stub>
         </div>
-        <div id="subcontractorBidsDueGroup" class="form-group">
-          <label for="subcontractorBidsDue">Subcontractor Bids Due to Benchmark (Eastern)</label>
-          <input type="datetime-local" id="subcontractorBidsDue" class="form-control">
-        </div>
-        <div id="bidEmailGroup" class="form-group">
-          <label for="bidEmail">Bid Email</label>
-          <input type="email" id="bidEmail" placeholder="Bid Email" maxlength="100" class="form-control">
-        </div>
+        <div id="subcontractorBidsDueGroup" class="form-group"><label for="subcontractorBidsDue">Subcontractor Bids Due to Benchmark (Eastern)</label> <input type="datetime-local" id="subcontractorBidsDue" class="form-control"></div>
+        <div id="bidEmailGroup" class="form-group"><label for="bidEmail">Bid Email</label> <input type="email" id="bidEmail" placeholder="Bid Email" maxlength="100" class="form-control"></div>
         <div id="checkboxes">
-          <div class="form-check form-check-inline">
-            <input type="checkbox" id="bonding" class="form-check-input">
-            <label for="bonding" class="form-check-label">Bonding</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input type="checkbox" id="taxible" class="form-check-input">
-            <label for="taxible" class="form-check-label">Taxable</label>
-          </div>
-        </div>
-        <button disabled="disabled" type="submit" class="btn btn-outline-success">Add Job</button>
+          <div class="form-check form-check-inline"><input type="checkbox" id="bonding" class="form-check-input"> <label for="bonding" class="form-check-label">Bonding</label></div>
+          <div class="form-check form-check-inline"><input type="checkbox" id="taxible" class="form-check-input"> <label for="taxible" class="form-check-label">Taxable</label></div>
+        </div> <button disabled="disabled" type="submit" class="btn btn-outline-success">Add Job</button>
       </div>
     </div>
   </form>

@@ -4,12 +4,8 @@ exports[`Lister has expected html structure 1`] = `
 <div class="lister">
   <h4>Bidding Documents</h4>
   <ul class="listborder">
-    <li>
-      <a href="http://test.com/1/aBlueprint.com" download="">a blueprint.pdf</a>
-    </li>
-    <li>
-      <a href="http://test.com/1/anotherBlueprint.com" download="">another blueprint.pdf</a>
-    </li>
+    <li><a href="http://test.com/1/aBlueprint.com" download="">a blueprint.pdf</a></li>
+    <li><a href="http://test.com/1/anotherBlueprint.com" download="">another blueprint.pdf</a></li>
   </ul>
 </div>
 `;

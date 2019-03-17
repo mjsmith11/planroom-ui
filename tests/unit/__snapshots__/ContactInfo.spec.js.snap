@@ -4,14 +4,17 @@ exports[`Contact Info has correct html structure 1`] = `
 <div class="row">
   <div class="col-lg-2 offset-lg-4 col-md-12">
     <div class="info">
-      <font-awesome-icon-stub icon="map-marker-alt"></font-awesome-icon-stub>&nbsp;&nbsp;318 E. Monroe St.</div>
+      <font-awesome-icon-stub icon="map-marker-alt"></font-awesome-icon-stub>&nbsp;&nbsp;318 E. Monroe St.
+    </div>
     <div class="info">Kokomo, IN 46901</div>
   </div>
   <div class="col-lg-2 col-md-12">
     <div class="info">
-      <font-awesome-icon-stub icon="phone"></font-awesome-icon-stub>&nbsp;&nbsp;(765) 452-9500</div>
+      <font-awesome-icon-stub icon="phone"></font-awesome-icon-stub>&nbsp;&nbsp;(765) 452-9500
+    </div>
     <div class="info">
-      <font-awesome-icon-stub icon="fax"></font-awesome-icon-stub>&nbsp;&nbsp;(765) 452-9505</div>
+      <font-awesome-icon-stub icon="fax"></font-awesome-icon-stub>&nbsp;&nbsp;(765) 452-9505
+    </div>
   </div>
 </div>
 `;

@@ -9,20 +9,11 @@ exports[`Add Job Form has expected html structure 1`] = `
   <div id="content" class="row">
     <div id="left" class="col-md-6 col-sm-12">
       <form>
-        <div id="formEmailGroup" class="form-group form-inline">
-          <label for="formEmail" class="hide">Email</label>
-          <div id="emailInputDiv" class="col-md-8 col-sm-12">
-            <input type="email" id="formEmail" placeholder="Email" maxlength="100" class="form-control">
-          </div>
-          <div id="addButtonDiv" class="col-md-4 col-sm-12">
-            <button id="addButton" type="submit" class="btn btn-outline-primary" disabled="disabled">Add</button>
-          </div>
+        <div id="formEmailGroup" class="form-group form-inline"><label for="formEmail" class="hide">Email</label>
+          <div id="emailInputDiv" class="col-md-8 col-sm-12"><input type="email" id="formEmail" placeholder="Email" maxlength="100" class="form-control"></div>
+          <div id="addButtonDiv" class="col-md-4 col-sm-12"><button id="addButton" type="submit" class="btn btn-outline-primary" disabled="disabled">Add</button></div>
         </div>
-        <div id="validDaysGroup" class="form-group">
-          <label for="validDays">Days Until Link Expiration</label>
-          <input type="number" id="validDays" min="1" max="99" class="form-control">
-        </div>
-        <button id="sendButton" class="btn btn-outline-success float-right">Send Emails</button>
+        <div id="validDaysGroup" class="form-group"><label for="validDays">Days Until Link Expiration</label> <input type="number" id="validDays" min="1" max="99" class="form-control"></div> <button id="sendButton" class="btn btn-outline-success float-right">Send Emails</button>
       </form>
       <!---->
     </div>

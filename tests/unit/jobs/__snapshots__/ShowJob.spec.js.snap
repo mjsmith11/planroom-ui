@@ -5,8 +5,7 @@ exports[`Show Job to Contractor has expected html structure 1`] = `
   <!---->
   <div class="container">
     <div class="col-xs-12 col-sm-10 col-md-8 offset-md-2 offset-sm-1 column">
-      <h1>abc</h1>
-      <button class="btn btn-outline-primary btn-sm btn-invite">Invite Subcontractors</button>
+      <h1>abc</h1> <button class="btn btn-outline-primary btn-sm btn-invite">Invite Subcontractors</button>
       <div class="row">
         <div class="col-lg-4 col-md-6 col-sm-12 column">
           <div class="card">
@@ -14,13 +13,9 @@ exports[`Show Job to Contractor has expected html structure 1`] = `
             <div class="card-body">
               <div class="card-text">
                 <h6><strong>Date:</strong></h6>
-                <div>03/23/2017</div>
-                <br>
+                <div>03/23/2017</div> <br>
                 <h6><strong>Email:</strong></h6>
-                <div>
-                  <a href="mailto:abc@xyz.com">abc@xyz.com</a>
-                </div>
-                <br>
+                <div><a href="mailto:abc@xyz.com">abc@xyz.com</a></div> <br>
                 <h6><strong>Due To Benchmark:</strong></h6>
                 <div>06/01/2017 08:30 AM EDT</div>
                 <div>06/01/2017 07:30 AM CDT</div>
@@ -35,8 +30,7 @@ exports[`Show Job to Contractor has expected html structure 1`] = `
               <div class="card-text">
                 <h6><strong>Date &amp; Time:</strong></h6>
                 <div>07/01/2018 06:30 PM EDT</div>
-                <div>07/01/2018 05:30 PM CDT</div>
-                <br>
+                <div>07/01/2018 05:30 PM CDT</div> <br>
                 <h6><strong>Address</strong></h6>
                 <div>123 Main St.</div>
               </div>
@@ -49,8 +43,7 @@ exports[`Show Job to Contractor has expected html structure 1`] = `
             <div class="card-body">
               <div class="card-text">
                 <h6><strong>Taxable</strong></h6>
-                <div>Yes</div>
-                <br>
+                <div>Yes</div> <br>
                 <h6><strong>Subcontractor Bonding</strong></h6>
                 <div>No</div>
               </div>
@@ -85,9 +78,7 @@ exports[`Show Job to Contractor shows job for subcontractor 1`] = `
   <div class="jumbotron">
     <div class="row">
       <h4 class="offset-md-1 col-md-10">Welcome To The</h4>
-      <div class="offset-md-1 col-md-10">
-        <img src="../assets/logo1.png" alt="Benchmark logo" class="src">
-      </div>
+      <div class="offset-md-1 col-md-10"><img src="../assets/logo1.png" alt="Benchmark logo" class="src"></div>
       <div class="offset-md-1 col-md-10 text">
         <h1>Planroom</h1>
       </div>
@@ -104,13 +95,9 @@ exports[`Show Job to Contractor shows job for subcontractor 1`] = `
             <div class="card-body">
               <div class="card-text">
                 <h6><strong>Date:</strong></h6>
-                <div></div>
-                <br>
+                <div></div> <br>
                 <h6><strong>Email:</strong></h6>
-                <div>
-                  <a href="mailto:undefined"></a>
-                </div>
-                <br>
+                <div><a href="mailto:undefined"></a></div> <br>
                 <h6><strong>Due To Benchmark:</strong></h6>
                 <div></div>
                 <div></div>
@@ -125,8 +112,7 @@ exports[`Show Job to Contractor shows job for subcontractor 1`] = `
               <div class="card-text">
                 <h6><strong>Date &amp; Time:</strong></h6>
                 <div></div>
-                <div></div>
-                <br>
+                <div></div> <br>
                 <h6><strong>Address</strong></h6>
                 <div></div>
               </div>
@@ -139,8 +125,7 @@ exports[`Show Job to Contractor shows job for subcontractor 1`] = `
             <div class="card-body">
               <div class="card-text">
                 <h6><strong>Taxable</strong></h6>
-                <div></div>
-                <br>
+                <div></div> <br>
                 <h6><strong>Subcontractor Bonding</strong></h6>
                 <div></div>
               </div>
@@ -159,14 +144,17 @@ exports[`Show Job to Contractor shows job for subcontractor 1`] = `
     <div class="row">
       <div class="col-lg-2 offset-lg-4 col-md-12">
         <div class="info">
-          <font-awesome-icon-stub icon="map-marker-alt"></font-awesome-icon-stub>&nbsp;&nbsp;318 E. Monroe St.</div>
+          <font-awesome-icon-stub icon="map-marker-alt"></font-awesome-icon-stub>&nbsp;&nbsp;318 E. Monroe St.
+        </div>
         <div class="info">Kokomo, IN 46901</div>
       </div>
       <div class="col-lg-2 col-md-12">
         <div class="info">
-          <font-awesome-icon-stub icon="phone"></font-awesome-icon-stub>&nbsp;&nbsp;(765) 452-9500</div>
+          <font-awesome-icon-stub icon="phone"></font-awesome-icon-stub>&nbsp;&nbsp;(765) 452-9500
+        </div>
         <div class="info">
-          <font-awesome-icon-stub icon="fax"></font-awesome-icon-stub>&nbsp;&nbsp;(765) 452-9505</div>
+          <font-awesome-icon-stub icon="fax"></font-awesome-icon-stub>&nbsp;&nbsp;(765) 452-9505
+        </div>
       </div>
     </div>
   </div>

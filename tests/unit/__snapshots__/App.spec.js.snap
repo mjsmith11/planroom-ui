@@ -5,8 +5,7 @@ exports[`App has correct html structure logged in 1`] = `
   <nav class="navbar navbar-expand-lg navbar-dark">
     <router-link-stub to="/jobs" tag="a" class="navbar-brand">
       Planroom
-    </router-link-stub>
-    <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
+    </router-link-stub> <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
     <div id="navbarSupportedContent" class="collapse navbar-collapse">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
@@ -49,8 +48,7 @@ exports[`App has correct html structure on jobs index route 1`] = `
   <nav class="navbar navbar-expand-lg navbar-dark">
     <router-link-stub to="/jobs" tag="a" class="navbar-brand">
       Planroom
-    </router-link-stub>
-    <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
+    </router-link-stub> <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
     <div id="navbarSupportedContent" class="collapse navbar-collapse">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
@@ -80,8 +78,7 @@ exports[`App has correct html structure on jobs new job 1`] = `
   <nav class="navbar navbar-expand-lg navbar-dark">
     <router-link-stub to="/jobs" tag="a" class="navbar-brand">
       Planroom
-    </router-link-stub>
-    <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
+    </router-link-stub> <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
     <div id="navbarSupportedContent" class="collapse navbar-collapse">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
