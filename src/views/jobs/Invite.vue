@@ -14,7 +14,7 @@
                     <div class="form-group form-inline" :class="{invalid: ($v.formEmail.$error) && (formEmail !== '')}" id="formEmailGroup">
                         <label for="formEmail" class="hide">Email</label>
                         <div class="col-md-8 col-sm-12" id="emailInputDiv">
-                        <input
+                        <!--<input
                             type="email"
                             class="form-control"
                             id="formEmail"
@@ -22,7 +22,13 @@
                             maxlength="100"
                             v-model="formEmail"
                             @blur="$v.formEmail.$touch()"
-                        >
+                        >-->
+                          <v-autocomplete
+                            :items="suggestedEmails"
+                            v-model="formEmail"  
+                            @update-items="updateSuggestions"
+                          >
+                          </v-autocomplete>
                         </div>
                         <div class="col-md-4 col-sm-12" id="addButtonDiv">
                         <button class="btn btn-outline-primary" id="addButton" type="submit" :disabled="($v.formEmail.$invalid) || sending">Add</button>
@@ -66,7 +72,8 @@ export default {
       addresses: [],
       sending: false,
       sendSuccess: false,
-      sendFail: false
+      sendFail: false,
+      suggestedEmails: []
     }
   },
   methods: {
@@ -102,6 +109,16 @@ export default {
         .catch(error => {
           this.sending = false
           this.sendFail = true
+        })
+    },
+    updateSuggestions(text) {
+      axios.get('/email/autocomplete?text=' + encodeURIComponent(text))
+        .then(res => {
+          this.suggestedEmails = res.data
+        })
+        // eslint-disable-next-line
+        .catch(err => {
+          // console.log(err)
         })
     }
   },

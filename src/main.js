@@ -1,4 +1,4 @@
-// https://github.cm/mjsmith11/lkf
+// https://github.com/mjsmith11/lkf
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
@@ -9,6 +9,8 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faMapMarkerAlt, faPhone, faFax, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import Autocomplete from 'v-autocomplete'
+import 'v-autocomplete/dist/v-autocomplete.css'
 
 library.add(faMapMarkerAlt)
 library.add(faPhone)
@@ -20,6 +22,7 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.config.productionTip = false
 
 Vue.use(Vuelidate)
+Vue.use(Autocomplete)
 
 axios.defaults.baseURL = process.env.VUE_APP_API_URL
 axios.defaults.headers.post['Content-Type'] = 'application/json'
