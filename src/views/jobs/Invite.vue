@@ -13,23 +13,18 @@
                 <form @submit.prevent = "addEmail" class="">
                     <div class="form-group form-inline" :class="{invalid: ($v.formEmail.$error) && (formEmail !== '')}" id="formEmailGroup">
                         <label for="formEmail" class="hide">Email</label>
-                        <div class="col-md-8 col-sm-12" id="emailInputDiv">
-                        <!--<input
-                            type="email"
-                            class="form-control"
-                            id="formEmail"
-                            placeholder="Email"
-                            maxlength="100"
-                            v-model="formEmail"
-                            @blur="$v.formEmail.$touch()"
-                        >-->
                           <v-autocomplete
+                            id="emailInputDiv"
+                            class="col-md-8 col-sm-12"
                             :items="suggestedEmails"
-                            v-model="formEmail"  
+                            v-model="formEmail"
                             @update-items="updateSuggestions"
+                            :min-len=2
+                            :auto-select-one-item=false
+                            @blur="$v.formEmail.$touch()"
+                            :input-attrs="{autocomplete: 'off', placeholder: 'Email', class: 'form-control', id: 'inviteFormEmail', type: 'email', maxlength: 100}"
                           >
                           </v-autocomplete>
-                        </div>
                         <div class="col-md-4 col-sm-12" id="addButtonDiv">
                         <button class="btn btn-outline-primary" id="addButton" type="submit" :disabled="($v.formEmail.$invalid) || sending">Add</button>
                         </div>
@@ -68,7 +63,7 @@ export default {
     return {
       job: {},
       formEmail: '',
-      validDays: 3,
+      validDays: 7,
       addresses: [],
       sending: false,
       sendSuccess: false,
@@ -85,6 +80,7 @@ export default {
         this.addresses.push(this.formEmail)
         this.formEmail = ''
         this.$v.$reset()
+        this.suggestedEmails = []
       }
     },
     sendEmails () {
@@ -111,7 +107,9 @@ export default {
           this.sendFail = true
         })
     },
-    updateSuggestions(text) {
+    updateSuggestions (text) {
+      console.log('updateSuggestions')
+      this.suggestedEmails = []
       axios.get('/email/autocomplete?text=' + encodeURIComponent(text))
         .then(res => {
           this.suggestedEmails = res.data
@@ -142,6 +140,14 @@ export default {
 }
 </script>
 
+<style>
+ /* Because scoped styling wasn't working with v-autocomplete*/
+  #inviteFormEmail {
+      width: 100%;
+      margin-bottom: 5px;
+  }
+</style>
+
 <style scoped>
   h1,h3 {
     font-style: italic;
@@ -162,10 +168,6 @@ export default {
   }
   #formEmailGroup {
       width: 100%;
-  }
-  #formEmail {
-      width: 100%;
-      margin-bottom: 5px;
   }
   #addButton {
       width: 100%;
