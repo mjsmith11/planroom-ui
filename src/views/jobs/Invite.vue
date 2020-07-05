@@ -62,7 +62,7 @@ export default {
     return {
       job: {},
       formEmail: '',
-      validDays: 3,
+      validDays: 21,
       addresses: [],
       sending: false,
       sendSuccess: false,
@@ -94,7 +94,7 @@ export default {
           this.sending = false
           this.sendSuccess = true
           this.formEmails = ''
-          this.validDays = 3
+          this.validDays = 21
           this.addresses = []
           this.$v.$reset()
         })
