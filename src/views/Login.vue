@@ -45,8 +45,8 @@ export default {
   methods: {
     login () {
       this.loginFailure = false
-      let email = this.email
-      let password = this.password
+      const email = this.email
+      const password = this.password
       this.$store.dispatch('login', { email, password })
         .then(() => this.$router.push('/jobs'))
         .catch(() => {

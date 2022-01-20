@@ -96,7 +96,7 @@ import { required, email, maxLength } from 'vuelidate/lib/validators'
 import axios from 'axios'
 
 export default {
-  components: {VueGoogleAutocomplete},
+  components: { VueGoogleAutocomplete },
   data () {
     return {
       name: '',

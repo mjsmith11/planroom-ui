@@ -28,7 +28,7 @@ describe('Job List Item', () => {
   }
 
   it('creates link address', () => {
-    let cmp = mount(ListItem, {
+    const cmp = mount(ListItem, {
       propsData: {
         job: yesterday
       },
@@ -40,7 +40,7 @@ describe('Job List Item', () => {
   })
 
   it('displays yesterday dark', () => {
-    let cmp = mount(ListItem, {
+    const cmp = mount(ListItem, {
       propsData: {
         job: yesterday
       },
@@ -53,7 +53,7 @@ describe('Job List Item', () => {
   })
 
   it('displays today light', () => {
-    let cmp = mount(ListItem, {
+    const cmp = mount(ListItem, {
       propsData: {
         job: today
       },
@@ -66,7 +66,7 @@ describe('Job List Item', () => {
   })
 
   it('displays tommorow light', () => {
-    let cmp = mount(ListItem, {
+    const cmp = mount(ListItem, {
       propsData: {
         job: tomorrow
       },
@@ -79,7 +79,7 @@ describe('Job List Item', () => {
   })
 
   it('has expected html structure', () => {
-    let cmp = mount(ListItem, {
+    const cmp = mount(ListItem, {
       propsData: {
         job: staticDate
       },

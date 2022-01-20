@@ -16,11 +16,11 @@ export default {
   },
   computed: {
     inPast () {
-      var today = new Date()
+      const today = new Date()
       today.setHours(0, 0, 0, 0)
-      var todayUTC = Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate(), 0, 0, 0, 0)
-      var pieces = this.job.bidDate.split('-')
-      var utc = Date.UTC(pieces[0], pieces[1] - 1, pieces[2], 0, 0, 0, 0)
+      const todayUTC = Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate(), 0, 0, 0, 0)
+      const pieces = this.job.bidDate.split('-')
+      const utc = Date.UTC(pieces[0], pieces[1] - 1, pieces[2], 0, 0, 0, 0)
       return utc < todayUTC
     },
     link () {

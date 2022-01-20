@@ -151,7 +151,7 @@ describe('Vuex store', () => {
       user: 'abc',
       refresher: setInterval(pause, 500)
     })
-    store.dispatch('login', {email: 'joe@joe.com', password: 'password'})
+    store.dispatch('login', { email: 'joe@joe.com', password: 'password' })
       .then(() => {
         expect(1).toBe(0) // promise should be rejected
       })

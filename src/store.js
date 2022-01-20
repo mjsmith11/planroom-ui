@@ -103,8 +103,8 @@ export default new Vuex.Store({
         return false
       } else {
         // see if the token is expired
-        let decoded = parseJwt(state.token)
-        let now = Math.round((new Date()).getTime() / 1000)
+        const decoded = parseJwt(state.token)
+        const now = Math.round((new Date()).getTime() / 1000)
         // using a 5 second threshold to give caller time to do something if this is true
         return (decoded.exp - now >= 5)
       }
@@ -116,23 +116,23 @@ export default new Vuex.Store({
       if (state.token === undefined || state.token === '') {
         return true
       } else {
-        let decoded = parseJwt(state.token)
+        const decoded = parseJwt(state.token)
         return decoded.role === 'contractor'
       }
     },
     job: state => {
-      let decoded = parseJwt(state.token)
+      const decoded = parseJwt(state.token)
       return decoded.job
     },
     exp: state => {
-      let decoded = parseJwt(state.token)
+      const decoded = parseJwt(state.token)
       return decoded.exp
     }
   }
 })
 
 function parseJwt (token) {
-  var base64Url = token.split('.')[1]
-  var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/')
+  const base64Url = token.split('.')[1]
+  const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/')
   return JSON.parse(window.atob(base64))
 };

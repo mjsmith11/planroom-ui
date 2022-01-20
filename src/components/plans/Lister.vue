@@ -33,7 +33,7 @@ export default {
   ],
   filters: {
     removeDir (value) {
-      var splits = value.split('/')
+      const splits = value.split('/')
       splits.splice(0, 1)
       return splits.join('/')
     }

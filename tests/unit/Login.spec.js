@@ -4,7 +4,7 @@ import flushPromises from 'flush-promises'
 
 describe('App', () => {
   it('has expected html', () => {
-    let cmp = mount(Login, {
+    const cmp = mount(Login, {
 
     })
     expect(cmp.html()).toMatchSnapshot()
@@ -19,7 +19,7 @@ describe('App', () => {
         resolve()
       }))
     }
-    let cmp = mount(Login, {
+    const cmp = mount(Login, {
       mocks: {
         $router,
         $store
@@ -31,7 +31,7 @@ describe('App', () => {
     passwordField.setValue('myPassword')
 
     cmp.find('form').trigger('submit')
-    expect($store.dispatch).toBeCalledWith('login', {email: 'test@test.com', password: 'myPassword'})
+    expect($store.dispatch).toBeCalledWith('login', { email: 'test@test.com', password: 'myPassword' })
 
     await flushPromises()
 
@@ -47,7 +47,7 @@ describe('App', () => {
         reject(new Error('Login Failed'))
       }))
     }
-    let cmp = mount(Login, {
+    const cmp = mount(Login, {
       mocks: {
         $router,
         $store

@@ -26,7 +26,7 @@ export default {
     return {
       awss3: {
         signingURL: this.getUrl,
-        headers: {'Planroom-Authorization': 'Bearer ' + this.$store.getters.token},
+        headers: { 'Planroom-Authorization': 'Bearer ' + this.$store.getters.token },
         params: {},
         sendFileToServer: false,
         withCredentials: false

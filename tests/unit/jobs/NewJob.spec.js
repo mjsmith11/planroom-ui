@@ -33,7 +33,7 @@ describe('Add Job Form', () => {
 
   it('renders without failed validation', () => {
     // submit is disabled
-    expect(cmp.find('button[type="submit"]').attributes()['disabled']).toBe('disabled')
+    expect(cmp.find('button[type="submit"]').attributes().disabled).toBe('disabled')
 
     // no form groups have invalid class
     const groups = cmp.findAll('.form-group')
@@ -163,7 +163,7 @@ describe('Add Job Form', () => {
     const groups = cmp.findAll('.form-group')
     groups.wrappers.forEach(group => expect(group.classes()).not.toContain('invalid'))
 
-    expect(cmp.find('button[type="submit"]').attributes()['disabled']).toBe(undefined)
+    expect(cmp.find('button[type="submit"]').attributes().disabled).toBe(undefined)
   })
   it('uses api to save job', () => {
     cmp.vm.clearForm = jest.fn()
@@ -199,38 +199,38 @@ describe('Add Job Form', () => {
     cmp.vm.$forceUpdate()
     const groups = cmp.findAll('.form-group')
     groups.wrappers.forEach(group => expect(group.classes()).not.toContain('invalid'))
-    expect(cmp.find('button[type="submit"]').attributes()['disabled']).toBe(undefined)
+    expect(cmp.find('button[type="submit"]').attributes().disabled).toBe(undefined)
 
     cmp.find('form').trigger('submit')
 
     expect(mockAxios.post).toHaveBeenCalledWith('/jobs', {
-      'bidDate': '2018-03-23',
-      'bidEmail': 'abc@xyz.com',
-      'bonding': true,
-      'name': 'abc',
-      'prebidAddress':
+      bidDate: '2018-03-23',
+      bidEmail: 'abc@xyz.com',
+      bonding: true,
+      name: 'abc',
+      prebidAddress:
       '123 Main St.',
-      'prebidDateTime':
+      prebidDateTime:
       '2018-07-01T18:30',
-      'subcontractorBidsDue': '2017-06-01T08:30',
-      'taxible': true
+      subcontractorBidsDue: '2017-06-01T08:30',
+      taxible: true
     })
 
     expect(mockAxios.post).toHaveBeenCalledTimes(1)
 
     const responseObj = {
       data: {
-        'bidDate': '2018-03-23',
-        'bidEmail': 'abc@xyz.com',
-        'bonding': true,
-        'name': 'abc',
-        'prebidAddress':
+        bidDate: '2018-03-23',
+        bidEmail: 'abc@xyz.com',
+        bonding: true,
+        name: 'abc',
+        prebidAddress:
         '123 Main St.',
-        'prebidDateTime':
+        prebidDateTime:
         '2018-07-01T18:30',
-        'subcontractorBidsDue': '2017-06-08T08:30',
-        'taxible': true,
-        'id': 25
+        subcontractorBidsDue: '2017-06-08T08:30',
+        taxible: true,
+        id: 25
       }
     }
 
@@ -276,7 +276,7 @@ describe('Add Job Form', () => {
     const groups = cmp.findAll('.form-group')
     groups.wrappers.forEach(group => expect(group.classes()).not.toContain('invalid'))
 
-    expect(cmp.find('button[type="submit"]').attributes()['disabled']).toBe(undefined)
+    expect(cmp.find('button[type="submit"]').attributes().disabled).toBe(undefined)
   })
   it('reports errors in saving', () => {
     cmp.vm.clearForm = jest.fn()
@@ -313,21 +313,21 @@ describe('Add Job Form', () => {
     cmp.vm.$forceUpdate()
     const groups = cmp.findAll('.form-group')
     groups.wrappers.forEach(group => expect(group.classes()).not.toContain('invalid'))
-    expect(cmp.find('button[type="submit"]').attributes()['disabled']).toBe(undefined)
+    expect(cmp.find('button[type="submit"]').attributes().disabled).toBe(undefined)
 
     cmp.find('form').trigger('submit')
 
     expect(mockAxios.post).toHaveBeenCalledWith('/jobs', {
-      'bidDate': '2018-03-23',
-      'bidEmail': 'abc@xyz.com',
-      'bonding': true,
-      'name': 'abc',
-      'prebidAddress':
+      bidDate: '2018-03-23',
+      bidEmail: 'abc@xyz.com',
+      bonding: true,
+      name: 'abc',
+      prebidAddress:
         '123 Main St.',
-      'prebidDateTime':
+      prebidDateTime:
         '2018-07-01T18:30',
-      'subcontractorBidsDue': '2017-06-01T08:30',
-      'taxible': true
+      subcontractorBidsDue: '2017-06-01T08:30',
+      taxible: true
     })
 
     expect(mockAxios.post).toHaveBeenCalledTimes(1)

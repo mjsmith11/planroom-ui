@@ -1,18 +1,18 @@
 const helpers = {
   date (value) {
-    var splits = value.split('-')
-    var dd = splits[2]
-    var mm = splits[1]
-    var yyyy = splits[0]
+    const splits = value.split('-')
+    const dd = splits[2]
+    const mm = splits[1]
+    const yyyy = splits[0]
 
     return mm + '/' + dd + '/' + yyyy
   },
   time (value) {
-    var AMPM = 'AM'
-    var pieces = value.split(':')
-    var HH = pieces[0]
-    var mm = pieces[1]
-    var hh = ''
+    let AMPM = 'AM'
+    const pieces = value.split(':')
+    const HH = pieces[0]
+    const mm = pieces[1]
+    let hh = ''
     if (HH === '00') {
       hh = 12
     } else if (HH > 12) {
@@ -31,10 +31,10 @@ const helpers = {
   },
   isDST (date) {
     // A free script from: www.mresoftware.com
-    var yr = date.getFullYear()
-    var dstStart = new Date('March 14, ' + yr + ' 02:00:00') // 2nd Sunday in March can't occur after the 14th
-    var dstEnd = new Date('November 07, ' + yr + ' 02:00:00') // 1st Sunday in November can't occur after the 7th
-    var day = dstStart.getDay() // day of week of 14th
+    const yr = date.getFullYear()
+    const dstStart = new Date('March 14, ' + yr + ' 02:00:00') // 2nd Sunday in March can't occur after the 14th
+    const dstEnd = new Date('November 07, ' + yr + ' 02:00:00') // 1st Sunday in November can't occur after the 7th
+    let day = dstStart.getDay() // day of week of 14th
     dstStart.setDate(14 - day) // Calculate 2nd Sunday in March of this year
     day = dstEnd.getDay() // day of the week of 7th
     dstEnd.setDate(7 - day) // Calculate first Sunday in November of this year
@@ -67,11 +67,11 @@ export const datetimeFilters = {
       if (value === undefined || value === '') {
         return ''
       }
-      var pieces = value.split(' ')
-      var datePart = helpers.date(pieces[0])
-      var timePart = helpers.time(pieces[1])
-      var datetime = datePart + ' ' + timePart
-      var tz = helpers.isDST(new Date(datetime)) ? ' EDT' : ' EST'
+      const pieces = value.split(' ')
+      const datePart = helpers.date(pieces[0])
+      const timePart = helpers.time(pieces[1])
+      const datetime = datePart + ' ' + timePart
+      const tz = helpers.isDST(new Date(datetime)) ? ' EDT' : ' EST'
       return datetime + tz
     },
     /**
@@ -84,7 +84,7 @@ export const datetimeFilters = {
         return ''
       }
 
-      let date = new Date(value * 1000)
+      const date = new Date(value * 1000)
       let minutes = date.getMinutes()
       if (minutes < 10) {
         minutes = '0' + minutes
@@ -100,30 +100,30 @@ export const datetimeFilters = {
       if (value === undefined) {
         return ''
       }
-      var pieces = value.split(' ')
+      const pieces = value.split(' ')
 
-      var datePiece = pieces[0]
-      var timePiece = pieces[1]
+      const datePiece = pieces[0]
+      const timePiece = pieces[1]
 
-      var dateSplit = datePiece.split('-')
-      var timeSplit = timePiece.split(':')
-      var utc = Date.UTC(dateSplit[0], dateSplit[1] - 1, dateSplit[2], timeSplit[0], timeSplit[1], timeSplit[2]) // months are 0 based
+      const dateSplit = datePiece.split('-')
+      const timeSplit = timePiece.split(':')
+      const utc = Date.UTC(dateSplit[0], dateSplit[1] - 1, dateSplit[2], timeSplit[0], timeSplit[1], timeSplit[2]) // months are 0 based
 
-      var d = new Date(utc)
+      const d = new Date(utc)
       d.setHours(d.getHours() - 1)
 
-      var mm = d.getMonth() + 1 // months are zero based
-      var dd = d.getDate()
+      let mm = d.getMonth() + 1 // months are zero based
+      let dd = d.getDate()
       if (mm < 10) {
         mm = '0' + mm
       }
       if (dd < 10) {
         dd = '0' + dd
       }
-      var dateString = d.getFullYear() + '-' + mm + '-' + dd
-      var hh = d.getUTCHours()
-      var min = d.getMinutes()
-      var ss = d.getSeconds()
+      const dateString = d.getFullYear() + '-' + mm + '-' + dd
+      let hh = d.getUTCHours()
+      let min = d.getMinutes()
+      let ss = d.getSeconds()
       if (hh < 10) {
         hh = '0' + hh
       }
@@ -133,13 +133,13 @@ export const datetimeFilters = {
       if (ss < 10) {
         ss = '0' + ss
       }
-      var timeString = hh + ':' + min + ':' + ss
+      const timeString = hh + ':' + min + ':' + ss
 
-      var datePart = helpers.date(dateString)
-      var timePart = helpers.time(timeString)
+      const datePart = helpers.date(dateString)
+      const timePart = helpers.time(timeString)
 
-      var datetime = datePart + ' ' + timePart
-      var tz = helpers.isDST(new Date(datetime)) ? ' CDT' : ' CST'
+      const datetime = datePart + ' ' + timePart
+      const tz = helpers.isDST(new Date(datetime)) ? ' CDT' : ' CST'
       return datetime + tz
     }
   }

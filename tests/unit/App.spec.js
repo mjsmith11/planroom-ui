@@ -14,17 +14,17 @@ describe('App', () => {
     axios.interceptors.response = {}
     axios.interceptors.response.use = jest.fn()
 
-    let getters = {
+    const getters = {
       isLoggedIn: () => true,
       isContractorUser: () => true
     }
-    let store = new Vuex.Store({
+    const store = new Vuex.Store({
       getters
     })
     const $route = {
       name: 'test'
     }
-    let cmp = mount(App, {
+    const cmp = mount(App, {
       stubs: [
         'router-view',
         'router-link'
@@ -44,14 +44,14 @@ describe('App', () => {
     axios.interceptors.response = {}
     axios.interceptors.response.use = jest.fn()
 
-    let getters = {
+    const getters = {
       isLoggedIn: () => false,
       isContractorUser: () => true
     }
-    let store = new Vuex.Store({
+    const store = new Vuex.Store({
       getters
     })
-    let cmp = mount(App, {
+    const cmp = mount(App, {
       stubs: [
         'router-view',
         'router-link'
@@ -68,17 +68,17 @@ describe('App', () => {
     axios.interceptors.response = {}
     axios.interceptors.response.use = jest.fn()
 
-    let getters = {
+    const getters = {
       isLoggedIn: () => true,
       isContractorUser: () => true
     }
-    let store = new Vuex.Store({
+    const store = new Vuex.Store({
       getters
     })
     const $route = {
       name: 'jobs index'
     }
-    let cmp = mount(App, {
+    const cmp = mount(App, {
       stubs: [
         'router-view',
         'router-link'
@@ -98,17 +98,17 @@ describe('App', () => {
     axios.interceptors.response = {}
     axios.interceptors.response.use = jest.fn()
 
-    let getters = {
+    const getters = {
       isLoggedIn: () => true,
       isContractorUser: () => true
     }
-    let store = new Vuex.Store({
+    const store = new Vuex.Store({
       getters
     })
     const $route = {
       name: 'new job'
     }
-    let cmp = mount(App, {
+    const cmp = mount(App, {
       stubs: [
         'router-view',
         'router-link'
@@ -128,14 +128,14 @@ describe('App', () => {
     axios.interceptors.response = {}
     axios.interceptors.response.use = jest.fn()
 
-    let getters = {
+    const getters = {
       isLoggedIn: () => true,
       isContractorUser: () => true
     }
-    let actions = {
+    const actions = {
       logout: jest.fn()
     }
-    let store = new Vuex.Store({
+    const store = new Vuex.Store({
       state: {},
       actions,
       getters
@@ -146,7 +146,7 @@ describe('App', () => {
     const $router = {
       push: jest.fn()
     }
-    let cmp = mount(App, {
+    const cmp = mount(App, {
       stubs: [
         'router-view',
         'router-link'
@@ -168,17 +168,17 @@ describe('App', () => {
     axios.interceptors.response = {}
     axios.interceptors.response.use = jest.fn()
 
-    let getters = {
+    const getters = {
       isLoggedIn: () => true,
       isContractorUser: () => false
     }
-    let store = new Vuex.Store({
+    const store = new Vuex.Store({
       getters
     })
     const $route = {
       name: 'test'
     }
-    let cmp = mount(App, {
+    const cmp = mount(App, {
       stubs: [
         'router-view',
         'router-link'

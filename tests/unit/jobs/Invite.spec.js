@@ -58,15 +58,15 @@ describe('Add Job Form', () => {
 
     const response = {
       data: {
-        'bidDate': '2017-12-23',
-        'bidEmail': 'abcdef@xyz.com',
-        'bonding': false,
-        'name': 'My Second Test Job',
-        'prebidAddress': '234 Main St.',
-        'prebidDateTime': '2018-07-01 18:30:00',
-        'subcontractorBidsDue': '2017-06-01 08:30:00',
-        'taxible': true,
-        'id': 20
+        bidDate: '2017-12-23',
+        bidEmail: 'abcdef@xyz.com',
+        bonding: false,
+        name: 'My Second Test Job',
+        prebidAddress: '234 Main St.',
+        prebidDateTime: '2018-07-01 18:30:00',
+        subcontractorBidsDue: '2017-06-01 08:30:00',
+        taxible: true,
+        id: 20
       }
     }
     mockAxios.mockResponse(response)
@@ -110,36 +110,36 @@ describe('Add Job Form', () => {
 
   it('disables add email button', () => {
     // the form should be invalid thus disabled
-    expect(cmp.find('#addButton').attributes()['disabled']).toBe('disabled')
+    expect(cmp.find('#addButton').attributes().disabled).toBe('disabled')
 
     cmp.vm.formEmail = 'email@somewhere.com'
     cmp.vm.$v.formEmail.$touch()
     cmp.vm.sending = true
 
-    expect(cmp.find('#addButton').attributes()['disabled']).toBe('disabled')
+    expect(cmp.find('#addButton').attributes().disabled).toBe('disabled')
 
     cmp.vm.sending = false
 
-    expect(cmp.find('#addButton').attributes()['disabled']).toBe(undefined)
+    expect(cmp.find('#addButton').attributes().disabled).toBe(undefined)
   })
 
   it('disables send button', () => {
     // there should be no addresses
-    expect(cmp.find('#sendButton').attributes()['disabled']).toBe('disabled')
+    expect(cmp.find('#sendButton').attributes().disabled).toBe('disabled')
 
     cmp.vm.addresses.push('email@aol.com')
     cmp.vm.sending = true
 
-    expect(cmp.find('#sendButton').attributes()['disabled']).toBe('disabled')
+    expect(cmp.find('#sendButton').attributes().disabled).toBe('disabled')
 
     cmp.vm.sending = false
     cmp.vm.formEmail = 'something'
 
-    expect(cmp.find('#sendButton').attributes()['disabled']).toBe('disabled')
+    expect(cmp.find('#sendButton').attributes().disabled).toBe('disabled')
 
     cmp.vm.formEmail = ''
 
-    expect(cmp.find('#sendButton').attributes()['disabled']).toBe(undefined)
+    expect(cmp.find('#sendButton').attributes().disabled).toBe(undefined)
   })
 
   it('Adds an address', () => {
@@ -154,15 +154,15 @@ describe('Add Job Form', () => {
     // resolve axios on created hook
     const response = {
       data: {
-        'bidDate': '2017-12-23',
-        'bidEmail': 'abcdef@xyz.com',
-        'bonding': false,
-        'name': 'My Second Test Job',
-        'prebidAddress': '234 Main St.',
-        'prebidDateTime': '2018-07-01 18:30:00',
-        'subcontractorBidsDue': '2017-06-01 08:30:00',
-        'taxible': true,
-        'id': 20
+        bidDate: '2017-12-23',
+        bidEmail: 'abcdef@xyz.com',
+        bonding: false,
+        name: 'My Second Test Job',
+        prebidAddress: '234 Main St.',
+        prebidDateTime: '2018-07-01 18:30:00',
+        subcontractorBidsDue: '2017-06-01 08:30:00',
+        taxible: true,
+        id: 20
       }
     }
     mockAxios.mockResponse(response)
@@ -182,7 +182,7 @@ describe('Add Job Form', () => {
     let sendingDiv = cmp.find('.working')
 
     expect(sendingDiv.html()).toContain('Sending... Please do not navigate away from this page')
-    expect(mockAxios.post).toHaveBeenCalledWith('/jobs/12/invite', {emails: cmp.vm.addresses, validDays: 4})
+    expect(mockAxios.post).toHaveBeenCalledWith('/jobs/12/invite', { emails: cmp.vm.addresses, validDays: 4 })
     expect(mockAxios.post).toHaveBeenCalledTimes(1)
     mockAxios.mockResponse({})
 
@@ -202,15 +202,15 @@ describe('Add Job Form', () => {
     // resolve axios on created hook
     const response = {
       data: {
-        'bidDate': '2017-12-23',
-        'bidEmail': 'abcdef@xyz.com',
-        'bonding': false,
-        'name': 'My Second Test Job',
-        'prebidAddress': '234 Main St.',
-        'prebidDateTime': '2018-07-01 18:30:00',
-        'subcontractorBidsDue': '2017-06-01 08:30:00',
-        'taxible': true,
-        'id': 20
+        bidDate: '2017-12-23',
+        bidEmail: 'abcdef@xyz.com',
+        bonding: false,
+        name: 'My Second Test Job',
+        prebidAddress: '234 Main St.',
+        prebidDateTime: '2018-07-01 18:30:00',
+        subcontractorBidsDue: '2017-06-01 08:30:00',
+        taxible: true,
+        id: 20
       }
     }
     mockAxios.mockResponse(response)

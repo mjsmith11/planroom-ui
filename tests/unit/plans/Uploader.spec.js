@@ -10,10 +10,10 @@ localVue.use(Vuex)
 
 describe('Uploader', () => {
   let cmp
-  let getters = {
+  const getters = {
     token: () => 'eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjEyMzQ1Njc3ODc3fQ.6xV-z88Nvmag8i4jVwmOZjX3MhCYAgb3rqttN4ROix3EbtHLwYIG3utNVaCpCN2cS7QFAJM3CPnfiS5_s9luiA'
   }
-  let store = new Vuex.Store({
+  const store = new Vuex.Store({
     getters
   })
 
@@ -46,24 +46,24 @@ describe('Uploader', () => {
   })
 
   it('emits file-uploaded event', () => {
-    let spy = jest.spyOn(EventBus, '$emit')
+    const spy = jest.spyOn(EventBus, '$emit')
     cmp.vm.s3UploadSuccess('')
     expect(spy).toBeCalledWith('file-uploaded')
   })
 
   it('builds signing URL', () => {
-    let file = {
+    const file = {
       name: 'myfile.pdf'
     }
-    let result = cmp.vm.getUrl(file)
+    const result = cmp.vm.getUrl(file)
     expect(result).toBe('http://test-api.com/jobs/1/plans?filename=myfile.pdf')
   })
 
   it('encodes signing URL', () => {
-    let file = {
+    const file = {
       name: 'myfile#4.pdf'
     }
-    let result = cmp.vm.getUrl(file)
+    const result = cmp.vm.getUrl(file)
     expect(result).toBe('http://test-api.com/jobs/1/plans?filename=myfile%234.pdf')
   })
 })
